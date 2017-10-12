@@ -109,15 +109,27 @@ view: cnapishort {
     type:  count
     drill_fields: [product_name]
   }
-  measure: ram_total_g {
+  measure: ram_total_t {
     type: sum
     sql:  ${ram_sellable}/1024/1024 ;;
     value_format_name: decimal_4
     drill_fields: [dc,cn_name,ram_sellable]
   }
-  measure: ram_free_total_g {
+  measure: ram_free_total_t {
     type:  sum
     sql: ${ram_free}/1024/1024 ;;
+    value_format_name:  decimal_4
+    drill_fields: [dc,cn_name,ram_sellable]
+  }
+  measure: ram_total_g {
+    type: sum
+    sql:  ${ram_sellable}/1024 ;;
+    value_format_name: decimal_4
+    drill_fields: [dc,cn_name,ram_sellable]
+  }
+  measure: ram_free_total_g {
+    type:  sum
+    sql: ${ram_free}/1024 ;;
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable]
   }
