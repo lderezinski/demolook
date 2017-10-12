@@ -17,12 +17,12 @@ view: cnapishort {
       quarter,
       year
     ]
-    sql: ${TABLE}.'DATE' ;;
+    sql: ${TABLE}."DATE" ;;
   }
 
   dimension: dc {
     type: string
-    sql: ${TABLE}.'DCENTER';;
+    sql: ${TABLE}."DCENTER";;
   }
 
   dimension: disk_pool {
@@ -32,68 +32,68 @@ view: cnapishort {
 
   dimension: ram_free {
     type: number
-    sql: ${TABLE}.'Free' ;;
+    sql: ${TABLE}."Free" ;;
   }
 
   dimension: cn_name {
     type: string
-    sql: ${TABLE}.'HOSTNAME' ;;
+    sql: ${TABLE}."HOSTNAME" ;;
   }
 
   dimension: joy_num {
     type: number
-    sql: ${TABLE}.'joyent' ;;
+    sql: ${TABLE}."joyent" ;;
   }
 
   dimension: num_kvm {
     type: number
-    sql: ${TABLE}.'kvm' ;;
+    sql: ${TABLE}."kvm" ;;
   }
 
   dimension: num_lx {
     type: number
-    sql: ${TABLE}.'lx' ;;
+    sql: ${TABLE}."lx" ;;
   }
 
   dimension: num_minimal {
     type: number
-    sql: ${TABLE}.'minimal' ;;
+    sql: ${TABLE}."minimal" ;;
   }
 
 
   dimension: cn_model {
     type: string
-    sql: ${TABLE}.'Model' ;;
+    sql: ${TABLE}."Model" ;;
   }
 
   dimension: ram_overhead {
     type: number
-    sql: ${TABLE}.'Overhead' ;;
+    sql: ${TABLE}."Overhead" ;;
   }
 
   dimension: product_name{
     type: string
-    sql: ${TABLE}.'Product' ;;
+    sql: ${TABLE}."Product" ;;
   }
 
   dimension: num_zones {
     type: number
-    sql: ${TABLE}.'Prov' ;;
+    sql: ${TABLE}."Prov" ;;
   }
 
   dimension: ram_sellable {
     type: number
-    sql: ${TABLE}.'Sellable' ;;
+    sql: ${TABLE}."Sellable" ;;
   }
 
   dimension: ram_sold {
     type: number
-    sql: ${TABLE}.'Sold' ;;
+    sql: ${TABLE}."Sold" ;;
   }
 
   dimension: disk_unprovisioned {
     type: number
-    sql: ${TABLE}."unprovisioned pool G" ;;
+    sql: ${TABLE}.|"unprovisioned pool G" ;;
   }
 
   dimension: unprovisioned_ratio {
