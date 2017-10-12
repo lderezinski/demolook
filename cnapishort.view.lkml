@@ -105,14 +105,14 @@ view: cnapishort {
     type: count
     drill_fields: [cn_name]
   }
-  measure: ram_total {
+  measure: ram_total_g {
     type: sum
-    sql:  ${ram_sellable} ;;
+    sql:  ${ram_sellable}/1024 ;;
     value_format_name: decimal_4
   }
-  measure: ram_free_total {
+  measure: ram_free_total_g {
     type:  sum
-    sql: ${ram_free} ;;
+    sql: ${ram_free}/1024 ;;
     value_format_name:  decimal_4
   }
 }
