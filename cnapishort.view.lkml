@@ -17,12 +17,12 @@ view: cnapishort {
       quarter,
       year
     ]
-    sql: ${TABLE}.DATE ;;
+    sql: ${TABLE}.'DATE' ;;
   }
 
   dimension: dcenter {
     type: string
-    sql: ${TABLE}.DCENTER ;;
+    sql: ${TABLE}.'DCENTER';;
   }
 
   dimension: disk_pool_size_g {
@@ -32,63 +32,63 @@ view: cnapishort {
 
   dimension: ram_free {
     type: number
-    sql: ${TABLE}.Free ;;
+    sql: ${TABLE}.'Free' ;;
   }
 
   dimension: hostname {
     type: string
-    sql: ${TABLE}.HOSTNAME ;;
+    sql: ${TABLE}.'HOSTNAME' ;;
   }
 
   dimension: joyent {
     type: number
-    sql: ${TABLE}.joyent ;;
+    sql: ${TABLE}.'joyent' ;;
   }
 
   dimension: kvm {
     type: number
-    sql: ${TABLE}.kvm ;;
+    sql: ${TABLE}.'kvm' ;;
   }
 
   dimension: lx {
     type: number
-    sql: ${TABLE}.lx ;;
+    sql: ${TABLE}.'lx' ;;
   }
 
   dimension: minimal {
     type: number
-    sql: ${TABLE}.minimal ;;
+    sql: ${TABLE}.'minimal' ;;
   }
 
 
   dimension: model {
     type: string
-    sql: ${TABLE}.Model ;;
+    sql: ${TABLE}.'Model' ;;
   }
 
   dimension: ram_overhead {
     type: number
-    sql: ${TABLE}.Overhead ;;
+    sql: ${TABLE}.'Overhead' ;;
   }
 
   dimension: product {
     type: string
-    sql: ${TABLE}.Product ;;
+    sql: ${TABLE}.'Product' ;;
   }
 
   dimension: prov {
     type: number
-    sql: ${TABLE}.Prov ;;
+    sql: ${TABLE}.'Prov' ;;
   }
 
   dimension: ram_sellable {
     type: number
-    sql: ${TABLE}.Sellable ;;
+    sql: ${TABLE}.'Sellable' ;;
   }
 
   dimension: ram_sold {
     type: number
-    sql: ${TABLE}.Sold ;;
+    sql: ${TABLE}.'Sold' ;;
   }
 
   dimension: disk_unprovisioned_pool_g {
