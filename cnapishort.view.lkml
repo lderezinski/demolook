@@ -20,12 +20,12 @@ view: cnapishort {
     sql: ${TABLE}.'DATE' ;;
   }
 
-  dimension: dcenter {
+  dimension: dc {
     type: string
     sql: ${TABLE}.'DCENTER';;
   }
 
-  dimension: disk_pool_size_g {
+  dimension: disk_pool {
     type: number
     sql: ${TABLE}."disk pool size G" ;;
   }
@@ -35,33 +35,33 @@ view: cnapishort {
     sql: ${TABLE}.'Free' ;;
   }
 
-  dimension: hostname {
+  dimension: cn_name {
     type: string
     sql: ${TABLE}.'HOSTNAME' ;;
   }
 
-  dimension: joyent {
+  dimension: joy_num {
     type: number
     sql: ${TABLE}.'joyent' ;;
   }
 
-  dimension: kvm {
+  dimension: num_kvm {
     type: number
     sql: ${TABLE}.'kvm' ;;
   }
 
-  dimension: lx {
+  dimension: num_lx {
     type: number
     sql: ${TABLE}.'lx' ;;
   }
 
-  dimension: minimal {
+  dimension: num_minimal {
     type: number
     sql: ${TABLE}.'minimal' ;;
   }
 
 
-  dimension: model {
+  dimension: cn_model {
     type: string
     sql: ${TABLE}.'Model' ;;
   }
@@ -71,12 +71,12 @@ view: cnapishort {
     sql: ${TABLE}.'Overhead' ;;
   }
 
-  dimension: product {
+  dimension: product_name{
     type: string
     sql: ${TABLE}.'Product' ;;
   }
 
-  dimension: prov {
+  dimension: num_zones {
     type: number
     sql: ${TABLE}.'Prov' ;;
   }
@@ -91,7 +91,7 @@ view: cnapishort {
     sql: ${TABLE}.'Sold' ;;
   }
 
-  dimension: disk_unprovisioned_pool_g {
+  dimension: disk_unprovisioned {
     type: number
     sql: ${TABLE}."unprovisioned pool G" ;;
   }
@@ -103,6 +103,6 @@ view: cnapishort {
 
   measure: count {
     type: count
-    drill_fields: [hostname]
+    drill_fields: [cn_name]
   }
 }
