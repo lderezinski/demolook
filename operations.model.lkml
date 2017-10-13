@@ -14,3 +14,7 @@ explore: dailyspend {
   description: "This data comes from BPR files"
   group_label: "BPR"
 }
+explore: zcustomers {
+  description: "zuora customer list"
+  group_label: "Zuora"
+}
