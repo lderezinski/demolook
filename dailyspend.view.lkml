@@ -55,4 +55,9 @@ view: dailyspend {
     sql: ${total} - ${jpcspend} ;;
     drill_fields: [accountnumber,day_date]
   }
+  measure: sum_spend {
+    type: sum
+    sql: ${spend} ;;
+    drill_fields: [accountnumber,day_date,jpcspend,jpctotal,total,spend]
+  }
 }
