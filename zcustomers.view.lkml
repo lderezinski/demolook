@@ -1,8 +1,10 @@
+
 view: zcustomers {
   sql_table_name: public.zcustomers ;;
 
   dimension: accountnumber {
     type: string
+    primary_key: yes
     sql: ${TABLE}.accountnumber ;;
   }
 
@@ -17,6 +19,7 @@ view: zcustomers {
   }
 
   dimension_group: createddate {
+    label: "created"
     type: time
     timeframes: [
       raw,
