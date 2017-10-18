@@ -12,23 +12,23 @@ view: zuoraaccount {
 
   dimension: batch {
     type: string
-    sql: ${TABLE}.Batch ;;
+    sql: ${TABLE}."Batch"" ;;
   }
 
   dimension: category {
     type: string
-    sql: ${TABLE}.Category ;;
+    sql: ${TABLE}."Category" ;;
   }
 
   dimension: city {
     type: string
-    sql: ${TABLE}.city ;;
+    sql: ${TABLE}."city" ;;
   }
 
   dimension: country {
     type: string
     map_layer_name: countries
-    sql: ${TABLE}.country ;;
+    sql: ${TABLE}."country" ;;
   }
 
   dimension_group: created {
@@ -43,7 +43,7 @@ view: zuoraaccount {
     ]
     convert_tz: no
     datatype: date
-    sql: ${TABLE}.CreatedDate ;;
+    sql: ${TABLE}."CreatedDate" ;;
   }
 
   dimension: stateprovince {
