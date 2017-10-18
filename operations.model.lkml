@@ -33,3 +33,8 @@ explore: zcustomers {
   label: "Customers"
 
 }
+explore: zuoraaccount {
+  description: "Zuora Accounts"
+  group_label: "z accounts"
+  label: "Customers"
+}
