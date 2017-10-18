@@ -35,6 +35,6 @@ explore: zcustomers {
 }
 explore: zuoraaccount {
   description: "Zuora Accounts"
-  group_label: "z accounts"
-  label: "Customers"
+  group_label: "Zuora"
+  label: "Accounts"
 }
