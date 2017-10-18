@@ -139,4 +139,10 @@ view: cnapishort {
     value_format_name: decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name,cn_model]
   }
+  measure: ram_sold_total_t {
+    type: sum
+    sql: : ${ram_sold} ;;
+    value_format_name:  decimal_4
+    drill_fields: [dc,cn_name,ram_sellable,product_name]
+  }
 }
