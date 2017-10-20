@@ -17,7 +17,7 @@ view: spccnapishort {
       quarter,
       year
     ]
-    sql: ${TABLE}.DATE ;;
+    sql: ${TABLE}."DATE" ;;
   }
 
   dimension: dc {
