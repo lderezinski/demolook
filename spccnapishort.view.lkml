@@ -45,7 +45,7 @@ view: spccnapishort {
     sql: ${TABLE}.joyent ;;
   }
 
-  dimension: joyent-percent {
+  dimension: joyent_percent {
     type: number
     sql: ${TABLE}."%joyent" ;;
   }
@@ -55,7 +55,7 @@ view: spccnapishort {
     sql: ${TABLE}.kvm ;;
   }
 
-  dimension: kvm-percent {
+  dimension: kvm_percent {
     type: number
     sql: ${TABLE}."%kvm" ;;
   }
@@ -65,7 +65,7 @@ view: spccnapishort {
     sql: ${TABLE}.lx ;;
   }
 
-  dimension: lx-percent {
+  dimension: lx_percent {
     type: number
     sql: ${TABLE}."%lx" ;;
   }
