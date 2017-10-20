@@ -75,7 +75,7 @@ view: spccnapishort {
     sql: ${TABLE}.minimal ;;
   }
 
-  dimension: minimal-percent {
+  dimension: minimal_percent {
     type: number
     sql: ${TABLE}."%minimal" ;;
   }
@@ -110,7 +110,7 @@ view: spccnapishort {
     sql: ${TABLE}.Sold ;;
   }
 
-  dimension: sold-percent {
+  dimension: sold_percent {
     type: number
     sql: ${TABLE}."Sold%" ;;
   }

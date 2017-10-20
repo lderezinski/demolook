@@ -38,3 +38,8 @@ explore: zuoraaccount {
   group_label: "Zuora"
   label: "Accounts"
 }
+explore: spccnapishort {
+  description: "This data comes from hourly cnapi dumps stripped down to capacity information"
+  label: "spc memory Capacity"
+  group_label: "SCloud"
+}
