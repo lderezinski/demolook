@@ -49,18 +49,27 @@ view: cnapishort {
     type: number
     sql: ${TABLE}."kvm" ;;
   }
-
+  dimension: joyent_percent {
+    type: number
+    sql: ${TABLE}."%joyent" ;;
+  }
   dimension: num_lx {
     type: number
     sql: ${TABLE}."lx" ;;
   }
-
-  dimension: num_minimal {
+  dimension: kvm_percent {
+    type: number
+    sql: ${TABLE}."%kvm" ;;
+  }
+  dimension: cn_minimal {
     type: number
     sql: ${TABLE}."minimal" ;;
   }
 
-
+  dimension: lx_percent {
+    type: number
+    sql: ${TABLE}."%lx" ;;
+  }
   dimension: cn_model {
     type: string
     sql: ${TABLE}."Model" ;;
@@ -71,6 +80,10 @@ view: cnapishort {
     sql: ${TABLE}."Overhead" ;;
   }
 
+  dimension: minimal_percent {
+    type: number
+    sql: ${TABLE}."%minimal" ;;
+  }
   dimension: product_name{
     type: string
     sql: ${TABLE}."Product" ;;
@@ -90,7 +103,10 @@ view: cnapishort {
     type: number
     sql: ${TABLE}."Sold" ;;
   }
-
+  dimension: sold_percent {
+    type: number
+    sql: ${TABLE}."Sold%" ;;
+  }
   dimension: disk_unprovisioned {
     type: number
     sql: ${TABLE}.|"unprovisioned pool G" ;;

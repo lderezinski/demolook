@@ -20,27 +20,27 @@ view: spccnapishort {
     sql: ${TABLE}.DATE ;;
   }
 
-  dimension: dcenter {
+  dimension: dc {
     type: string
     sql: ${TABLE}.DCENTER ;;
   }
 
-  dimension: disk_pool_size_g {
+  dimension: disk_pool {
     type: number
     sql: ${TABLE}."disk pool size G" ;;
   }
 
-  dimension: free {
+  dimension: ram_free {
     type: number
     sql: ${TABLE}.Free ;;
   }
 
-  dimension: hostname {
+  dimension: cn_name {
     type: string
     sql: ${TABLE}.HOSTNAME ;;
   }
 
-  dimension: joyent {
+  dimension: joy_num {
     type: number
     sql: ${TABLE}.joyent ;;
   }
@@ -50,7 +50,7 @@ view: spccnapishort {
     sql: ${TABLE}."%joyent" ;;
   }
 
-  dimension: kvm {
+  dimension: num_kvm {
     type: number
     sql: ${TABLE}.kvm ;;
   }
@@ -70,7 +70,7 @@ view: spccnapishort {
     sql: ${TABLE}."%lx" ;;
   }
 
-  dimension: minimal {
+  dimension: cn_minimal {
     type: number
     sql: ${TABLE}.minimal ;;
   }
@@ -80,32 +80,32 @@ view: spccnapishort {
     sql: ${TABLE}."%minimal" ;;
   }
 
-  dimension: model {
+  dimension: cn_model {
     type: string
     sql: ${TABLE}.Model ;;
   }
 
-  dimension: overhead {
+  dimension: ram_overhead {
     type: number
     sql: ${TABLE}.Overhead ;;
   }
 
-  dimension: product {
+  dimension: product_name {
     type: string
     sql: ${TABLE}.Product ;;
   }
 
-  dimension: prov {
+  dimension: num_zones {
     type: number
     sql: ${TABLE}.Prov ;;
   }
 
-  dimension: sellable {
+  dimension: ram_sellable {
     type: number
     sql: ${TABLE}.Sellable ;;
   }
 
-  dimension: sold {
+  dimension: ram_sold {
     type: number
     sql: ${TABLE}.Sold ;;
   }
@@ -115,18 +115,58 @@ view: spccnapishort {
     sql: ${TABLE}."Sold%" ;;
   }
 
-  dimension: unprovisioned_pool_g {
+  dimension: disk_unprovisioned {
     type: number
     sql: ${TABLE}."unprovisioned pool G" ;;
   }
 
-  dimension: unprovisioned_ratio_ {
+  dimension: unprovisioned_ratio {
     type: number
     sql: ${TABLE}."unprovisioned ratio " ;;
   }
 
   measure: count {
     type: count
-    drill_fields: [hostname]
+    drill_fields: [cn_name]
+  }
+  measure: count_product{
+    type:  count
+    drill_fields: [dc,cn_name,ram_sellable,product_name,cn_model]
+  }
+  measure: ram_total_t {
+    type: sum
+    sql:  ${ram_sellable}/1024/1024 ;;
+    value_format_name: decimal_4
+    drill_fields: [dc,cn_name,ram_sellable,product_name]
+  }
+  measure: ram_free_total_t {
+    type:  sum
+    sql: ${ram_free}/1024/1024 ;;
+    value_format_name:  decimal_4
+    drill_fields: [dc,cn_name,ram_sellable,product_name]
+  }
+  measure: ram_total_g {
+    type: sum
+    sql:  ${ram_sellable}/1024 ;;
+    value_format_name: decimal_4
+    drill_fields: [dc,cn_name,ram_sellable,product_name]
+  }
+  measure: ram_free_total_g {
+    type:  sum
+    sql: ${ram_free}/1024 ;;
+    value_format_name:  decimal_4
+    drill_fields: [dc,cn_name,ram_sellable,product_name]
+  }
+  measure: disk_pool_total_t {
+    type:  sum
+    sql:  ${disk_pool}/1024/1024 ;;
+    value_format_name: decimal_4
+    drill_fields: [dc,cn_name,ram_sellable,product_name,cn_model]
+  }
+  measure: ram_sold_total_t {
+    type: sum
+    sql: ${ram_sold}/1024/1024 ;;
+    value_format_name:  decimal_4
+    drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
 }
