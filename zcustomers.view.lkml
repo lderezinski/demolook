@@ -12,11 +12,27 @@ view: zcustomers {
     type: string
     sql: ${TABLE}.batch ;;
   }
+  dimension: company {
+    type: string
+    sql: ${TABLE}.company ;;
+  }
+  dimension: fname {
+    type: string
+    sql: ${TABLE}.fname ;;
+  }
+  dimension: lname {
+    type: string
+    sql: ${TABLE}.lname ;;
+  }
 
   dimension: category {
     type: string
     sql: ${TABLE}.category ;;
   }
+dimension: crmid {
+  type:  string
+  sql: ${TABLE}.crmid ;;
+}
 
   dimension_group: createddate {
     label: "created"
