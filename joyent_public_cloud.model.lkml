@@ -1,11 +1,18 @@
 connection: "joyent"
 
-include: "*.view.lkml"         # include all views in this project
+include: "ufds.view.lkml"         # include all views in this project
 include: "*.dashboard.lookml"  # include all dashboards in this project
 
 # # Select the views that should be a part of this model,
 # # and define the joins that connect them together.
 #
+explore: ufds {
+
+    description: "UFDS"
+    group_label: "Joyent Public Cloud"
+    label: "ufds"
+
+}
 # explore: order_items {
 #   join: orders {
 #     relationship: many_to_one

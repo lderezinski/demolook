@@ -1,7 +1,12 @@
 connection: "sdcdata"
 
 # include all the views
-include: "*.view.lkml"
+include: "account_facts.view.lkml"
+include: "cnapishort.view.lkml"
+include: "dailyspend.view.lkml"
+include: "zcustomers.view.lkml"
+include: "zuoraaccount.view.lkml"
+include: "spccnapishort.view.lkml"
 
 # include all the dashboards
 include: "*.dashboard"
