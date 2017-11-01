@@ -113,7 +113,7 @@ view: cnapi {
     sql: ${TABLE}."rack identifier" ;;
   }
 
-  dimension: reserved {
+  dimension: cn_reserved {
     type: yesno
     sql: ${TABLE}."reserved" is not "f" ;;
   }
@@ -184,17 +184,24 @@ view: cnapi {
   dimension: general_pool {
     description: "All CNs for public use sans ssd"
     type: yesno
-    sql: ${cn_name} != 'headnode' and  ${TABLE}.traits ->> 'internal' is  null and  ${TABLE}.traits ->> 'ssd' is  null and  ${TABLE}.traits ->> 'customer' is  null and  ${TABLE}.traits ->> 'storage' is  null and NOT ${reserved} ;;
+    sql: ${cn_name} != 'headnode' and  ${TABLE}.traits ->> 'internal' is  null and  ${TABLE}.traits ->> 'ssd' is  null and  ${TABLE}.traits ->> 'customer' is  null and  ${TABLE}.traits ->> 'storage' is  null and ${TABLE}.reserved != 'f'  ;;
   }
   dimension: general_ssd_pool {
     description: "All ssd CNs for public use"
     type: yesno
-    sql:  ${TABLE}.traits ->> 'ssd' is  not null and  ${TABLE}.traits ->> 'customer' is  null and  ${TABLE}.traits ->> 'storage' is  null and NOT ${reserved} ;;
+    sql:  ${TABLE}.traits ->> 'ssd' is  not null and  ${TABLE}.traits ->> 'customer' is  null and  ${TABLE}.traits ->> 'storage' is  null and ${TABLE}.reserved = 'f'  ;;
   }
   dimension: ssd_pool {
     description: "All ssd CNs"
     type: yesno
     sql:  ${TABLE}.traits ->> 'ssd' is  not null ;;
+  }
+
+  dimension: free_ram_tier {
+    type: tier
+    tiers: [1,2,4,8,16,32,64,128,256,512,1024]
+    sql:  ${ram_free}/1024 ;;
+    style: integer
   }
   measure: count {
     type: count
