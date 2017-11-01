@@ -203,7 +203,7 @@ view: cnapi {
 
   dimension: free_ram_tier {
     type: tier
-    tiers: [1,2,4,8,16,32,64,128,256,512,1024]
+    tiers: [15,16, 32,64,110, 220]
     sql:  ${ram_free}/1024 ;;
     style: integer
   }
