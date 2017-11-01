@@ -84,7 +84,10 @@ view: cnapi {
     type: number
     sql: ${TABLE}."%minimal" ;;
   }
-
+  dimension: trait_types {
+    type:  string
+    sql:  json_object_keys(${TABLE}.traits) ;;
+  }
   dimension: cn_model {
     type: string
     sql: ${TABLE}."Model" ;;
@@ -149,7 +152,16 @@ view: cnapi {
     type: string
     sql: ${TABLE}."traits" ;;
   }
+  dimension: ssd_node {
+    type: yesno
+    sql: ${TABLE}.traits ->> 'ssd' is not null ;;
 
+  }
+  dimension: internal_node {
+    type: yesno
+    sql: ${TABLE}.traits ->> 'internal' is not null ;;
+
+  }
   dimension: disk_unprovisioned {
     type: number
     sql: ${TABLE}."unprovisioned pool G" ;;
@@ -215,4 +227,5 @@ view: cnapi {
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
+
 }
