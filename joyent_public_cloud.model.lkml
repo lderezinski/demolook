@@ -1,6 +1,8 @@
 connection: "joyent"
 
 include: "ufds.view.lkml"         # include all views in this project
+include: "cnapi.view.lkml"         # include all views in this project
+include: "datacenters.view.lkml"         # include all views in this project
 include: "*.dashboard.lookml"  # include all dashboards in this project
 
 # # Select the views that should be a part of this model,
@@ -11,6 +13,20 @@ explore: ufds {
     description: "UFDS"
     group_label: "Joyent Public Cloud"
     label: "ufds"
+
+}
+explore: datacenters {
+
+  description: "DC"
+  group_label: "Joyent Public Cloud"
+  label: "dc"
+
+}
+explore: cnapi {
+
+  description: "CNApi"
+  group_label: "Joyent Public Cloud"
+  label: "cnapi"
 
 }
 # explore: order_items {
