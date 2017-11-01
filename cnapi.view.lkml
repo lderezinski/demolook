@@ -25,6 +25,10 @@ view: cnapi {
     sql: ${TABLE}."DATE" ;;
   }
 
+  dimension: is_last_day_of_month{
+  type: yesno
+  sql: (date_trunc('MONTH', ${date_date}) + INTERVAL '1 MONTH - 1 day')::date;;
+}
   dimension: dc {
     type: string
     sql: ${TABLE}."DCENTER" ;;
