@@ -8,7 +8,7 @@ view: cnapi {
 
   dimension: cores {
     type: number
-    sql: ${TABLE}.Cores ;;
+    sql: ${TABLE}."Cores" ;;
   }
 
   dimension_group: date {
@@ -22,12 +22,12 @@ view: cnapi {
       quarter,
       year
     ]
-    sql: ${TABLE}.DATE ;;
+    sql: ${TABLE}."DATE" ;;
   }
 
   dimension: dc {
     type: string
-    sql: ${TABLE}.DCENTER ;;
+    sql: ${TABLE}."DCENTER" ;;
   }
 
   dimension: disk_pool {
@@ -37,17 +37,17 @@ view: cnapi {
 
   dimension: ram_free {
     type: number
-    sql: ${TABLE}.Free ;;
+    sql: ${TABLE}."Free" ;;
   }
 
   dimension: cn_name {
     type: string
-    sql: ${TABLE}.HOSTNAME ;;
+    sql: ${TABLE}."HOSTNAME" ;;
   }
 
   dimension: joy_num {
     type: number
-    sql: ${TABLE}.joyent ;;
+    sql: ${TABLE}."joyent" ;;
   }
 
   dimension: joyent_percent {
@@ -57,7 +57,7 @@ view: cnapi {
 
   dimension: kvm_num {
     type: number
-    sql: ${TABLE}.kvm ;;
+    sql: ${TABLE}."kvm" ;;
   }
 
   dimension: kvm_percent {
@@ -67,7 +67,7 @@ view: cnapi {
 
   dimension: num_lx {
     type: number
-    sql: ${TABLE}.lx ;;
+    sql: ${TABLE}."lx" ;;
   }
 
   dimension: lx_percent {
@@ -77,7 +77,7 @@ view: cnapi {
 
   dimension: cn_minimal {
     type: number
-    sql: ${TABLE}.minimal ;;
+    sql: ${TABLE}."minimal" ;;
   }
 
   dimension: minimal_percent {
@@ -87,22 +87,22 @@ view: cnapi {
 
   dimension: cn_model {
     type: string
-    sql: ${TABLE}.Model ;;
+    sql: ${TABLE}."Model" ;;
   }
 
   dimension: ram_overhead {
     type: number
-    sql: ${TABLE}.Overhead ;;
+    sql: ${TABLE}."Overhead" ;;
   }
 
   dimension: product_name {
     type: string
-    sql: ${TABLE}.Product ;;
+    sql: ${TABLE}."Product" ;;
   }
 
   dimension: num_zones {
     type: number
-    sql: ${TABLE}.Prov ;;
+    sql: ${TABLE}."Prov" ;;
   }
 
   dimension: rack_identifier {
@@ -112,12 +112,12 @@ view: cnapi {
 
   dimension: reserved {
     type: yesno
-    sql: ${TABLE}.reserved ;;
+    sql: ${TABLE}."reserved" ;;
   }
 
   dimension: ram_sellable {
     type: number
-    sql: ${TABLE}.Sellable ;;
+    sql: ${TABLE}."Sellable" ;;
   }
 
   dimension: serial_number {
@@ -127,7 +127,7 @@ view: cnapi {
 
   dimension: setup {
     type: yesno
-    sql: ${TABLE}.Setup ;;
+    sql: ${TABLE}."Setup" ;;
   }
 
   dimension: sku_number {
@@ -137,7 +137,7 @@ view: cnapi {
 
   dimension: ram_sold {
     type: number
-    sql: ${TABLE}.Sold ;;
+    sql: ${TABLE}."Sold" ;;
   }
 
   dimension: sold_percent {
@@ -147,7 +147,7 @@ view: cnapi {
 
   dimension: traits {
     type: string
-    sql: ${TABLE}.traits ;;
+    sql: ${TABLE}."traits" ;;
   }
 
   dimension: disk_unprovisioned {
@@ -162,7 +162,7 @@ view: cnapi {
 
   dimension: uuid {
     type: string
-    sql: ${TABLE}.uuid ;;
+    sql: ${TABLE}."uuid";;
   }
 
   measure: count {
