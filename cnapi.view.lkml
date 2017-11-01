@@ -177,6 +177,14 @@ view: cnapi {
     sql: ${TABLE}."uuid";;
   }
 
+  dimension: general_pool {
+    type: yesno
+    sql:  ${TABLE}.traits ->> 'internal' is  null and  ${TABLE}.traits ->> 'ssd' is  null and  ${TABLE}.traits ->> 'customer' is  null and  ${TABLE}.traits ->> 'storage' is  null and ${TABLE}.reserved = false;;
+  }
+  dimension: general_ssd_pool {
+    type: yesno
+    sql:  ${TABLE}.traits ->> 'ssd' is  not null and  ${TABLE}.traits ->> 'customer' is  null and  ${TABLE}.traits ->> 'storage' is  null and ${TABLE}.reserved = false;;
+  }
   measure: count {
     type: count
     drill_fields: [cn_name]
