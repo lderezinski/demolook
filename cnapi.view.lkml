@@ -19,9 +19,9 @@ view: cnapi {
     sql: to_date(substring(${boot_platform},0,7),'YYYYMMDD') ;;
   }
 
-  dimension: live_platform {
+  dimension: live_image {
     type: string
-    sql: ${TABLE}."live platform" ;;
+    sql: ${TABLE}."live image" ;;
   }
   dimension_group: live_pi_date {
     type: time
@@ -34,7 +34,7 @@ view: cnapi {
       quarter,
       year
     ]
-    sql: to_date(substring(${live_platform},0,7),'YYYYMMDD') ;;
+    sql: to_date(substring(${live_image},0,7),'YYYYMMDD') ;;
   }
   dimension: cores {
     type: number
