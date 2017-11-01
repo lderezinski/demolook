@@ -18,6 +18,24 @@ view: cnapi {
     ]
     sql: to_date(substring(${boot_platform},0,7),'YYYYMMDD') ;;
   }
+
+  dimension: live_platform {
+    type: string
+    sql: ${TABLE}."live platform" ;;
+  }
+  dimension_group: live_pi_date {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: to_date(substring(${live_platform},0,7),'YYYYMMDD') ;;
+  }
   dimension: cores {
     type: number
     sql: ${TABLE}."Cores" ;;
