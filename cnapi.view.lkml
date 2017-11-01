@@ -16,7 +16,7 @@ view: cnapi {
       quarter,
       year
     ]
-    sql: to_date(substring(${boot_platform},0,7),'YYYYMMDD') ;;
+    sql: to_date(substring(${boot_platform},1,8),'YYYYMMDD') ;;
   }
 
   dimension: live_image {
@@ -34,7 +34,7 @@ view: cnapi {
       quarter,
       year
     ]
-    sql: to_date(substring(${live_image},0,7),'YYYYMMDD') ;;
+    sql: to_date(substring(${live_image},1,8),'YYYYMMDD') ;;
   }
   dimension: cores {
     type: number
