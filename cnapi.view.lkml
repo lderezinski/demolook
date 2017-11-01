@@ -57,7 +57,7 @@ view: cnapi {
 
   dimension: is_last_day_of_month{
   type: yesno
-  sql: (date_trunc('MONTH', ${date_date}) + INTERVAL '1 MONTH - 1 day')::date;;
+  sql: (date_trunc('MONTH', ${date_date}) + INTERVAL '1 MONTH - 1 day')::date = ${date_date};;
 }
   dimension: dc {
     type: string
