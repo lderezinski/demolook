@@ -115,7 +115,7 @@ view: cnapi {
 
   dimension: reserved {
     type: yesno
-    sql: ${TABLE}."reserved" ;;
+    sql: ${TABLE}."reserved" is not "f" ;;
   }
 
   dimension: ram_sellable {
@@ -176,14 +176,25 @@ view: cnapi {
     type: string
     sql: ${TABLE}."uuid";;
   }
-
-  dimension: general_pool {
+  dimension: pool {
+    description: "All CNs except headnode and internal traited"
     type: yesno
-    sql:  ${TABLE}.traits ->> 'internal' is  null and  ${TABLE}.traits ->> 'ssd' is  null and  ${TABLE}.traits ->> 'customer' is  null and  ${TABLE}.traits ->> 'storage' is  null and ${TABLE}.reserved = false;;
+    sql: ${cn_name} != 'headnode' and  ${TABLE}.traits ->> 'triton' is  null  and  ${TABLE}.traits ->> 'internal' is  null  ;;
+  }
+  dimension: general_pool {
+    description: "All CNs for public use sans ssd"
+    type: yesno
+    sql: ${cn_name} != 'headnode' and  ${TABLE}.traits ->> 'internal' is  null and  ${TABLE}.traits ->> 'ssd' is  null and  ${TABLE}.traits ->> 'customer' is  null and  ${TABLE}.traits ->> 'storage' is  null ;;
   }
   dimension: general_ssd_pool {
+    description: "All ssd CNs for public use"
     type: yesno
     sql:  ${TABLE}.traits ->> 'ssd' is  not null and  ${TABLE}.traits ->> 'customer' is  null and  ${TABLE}.traits ->> 'storage' is  null and ${TABLE}.reserved = false;;
+  }
+  dimension: ssd_pool {
+    description: "All ssd CNs"
+    type: yesno
+    sql:  ${TABLE}.traits ->> 'ssd' is  not null ;;
   }
   measure: count {
     type: count
