@@ -5,7 +5,19 @@ view: cnapi {
     type: string
     sql: ${TABLE}."boot platform" ;;
   }
-
+  dimension_group: boot_pi_date {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: to_date(substring(${boot_platform},0,7),'YYYYMMDD') ;;
+  }
   dimension: cores {
     type: number
     sql: ${TABLE}."Cores" ;;
