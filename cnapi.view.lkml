@@ -160,7 +160,7 @@ view: cnapi {
 
   dimension: cn_reserved {
     type: yesno
-    sql: ${TABLE}."reserved" is not "f" ;;
+    sql: ${TABLE}."reserved" ;;
   }
 
   dimension: ram_sellable {
