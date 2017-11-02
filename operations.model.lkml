@@ -9,7 +9,7 @@ include: "zuoraaccount.view.lkml"
 include: "spccnapishort.view.lkml"
 
 # include all the dashboards
-include: "*.dashboard"
+#include: "*.dashboard"
 
 explore: cnapishort {
   description: "This data comes from hourly cnapi dumps stripped down to capacity information"

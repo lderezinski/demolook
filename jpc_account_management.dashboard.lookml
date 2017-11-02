@@ -1,17 +1,17 @@
-- dashboard: jpc_accounts
+- dashboard: jpc_account_management
   title: Account Management
   layout: newspaper
   elements:
   - title: Accounts by Account Health
     name: Accounts by Account Health
-    model: operations
-    explore: dailyspend
+    model: joyent_public_cloud
+    explore: jpcdaily_spend
     type: looker_column
     fields:
-    - account_facts.account_health
-    - zcustomers.count
+    - jpc_account_facts.account_health
+    - zuora_customers.count
     sorts:
-    - account_facts.account_health desc
+    - jpc_account_facts.account_health desc
     limit: 500
     column_limit: 50
     stacking: ''
@@ -45,16 +45,16 @@
     height: 6
   - name: Accounts by Spend Tier
     title: Accounts by Spend Tier
-    model: operations
-    explore: dailyspend
+    model: joyent_public_cloud
+    explore: jpcdaily_spend
     type: looker_column
     fields:
-    - account_facts.total_spend_tier
-    - zcustomers.count
+    - jpc_account_facts.total_spend_tier
+    - zuora_customers.count
     fill_fields:
-    - account_facts.total_spend_tier
+    - jpc_account_facts.total_spend_tier
     sorts:
-    - account_facts.total_spend_tier
+    - jpc_account_facts.total_spend_tier
     limit: 500
     column_limit: 50
     query_timezone: UTC
@@ -89,16 +89,16 @@
     height: 6
   - name: Customers by Created Date
     title: Customers by Created Date
-    model: operations
-    explore: dailyspend
+    model: joyent_public_cloud
+    explore: jpcdaily_spend
     type: looker_line
     fields:
-    - zcustomers.count
-    - zcustomers.createddate_week
+    - zuora_customers.count
+    - zuora_customers.createddate_week
     filters:
-      zcustomers.createddate_date: this year
+      zuora_customers.createddate_date: this year
     sorts:
-    - zcustomers.createddate_week desc
+    - zuora_customers.createddate_week desc
     limit: 500
     column_limit: 50
     query_timezone: UTC
@@ -137,16 +137,16 @@
     height: 8
   - name: Top 20 Decreased Customers
     title: Top 20 Decreased Customers
-    model: operations
-    explore: dailyspend
+    model: joyent_public_cloud
+    explore: jpcdaily_spend
     type: table
     fields:
-    - dailyspend.accountnumber
-    - dailyspend.difference
+    - jpcdaily_spend.accountnumber
+    - jpcdaily_spend.difference
     filters:
-      dailyspend.day_date: 2017/10/10 to 2017/10/16
+      jpcdaily_spend.day_date: 2017/10/10 to 2017/10/16
     sorts:
-    - dailyspend.difference
+    - jpcdaily_spend.difference
     limit: 5000
     column_limit: 50
     query_timezone: UTC
@@ -192,16 +192,16 @@
     height: 8
   - name: Top 10 Spending Accounts
     title: Top 10 Spending Accounts
-    model: operations
-    explore: dailyspend
+    model: joyent_public_cloud
+    explore: jpcdaily_spend
     type: table
     fields:
-    - dailyspend.accountnumber
-    - dailyspend.sum_spend
+    - jpcdaily_spend.accountnumber
+    - jpcdaily_spend.sum_spend
     filters:
-      dailyspend.day_date: 2017/10/12
+      jpcdaily_spend.day_date: 2017/10/12
     sorts:
-    - dailyspend.sum_spend desc
+    - jpcdaily_spend.sum_spend desc
     limit: 500
     column_limit: 50
     query_timezone: UTC
@@ -247,16 +247,16 @@
     height: 6
   - title: Spend Over Time
     name: Spend Over Time
-    model: operations
-    explore: dailyspend
+    model: joyent_public_cloud
+    explore: jpcdaily_spend
     type: looker_line
     fields:
-    - dailyspend.day_week
-    - dailyspend.sum_spend
+    - jpcdaily_spend.day_week
+    - jpcdaily_spend.sum_spend
     fill_fields:
-    - dailyspend.day_week
+    - jpcdaily_spend.day_week
     sorts:
-    - dailyspend.day_week desc
+    - jpcdaily_spend.day_week desc
     limit: 500
     column_limit: 50
     query_timezone: UTC
@@ -290,30 +290,30 @@
     - 'palette: Mixed Dark'
     series_colors: {}
     listen:
-      Date: dailyspend.day_date
+      Date: jpcdaily_spend.day_date
     row: 14
     col: 0
     width: 12
     height: 8
   - title: Retention Curve
     name: Retention Curve
-    model: operations
-    explore: dailyspend
+    model: joyent_public_cloud
+    explore: jpcdaily_spend
     type: looker_line
     fields:
-    - dailyspend.months_since_signup
-    - zcustomers.createddate_month
-    - dailyspend.sum_spend
+    - jpcdaily_spend.months_since_signup
+    - zuora_customers.createddate_month
+    - jpcdaily_spend.sum_spend
     pivots:
-    - zcustomers.createddate_month
+    - zuora_customers.createddate_month
     fill_fields:
-    - zcustomers.createddate_month
+    - zuora_customers.createddate_month
     filters:
-      zcustomers.createddate_month: this year
-      dailyspend.day_date: this year
+      zuora_customers.createddate_month: this year
+      jpcdaily_spend.day_date: this year
     sorts:
-    - zcustomers.createddate_month 0
-    - dailyspend.months_since_signup
+    - zuora_customers.createddate_month 0
+    - jpcdaily_spend.months_since_signup
     limit: 500
     column_limit: 50
     query_timezone: UTC
@@ -365,9 +365,9 @@
     title: Date
     type: field_filter
     default_value: this year
-    model: operations
-    explore: dailyspend
-    field: dailyspend.day_date
+    model: joyent_public_cloud
+    explore: jpcdaily_spend
+    field: jpcdaily_spend.day_date
     listens_to_filters: []
     allow_multiple_values: true
     required: false

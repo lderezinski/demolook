@@ -7,7 +7,7 @@ include: "jpcdaily_spend.view.lkml"
 include: "ufds.view.lkml"         # include all views in this project
 include: "cnapi.view.lkml"         # include all views in this project
 include: "datacenters.view.lkml"         # include all views in this project
-#include: "*.dashboard.lookml"  # include all dashboards in this project
+include: "*.dashboard.lookml"  # include all dashboards in this project
 
 
 # # Select the views that should be a part of this model,
