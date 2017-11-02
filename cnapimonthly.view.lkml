@@ -291,6 +291,10 @@ view: cnapimonthly {
     type: count_distinct
     sql: ${cn_name} ;;
   }
+  measure: avg_num_zones {
+    type: average
+    sql: ${num_zones} ;;
+  }
 
 
 }
