@@ -283,5 +283,9 @@ view: cnapimonthly {
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
+  measure: total_num_zones {
+    type:  sum
+    sql: ${num_zones} ;;
+  }
 
 }
