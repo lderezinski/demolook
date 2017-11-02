@@ -1,5 +1,6 @@
 connection: "joyent"
 
+include: "cnapimonthly.view.lkml"
 include: "ufds.view.lkml"         # include all views in this project
 include: "cnapi.view.lkml"         # include all views in this project
 include: "datacenters.view.lkml"         # include all views in this project
@@ -27,6 +28,13 @@ explore: cnapi {
   description: "CNApi"
   group_label: "Joyent Public Cloud"
   label: "cnapi"
+
+}
+explore: cnapimonthly {
+
+  description: "CNApi monthly"
+  group_label: "Joyent Public Cloud"
+  label: "cnapi monthly"
 
 }
 # explore: order_items {
