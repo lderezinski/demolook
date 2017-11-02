@@ -19,30 +19,44 @@ explore: ufds {
     group_label: "Joyent Public Cloud"
     label: "ufds"
 
+  join: zuora_customers {
+    view_label: "Customers"
+    sql_on: ${zuora_customers.accountnumber} = ${ufds.uuid} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
 }
 explore: datacenters {
-
   description: "DC"
   group_label: "Joyent Public Cloud"
   label: "dc"
-
 }
-explore: cnapi {
 
+explore: cnapi {
   description: "CNApi"
   group_label: "Joyent Public Cloud"
   label: "cnapi"
-
+  join: datacenters {
+    view_label: "DC"
+    sql_on: ${datacenters.name} = ${cnapi.dc} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
 }
-explore: cnapimonthly {
 
+explore: cnapimonthly {
   description: "CNApi monthly"
   group_label: "Joyent Public Cloud"
   label: "cnapi monthly"
-
+  join: datacenters {
+    view_label: "DC"
+    sql_on: ${datacenters.name} = ${cnapimonthly.dc} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
 }
-explore: jpcdaily_spend {
 
+explore: jpcdaily_spend {
   description: "Billing Preview spend"
   group_label: "Joyent Public Cloud"
   label: "jpc daily spend"
@@ -59,18 +73,10 @@ explore: jpcdaily_spend {
       type: left_outer
       relationship: many_to_one
     }
+    join: ufds {
+      view_label: "Customers"
+      sql_on: ${jpcdaily_spend.accountnumber} =  ${ufds.uuid}  ;;
+      type: left_outer
+      relationship: many_to_one
+    }
 }
-
-
-
-# explore: order_items {
-#   join: orders {
-#     relationship: many_to_one
-#     sql_on: ${orders.id} = ${order_items.order_id} ;;
-#   }
-#
-#   join: users {
-#     relationship: many_to_one
-#     sql_on: ${users.id} = ${orders.user_id} ;;
-#   }
-# }

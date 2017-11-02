@@ -10,7 +10,6 @@ view: account_facts {
       }
     }
 
-
   dimension: account_number {
     primary_key: yes
     hidden: yes
