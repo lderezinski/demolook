@@ -6,7 +6,7 @@ view: jpcdaily_spend {
       sql: ${TABLE}.accountnumber ;;
       link: {
         label: "{{ value }} Lookup DB"
-        url: "/dashboards/3?Account%20Number={{ value }}"
+        url: "/dashboards/17?Account%20Number={{ value }}"
       }
     }
 
