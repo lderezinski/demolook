@@ -1,5 +1,5 @@
 - dashboard: jpc_account_management
-  title: Account Management
+  title: JPC Account Management
   layout: newspaper
   elements:
   - title: Accounts by Account Health

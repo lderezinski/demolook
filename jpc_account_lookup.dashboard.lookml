@@ -1,5 +1,5 @@
 - dashboard: jpc_account_lookup
-  title: Account Lookup
+  title: JPC Account Lookup
   layout: newspaper
   elements:
   - title: Account Comparitor
