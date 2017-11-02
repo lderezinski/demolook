@@ -1,5 +1,5 @@
 view: jpcdaily_spend {
-    sql_table_name: smartdc.jpcdaily_spend ;;
+    sql_table_name: smartdc.zdailyspend ;;
 
     dimension: accountnumber {
       type: string
