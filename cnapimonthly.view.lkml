@@ -40,7 +40,7 @@ view: cnapimonthly {
   type: number
   sql: DATEDIFF('month',NOW(), ${live_pi_date_month});;
 }
- dimension: days_pi_tier{
+ dimension: months_pi_tier{
   type: tier
   tiers: [0,1,3,6,12,24, 36,48]
   sql: ${months_since_pi}

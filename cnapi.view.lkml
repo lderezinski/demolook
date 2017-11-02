@@ -36,6 +36,17 @@ view: cnapi {
     ]
     sql: to_date(substring(${live_image},1,8),'YYYYMMDD') ;;
   }
+
+
+  dimension: months_since_pi{
+    type: number
+    sql: DATEDIFF('month',NOW(), ${live_pi_date_month});;
+  }
+  dimension: months_pi_tier{
+    type: tier
+    tiers: [0,1,3,6,12,24, 36,48]
+    sql: ${months_since_pi}
+  }
   dimension: cores {
     type: number
     sql: ${TABLE}."Cores" ;;
