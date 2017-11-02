@@ -287,5 +287,10 @@ view: cnapimonthly {
     type:  sum
     sql: ${num_zones} ;;
   }
+  measure: total_num_cns {
+    type: count_distinct
+    sql: ${cn_name} ;;
+  }
+
 
 }
