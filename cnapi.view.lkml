@@ -298,5 +298,16 @@ view: cnapi {
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
-
+  measure: total_num_zones {
+    type:  sum
+    sql: ${num_zones} ;;
+  }
+  measure: total_num_cns {
+    type: count_distinct
+    sql: ${cn_name} ;;
+  }
+  measure: avg_num_zones {
+    type: average
+    sql: ${num_zones} ;;
+  }
 }
