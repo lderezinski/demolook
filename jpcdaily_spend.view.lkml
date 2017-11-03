@@ -27,17 +27,34 @@ view: jpcdaily_spend {
 
     dimension: is_yesterday {
       type: yesno
-      sql: (${day_date}  = DATE_TRUNC('day', DATE '2017-10-12')) ;; #hardcoding this because the data is static.
-      # otherwise we could just create a filtered measure and put 'yesterday' instead of creating this dimension.
+      sql: (${day_date}  = CURRENT_DATE - INTERVAL '1 days') ;;
     }
 
     dimension: two_days_ago {
       type: yesno
-      sql: (${day_date}  = DATE_TRUNC('day', DATE '2017-10-11')) ;; #hardcoding this because the data is static.
-      # otherwise we could just create a filtered measure and put 'yesterday' instead of creating this dimension.
+      sql: (${day_date}  = CURRENT_DATE - INTERVAL '2 days') ;;
     }
 
-
+  dimension: is_week_ago {
+    type: yesno
+    sql: (${day_date}  = CURRENT_DATE - INTERVAL '1 weeks') ;;
+  }
+  dimension: four_weeks_ago {
+    type: yesno
+    sql: (${day_date}  = CURRENT_DATE - INTERVAL '4 weeks') ;;
+    }
+  dimension: eight_weeks_ago {
+    type: yesno
+    sql: (${day_date}  = CURRENT_DATE - INTERVAL '8 weeks') ;;
+  }
+  dimension: twelve_weeks_ago {
+    type: yesno
+    sql: (${day_date}  = CURRENT_DATE - INTERVAL '12 weeks') ;;
+  }
+  dimension: sixteen_weeks_ago {
+    type: yesno
+    sql: (${day_date}  = CURRENT_DATE - INTERVAL '16 weeks') ;;
+  }
     dimension: jpcspend {
       type: number
       sql: ${TABLE}.jpcspend ;;
