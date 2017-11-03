@@ -205,7 +205,10 @@ view: cnapi {
   dimension: internal_node {
     type: yesno
     sql: ${TABLE}.traits ->> 'internal' is not null ;;
-
+  }
+  dimension: manta_node {
+    type:  yesno
+    sql:  ${TABLE}.traits ->> 'internal' is not null and ${TABLE}.traits ->> 'internal' = 'Manta Node' ;;
   }
   dimension: disk_unprovisioned {
     type: number

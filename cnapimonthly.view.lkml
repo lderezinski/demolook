@@ -202,6 +202,11 @@ view: cnapimonthly {
     sql: ${TABLE}.traits ->> 'internal' is not null ;;
 
   }
+  dimension: manta_node {
+    type:  yesno
+    sql:  ${TABLE}.traits ->> 'internal' is not null and ${TABLE}.traits ->> 'internal' = 'Manta Node' ;;
+  }
+
   dimension: disk_unprovisioned {
     type: number
     sql: ${TABLE}."unprovisioned pool G" ;;
