@@ -1,4 +1,4 @@
-project_name: "operations"
+project_name: "joyent_public_cloud"
 
 # # Use local_dependency: To enable referencing of another project
 # # on this instance with include: statements
