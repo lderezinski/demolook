@@ -8,6 +8,8 @@ include: "ufds.view.lkml"         # include all views in this project
 include: "cnapi.view.lkml"         # include all views in this project
 include: "datacenters.view.lkml"         # include all views in this project
 include: "*.dashboard.lookml"  # include all dashboards in this project
+#include: "/zendesk/users.view.lkml"
+#include: "/zendesk/tickets.view.lkml"
 
 
 # # Select the views that should be a part of this model,
@@ -25,6 +27,16 @@ explore: ufds {
     type: left_outer
     relationship: many_to_one
   }
+#  join: users {
+#    sql_on: ${users.email} = ${ufds.email} ;;
+#    type: left_outer
+#    relationship: one_to_one
+#  }
+#  join: tickets  {
+#    sql_on: ${users.id} =  ${tickets.requester_id} ;;
+#    type: left_outer
+#    relationship: one_to_many
+#  }
 }
 explore: datacenters {
   description: "DC"

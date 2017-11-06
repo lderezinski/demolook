@@ -20,6 +20,10 @@ view: zuora_customers {
   dimension: company {
     type: string
     sql: ${TABLE}.company ;;
+    link: {
+      label: "{{ value }} - Lookup Account"
+      url: "/dashboards/17?Account%20Number={{ accountnumber._value }}"
+    }
   }
 
   dimension_group: createddate {
