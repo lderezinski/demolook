@@ -46,10 +46,29 @@ view: cnapi {
     type: tier
     tiers: [0,1,3,6,12,24, 36,48]
     sql: ${months_since_pi}
+        }
+        dimension: cores {
+          type: number
+          sql: ${TABLE}."Cores" ;;
   }
-  dimension: cores {
+
+  dimension: cpu_cores {
     type: number
-    sql: ${TABLE}."Cores" ;;
+    sql: ${TABLE}.cpu_cores ;;
+  }
+
+  dimension_group: created {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.created ;;
   }
 
   dimension_group: date {
@@ -67,9 +86,9 @@ view: cnapi {
   }
 
   dimension: is_last_day_of_month{
-  type: yesno
-  sql: (date_trunc('MONTH', ${date_date}) + INTERVAL '1 MONTH - 1 day')::date = ${date_date};;
-}
+    type: yesno
+    sql: (date_trunc('MONTH', ${date_date}) + INTERVAL '1 MONTH - 1 day')::date = ${date_date};;
+  }
   dimension: dc {
     type: string
     sql: ${TABLE}."DCENTER" ;;
@@ -90,6 +109,16 @@ view: cnapi {
     sql: ${TABLE}."HOSTNAME" ;;
   }
 
+  dimension: hwfamily {
+    type: string
+    sql: ${TABLE}.HWFamily ;;
+  }
+
+  dimension: hwversion {
+    type: string
+    sql: ${TABLE}.HWversion ;;
+  }
+
   dimension: joy_num {
     type: number
     sql: ${TABLE}."joyent" ;;
@@ -108,6 +137,20 @@ view: cnapi {
   dimension: kvm_percent {
     type: number
     sql: ${TABLE}."%kvm" ;;
+  }
+
+  dimension_group: last_boot {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.last_boot ;;
   }
 
   dimension: num_lx {
@@ -224,6 +267,12 @@ view: cnapi {
     type: string
     sql: ${TABLE}."uuid";;
   }
+
+  dimension: unreserved_cpu {
+    type: number
+    sql: ${TABLE}.unreserved_cpu ;;
+  }
+
   dimension: pool {
     description: "All CNs except headnode and internal traited"
     type: yesno
@@ -251,6 +300,19 @@ view: cnapi {
     sql:  ${ram_free}/1024 ;;
     style: integer
   }
+
+  dimension: unreserved_disk {
+    type: number
+    sql: ${TABLE}.unreserved_disk ;;
+  }
+
+  dimension: unreserved_ram {
+    type: number
+    sql: ${TABLE}.unreserved_ram ;;
+  }
+
+
+
   measure: count {
     type: count
     drill_fields: [cn_name]
