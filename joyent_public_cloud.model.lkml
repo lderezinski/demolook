@@ -1,12 +1,6 @@
 connection: "joyent"
 
-include: "cnapimonthly.view.lkml"
-include: "zuora_customers.view.lkml"
-include: "jpc_account_facts.view.lkml"
-include: "jpcdaily_spend.view.lkml"
-include: "ufds.view.lkml"         # include all views in this project
-include: "cnapi.view.lkml"         # include all views in this project
-include: "datacenters.view.lkml"         # include all views in this project
+include: "*.view.lkml"         # include all views in this project
 include: "*.dashboard.lookml"  # include all dashboards in this project
 #include: "/zendesk/users.view.lkml"
 #include: "/zendesk/tickets.view.lkml"
