@@ -371,6 +371,32 @@ view: cnapi {
     type: count_distinct
     sql: ${cn_name} ;;
   }
+  measure: unreserved_ram_g {
+    type:  sum
+    sql: ${unreserved_ram}/1024 ;;
+    value_format_name:  decimal_4
+    drill_fields: [dc,cn_name,ram_sellable,product_name]
+  }
+
+  measure: unreserved_disk_g {
+    type:  sum
+    sql: ${unreserved_disk}/1024 ;;
+    value_format_name:  decimal_4
+    drill_fields: [dc,cn_name,ram_sellable,product_name]
+  }
+  measure: unreserved_ram_t {
+    type:  sum
+    sql: ${unreserved_ram}/1024/1024 ;;
+    value_format_name:  decimal_4
+    drill_fields: [dc,cn_name,ram_sellable,product_name]
+  }
+
+  measure: unreserved_disk_t {
+    type:  sum
+    sql: ${unreserved_disk}/1024/1024 ;;
+    value_format_name:  decimal_4
+    drill_fields: [dc,cn_name,ram_sellable,product_name]
+  }
   measure: avg_num_zones {
     type: average
     sql: ${num_zones} ;;
