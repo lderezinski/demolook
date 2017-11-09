@@ -251,7 +251,7 @@ view: cnapi {
   }
   dimension: manta_node {
     type:  yesno
-    sql:  ${TABLE}.traits ->> 'internal' is not null and ${TABLE}.traits ->> 'internal' = 'Manta Node' ;;
+    sql:   ${cn_model} = "Manta Shrimp" ;;
   }
   dimension: disk_unprovisioned {
     type: number
