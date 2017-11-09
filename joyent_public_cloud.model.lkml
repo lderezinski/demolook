@@ -32,6 +32,25 @@ explore: ufds {
 #    relationship: one_to_many
 #  }
 }
+
+explore: zinvoiceitems {
+  description: "Invoice Items"
+  group_label: "Joyent Public Cloud"
+  label: "Invoice Items"
+  join: ufds {
+    view_label: "Customers"
+    sql_on: ${zinvoiceitems.account_number} = ${ufds.uuid} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: zuora_customers {
+    view_label: "Customers"
+    sql_on: ${zuora_customers.accountnumber} = ${zinvoiceitems.account_number} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+}
+
 explore: datacenters {
   description: "DC"
   group_label: "Joyent Public Cloud"

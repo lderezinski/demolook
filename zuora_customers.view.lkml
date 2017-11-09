@@ -60,6 +60,13 @@ view: zuora_customers {
     sql: ${TABLE}.zuoraid ;;
   }
 
+  dimension: isFree {
+    description: "The customer is not in a paying batch"
+    type: yesno
+    sql: ${category} != "Invoice" AND ${category} != "Employee Personal Use" AND ${category} != "Credit Card" ;;
+  }
+
+
   measure: count {
     type: count
     drill_fields: [fname, lname]
