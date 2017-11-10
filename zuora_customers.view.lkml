@@ -63,7 +63,7 @@ view: zuora_customers {
   dimension: isFree {
     description: "The customer is not in a paying batch"
     type: yesno
-    sql: ${category} != "Invoice" AND ${category} != "Employee Personal Use" AND ${category} != "Credit Card" ;;
+    sql: ${category} != 'Invoice' AND ${category} != 'Employee Personal Use' AND ${category} != 'Credit Card' ;;
   }
 
 

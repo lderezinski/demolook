@@ -38,17 +38,23 @@ view: cnapi {
   }
 
 
+  dimension: live_pi_number {
+    type:  number
+    sql: to_number(substring(${live_image},1,8),'99999999') ;;
+  }
+
+
   dimension: months_since_pi{
     type: number
-    sql: DATEDIFF('month',NOW(), ${live_pi_date_month});;
+    sql: NOW() - ${live_pi_date_month};;
   }
   dimension: months_pi_tier{
     type: tier
     tiers: [0,1,3,6,12,24, 36,48]
     sql: ${months_since_pi}
-        }
-        dimension: cores {
-          type: number
+  }
+  dimension: cores {
+     type: number
           sql: ${TABLE}."Cores" ;;
   }
 
@@ -251,7 +257,7 @@ view: cnapi {
   }
   dimension: manta_node {
     type:  yesno
-    sql:   ${cn_model} = "Manta Shrimp" ;;
+    sql:   ${cn_model} = 'Manta Shrimp' ;;
   }
   dimension: disk_unprovisioned {
     type: number
@@ -311,7 +317,12 @@ view: cnapi {
     sql: ${TABLE}.unreserved_ram ;;
   }
 
-
+  dimension: live_pi_bucket{
+    type:  tier
+    tiers: [20140101, 20150101, 20160101, 20170101, 20180101]
+    sql:  ${live_pi_number} ;;
+    style: integer
+ }
 
   measure: count {
     type: count
