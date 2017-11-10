@@ -38,6 +38,12 @@ explore: zinvoiceitems {
   description: "Invoice Items"
   group_label: "Joyent Public Cloud"
   label: "Invoice Items"
+#   always_filter: {
+#     filters: {
+#       field: zuora_customers.isFree
+#       value: "No"
+#     }
+#   }
   join: ufds {
     view_label: "Customers"
     sql_on: ${zinvoiceitems.account_number} = ${ufds.uuid} ;;
@@ -50,6 +56,19 @@ explore: zinvoiceitems {
     type: left_outer
     relationship: many_to_one
   }
+  join: users {
+    view_label: "Zendesk Users"
+    sql_on: ${users.email} = ${ufds.email} ;;
+    type: left_outer
+    relationship: one_to_one
+  }
+  join: tickets  {
+    view_label: "Zendesk Tickets"
+    sql_on: ${users.id} =  ${tickets.requester_id} ;;
+    type: left_outer
+    relationship: one_to_many
+  }
+
 }
 
 explore: datacenters {
