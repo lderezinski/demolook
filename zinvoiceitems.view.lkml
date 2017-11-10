@@ -107,6 +107,8 @@ dimension: isInstance {
   measure: total_amount {
     type: sum
     sql: ${charge_amount} ;;
+    value_format_name: usd
+    drill_fields: []
   }
 
 }
