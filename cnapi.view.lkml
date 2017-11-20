@@ -13,14 +13,11 @@ view: cnapi {
 #     type: number
     suggest_explore: values
     suggest_dimension: ram_values.value
-    # The scoping seems to have solved the compiler issue
+
 
   }
 
-  dimension: parameter_example {
-    description: "Now you can just insert the paramer value into your calculation."
-    sql: 100 * cast({% parameter input_value %} as DOUBLE PRECISION);;
-  }
+
 
   dimension: boot_platform {
     type: string
@@ -345,7 +342,14 @@ view: cnapi {
     sql:  ${live_pi_number} ;;
     style: integer
  }
+  dimension: num_ram_slots  {
+    description: "Variable ram slots"
+    sql: floor( ${unreserved_ram} / (1024.0 * cast ({% parameter input_value %} as DOUBLE PRECISION)));;
 
+  }
+  dimension: ram_slots_available {
+    sql: case when ${num_ram_slots} > 0 then ${num_ram_slots} else 0 END;;
+  }
   measure: count {
     type: count
     drill_fields: [cn_name]
@@ -430,8 +434,14 @@ view: cnapi {
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
+
   measure: avg_num_zones {
     type: average
     sql: ${num_zones} ;;
   }
+measure: sum_ram_slots_available {
+  type:  sum
+  sql:  ${ram_slots_available} ;;
+}
+
 }
