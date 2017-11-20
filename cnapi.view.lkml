@@ -1,5 +1,26 @@
+# include: "values.view.lkml"
+
 view: cnapi {
   sql_table_name: smartdc.cnapi ;;
+
+  parameter: input_value {
+    description: "I would create a table that has all the values you're okay with the user selecting. I created a derived
+      table called 'values'
+
+      Then, this filter field is going to provide a dropdown list of the options they could select from which is how
+      you could control what they select/input. You could also just not put suggest_explore, or suggest_dimension and have
+      it be a free form input of a-z or 0-9. Looker takes care of SQL injection."
+#     type: number
+    suggest_explore: values
+    suggest_dimension: ram_values.value
+    # The scoping seems to have solved the compiler issue
+
+  }
+
+  dimension: parameter_example {
+    description: "Now you can just insert the paramer value into your calculation."
+    sql: 100 * cast({% parameter input_value %} as DOUBLE PRECISION);;
+  }
 
   dimension: boot_platform {
     type: string
@@ -51,11 +72,12 @@ view: cnapi {
   dimension: months_pi_tier{
     type: tier
     tiers: [0,1,3,6,12,24, 36,48]
-    sql: ${months_since_pi}
+    sql: ${months_since_pi};;
   }
+
   dimension: cores {
-     type: number
-          sql: ${TABLE}."Cores" ;;
+    type: number
+    sql: ${TABLE}."Cores" ;;
   }
 
   dimension: cpu_cores {

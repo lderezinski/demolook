@@ -10,6 +10,10 @@ include: "/zendesk/tickets.view.lkml"
 # # and define the joins that connect them together.
 #
 
+explore: ram_values {
+  hidden: yes
+}
+
 explore: customer_facts {
 }
 
