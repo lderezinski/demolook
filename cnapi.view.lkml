@@ -10,7 +10,7 @@ view: cnapi {
       Then, this filter field is going to provide a dropdown list of the options they could select from which is how
       you could control what they select/input. You could also just not put suggest_explore, or suggest_dimension and have
       it be a free form input of a-z or 0-9. Looker takes care of SQL injection."
-#     type: number
+    type: number
     suggest_explore: values
     suggest_dimension: ram_values.value
 
@@ -343,11 +343,13 @@ view: cnapi {
     style: integer
  }
   dimension: num_ram_slots  {
+    type: number
     description: "Variable ram slots"
     sql: floor( ${unreserved_ram} / (1024.0 * cast ({% parameter input_value %} as DOUBLE PRECISION)));;
 
   }
   dimension: ram_slots_available {
+    type:  number
     sql: case when ${num_ram_slots} > 0 then ${num_ram_slots} else 0 END;;
   }
   measure: count {
