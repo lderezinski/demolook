@@ -14,7 +14,7 @@ view: ram_values {
       select 64 as value union
       select 80 as value union
       select 128 as value union
-      select 220 as value union
+      select 220 as value
        ;;
   }
 
