@@ -6,15 +6,12 @@ view: cnapi {
   parameter: input_value {
     description: "I would create a table that has all the values you're okay with the user selecting. I created a derived
       table called 'values'
-
       Then, this filter field is going to provide a dropdown list of the options they could select from which is how
       you could control what they select/input. You could also just not put suggest_explore, or suggest_dimension and have
       it be a free form input of a-z or 0-9. Looker takes care of SQL injection."
     type: number
     suggest_explore: values
     suggest_dimension: ram_values.value
-
-
   }
 
 
@@ -263,12 +260,20 @@ view: cnapi {
 
   dimension: traits {
     type: string
-    sql: ${TABLE}."traits" ;;
+    sql: ${TABLE}."traits"::text ;;
   }
   dimension: ssd_node {
     type: yesno
-    sql: ${TABLE}.traits ->> 'ssd' is not null ;;
+    sql: ${TABLE}.traits ->> 'ssd' is not null;;
 
+  }
+  dimension: storage_node {
+    type: yesno
+    sql: ${TABLE}.traits ->> 'storage' is not null ;;
+  }
+  dimension: triton_node {
+    type:  yesno
+    sql: ${TABLE}.traits ->> 'triton' is not null ;;
   }
   dimension: internal_node {
     type: yesno
@@ -301,7 +306,12 @@ view: cnapi {
   dimension: pool {
     description: "All CNs except headnode and internal traited"
     type: yesno
-    sql: ${cn_name} != 'headnode' and  ${TABLE}.traits ->> 'triton' is  null  and  ${TABLE}.traits ->> 'internal' is  null  ;;
+    sql: ${isHeadnode} = false and   ${TABLE}.traits ->> 'internal' is  null   ;;
+  }
+  dimension: isHeadnode {
+    description: "Is this CN a headnode"
+    type:  yesno
+    sql:  ${cn_name} != 'headnode' and  ${TABLE}.traits ->> 'triton' != 'headnode' ;;
   }
   dimension: general_pool {
     description: "All CNs for public use sans ssd"
