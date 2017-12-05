@@ -11,9 +11,7 @@ include: "/zendesk/tickets.view.lkml"
 #
 
 explore: ram_values {
-  group_label: "Joyent Public Cloud "
-  label: "ram_values"
-  #hidden: yes
+  hidden: yes
 }
 
 explore: customer_facts {
