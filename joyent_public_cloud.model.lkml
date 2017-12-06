@@ -13,7 +13,9 @@ include: "/zendesk/tickets.view.lkml"
 explore: ram_values {
   hidden: yes
 }
+explore: status_cnapi {
 
+}
 explore: customer_facts {
 }
 
