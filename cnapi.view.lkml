@@ -281,7 +281,7 @@ view: cnapi {
   }
   dimension: manta_node {
     type:  yesno
-    sql:   ${cn_model} = 'Manta Shrimp' ;;
+    sql:   ${cn_model} = 'Manta Shrimp';;
   }
   dimension: disk_unprovisioned {
     type: number
