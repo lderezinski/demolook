@@ -315,7 +315,7 @@ view: cnapi {
   dimension: isHeadnode {
     description: "Is this CN a headnode"
     type:  yesno
-    sql:  ${cn_name} != 'headnode' and  ${TABLE}.traits ->> 'triton' != 'headnode' ;;
+    sql:  ${cn_name} != 'headnode' and  ${TABLE}.traits ->> 'triton' = 'headnode' ;;
   }
   dimension: general_pool {
     description: "All CNs for public use sans ssd"
