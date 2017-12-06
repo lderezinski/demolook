@@ -475,4 +475,16 @@ measure: count_manta_meta {
     type:  sum
     sql:  ${general_pool}::int ;;
   }
+  measure: count_setup {
+    type:  sum
+    sql:  ${setup}::int ;;
+  }
+  measure: count_not_setup {
+    type:  sum
+    sql:  CASE WHEN ${setup} THEN 0 ELSE 1 END ;;
+  }
+  measure: count_internal {
+    type: sum
+    sql: ${internal_node}::int ;;
+  }
 }
