@@ -487,4 +487,8 @@ measure: count_manta_meta {
     type: sum
     sql: ${internal_node}::int ;;
   }
+  measure: count_headnode {
+    type:  sum
+    sql: ${isHeadnode}::int;;
+  }
 }
