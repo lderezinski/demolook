@@ -304,9 +304,9 @@ view: cnapi {
   }
 
   dimension: pool {
-    description: "All CNs except headnode and internal traited"
+    description: "All unreserved CNs except internal or triton traited"
     type: yesno
-    sql: ${isHeadnode} = false and   ${TABLE}.traits ->> 'internal' is  null   ;;
+    sql:   ${TABLE}.traits ->> 'internal' is  null and  ${TABLE}.traits ->> 'triton' is  null and ${TABLE}.traits ->> 'customers' is  null and NOT ${cn_reserved};;
   }
   dimension: isHeadnode {
     description: "Is this CN a headnode"
@@ -316,12 +316,12 @@ view: cnapi {
   dimension: general_pool {
     description: "All CNs for public use sans ssd"
     type: yesno
-    sql: ${cn_name} != 'headnode' and  ${TABLE}.traits ->> 'internal' is  null and  ${TABLE}.traits ->> 'ssd' is  null and  ${TABLE}.traits ->> 'customer' is  null and  ${TABLE}.traits ->> 'storage' is  null and ${TABLE}.reserved != 'f'  ;;
+    sql: ${pool} and  ${TABLE}.traits ->> 'ssd' is  null   ;;
   }
   dimension: general_ssd_pool {
     description: "All ssd CNs for public use"
     type: yesno
-    sql:  ${TABLE}.traits ->> 'ssd' is  not null and  ${TABLE}.traits ->> 'customer' is  null and  ${TABLE}.traits ->> 'storage' is  null and ${TABLE}.reserved = 'f'  ;;
+    sql: ${pool} and  ${TABLE}.traits ->> 'ssd' is  not null ;;
   }
   dimension: ssd_pool {
     description: "All ssd CNs"
