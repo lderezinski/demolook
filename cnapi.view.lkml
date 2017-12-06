@@ -461,18 +461,18 @@ measure: sum_ram_slots_available {
 }
 measure: count_manta_meta {
   type: sum
-  sql:  ${manta_meta_node} ;;
+  sql:  ${manta_meta_node}::int ;;
 }
   measure: count_manta {
     type: sum
-    sql:  ${manta_node} ;;
+    sql:  ${manta_node}::int ;;
   }
   measure: count_general_ssd_pool {
     type:  sum
-    sql:  ${general_ssd_pool} ;;
+    sql:  ${general_ssd_pool}::int ;;
   }
   measure: count_general_pool {
     type:  sum
-    sql:  ${general_pool} ;;
+    sql:  ${general_pool}::int ;;
   }
 }
