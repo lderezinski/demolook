@@ -283,6 +283,10 @@ view: cnapi {
     type:  yesno
     sql:   ${cn_model} = 'Manta Shrimp';;
   }
+  dimension: manta_meta_node {
+    type:  yesno
+    sql: ${TABLE}.traits ->> 'triton' = 'manta' and ${cn_model} != 'Manta Shrimp' ;;
+  }
   dimension: disk_unprovisioned {
     type: number
     sql: ${TABLE}."unprovisioned pool G" ;;
