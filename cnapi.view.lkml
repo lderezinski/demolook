@@ -336,7 +336,7 @@ view: cnapi {
   dimension: free_ram_tier {
     type: tier
     tiers: [16, 32,64,110, 220]
-    sql:  ${ram_free}/1024 ;;
+    sql:  ${ram_free} / 1024 ;;
     style: integer
   }
 
@@ -376,43 +376,43 @@ view: cnapi {
   }
   measure: ram_total_t {
     type: sum
-    sql:  ${ram_sellable}/1024/1024 ;;
+    sql:  ${ram_sellable} / 1024 / 1024 ;;
     value_format_name: decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure: ram_free_total_t {
     type:  sum
-    sql: ${ram_free}/1024/1024 ;;
+    sql: ${ram_free} / 1024 / 1024 ;;
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure: ram_total_g {
     type: sum
-    sql:  ${ram_sellable}/1024 ;;
+    sql:  ${ram_sellable} / 1024 ;;
     value_format_name: decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure: ram_free_total_g {
     type:  sum
-    sql: ${ram_free}/1024 ;;
+    sql: ${ram_free} / 1024 ;;
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure: disk_pool_total_t {
     type:  sum
-    sql:  ${disk_pool}/1024/1024 ;;
+    sql:  ${disk_pool} / 1024 / 1024 ;;
     value_format_name: decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name,cn_model]
   }
   measure: disk_unprovisioned_total_t {
     type:  sum
-    sql:  ${disk_unprovisioned}/1024/1024 ;;
+    sql:  ${disk_unprovisioned} / 1024 / 1024 ;;
     value_format_name: decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name,cn_model]
   }
   measure: ram_sold_total_t {
     type: sum
-    sql: ${ram_sold}/1024/1024 ;;
+    sql: ${ram_sold} / 1024 / 1024 ;;
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
@@ -433,20 +433,20 @@ view: cnapi {
 
   measure: unreserved_disk_g {
     type:  sum
-    sql: ${unreserved_disk}/1024 ;;
+    sql: ${unreserved_disk} / 1024 ;;
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure: unreserved_ram_t {
     type:  sum
-    sql: ${unreserved_ram}/1024/1024 ;;
+    sql: ${unreserved_ram} / 1024 / 1024 ;;
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
 
   measure: unreserved_disk_t {
     type:  sum
-    sql: ${unreserved_disk}/1024/1024 ;;
+    sql: ${unreserved_disk} / 1024 / 1024 ;;
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
@@ -490,17 +490,5 @@ measure: count_manta_meta {
   measure: count_headnode {
     type:  sum
     sql: ${isHeadnode}::int;;
-  }
-  measure: available_ram_G {
-    type:  sum
-    value_format_name:  decimal_4
-    sql:  ${unreserved_ram}/1024 ;;
-    drill_fields: [dc,cn_name,unreserved_ram,unreserved_cpu,product_name]
-  }
-  measure: available_ram_T {
-    type:  sum
-    value_format_name:  decimal_4
-    sql:  ${unreserved_ram}/1024/1024 ;;
-    drill_fields: [dc,cn_name,unreserved_ram,unreserved_cpu,product_name]
   }
 }
