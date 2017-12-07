@@ -4,7 +4,7 @@
   elements:
   - title: Account Comparitor
     name: Account Comparitor
-    model: joyent_public_cloud
+    model: joyent_cloud
     explore: jpcdaily_spend
     type: looker_bar
     fields:
@@ -51,7 +51,7 @@
     height: 8
   - title: Untitled
     name: Untitled
-    model: joyent_public_cloud
+    model: joyent_cloud
     explore: jpcdaily_spend
     type: looker_single_record
     fields:
@@ -101,7 +101,7 @@
     title: Account Number
     type: field_filter
     default_value: '00247dbe-e353-c271-de2c-c53d254d8d3c'
-    model: joyent_public_cloud
+    model: joyent_cloud
     explore: jpcdaily_spend
     field: jpcdaily_spend.accountnumber
     listens_to_filters: []

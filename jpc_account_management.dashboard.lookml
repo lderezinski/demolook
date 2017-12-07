@@ -4,7 +4,7 @@
   elements:
   - title: Accounts by Account Health
     name: Accounts by Account Health
-    model: joyent_public_cloud
+    model: joyent_cloud
     explore: jpcdaily_spend
     type: looker_column
     fields:
@@ -45,7 +45,7 @@
     height: 6
   - name: Accounts by Spend Tier
     title: Accounts by Spend Tier
-    model: joyent_public_cloud
+    model: joyent_cloud
     explore: jpcdaily_spend
     type: looker_column
     fields:
@@ -89,7 +89,7 @@
     height: 6
   - name: Customers by Created Date
     title: Customers by Created Date
-    model: joyent_public_cloud
+    model: joyent_cloud
     explore: jpcdaily_spend
     type: looker_line
     fields:
@@ -137,7 +137,7 @@
     height: 8
   - name: Top 20 Decreased Customers
     title: Top 20 Decreased Customers
-    model: joyent_public_cloud
+    model: joyent_cloud
     explore: jpcdaily_spend
     type: table
     fields:
@@ -192,7 +192,7 @@
     height: 8
   - name: Top 10 Spending Accounts
     title: Top 10 Spending Accounts
-    model: joyent_public_cloud
+    model: joyent_cloud
     explore: jpcdaily_spend
     type: table
     fields:
@@ -247,7 +247,7 @@
     height: 6
   - title: Spend Over Time
     name: Spend Over Time
-    model: joyent_public_cloud
+    model: joyent_cloud
     explore: jpcdaily_spend
     type: looker_line
     fields:
@@ -297,7 +297,7 @@
     height: 8
   - title: Retention Curve
     name: Retention Curve
-    model: joyent_public_cloud
+    model: joyent_cloud
     explore: jpcdaily_spend
     type: looker_line
     fields:
@@ -365,7 +365,7 @@
     title: Date
     type: field_filter
     default_value: this year
-    model: joyent_public_cloud
+    model: joyent_cloud
     explore: jpcdaily_spend
     field: jpcdaily_spend.day_date
     listens_to_filters: []
