@@ -71,12 +71,12 @@ view: cnapi {
 
   dimension: cores {
     type: number
-    sql: ${TABLE}."Cores" ;;
+    sql: coalesce( ${TABLE}."Cores",0) ;;
   }
 
   dimension: cpu_cores {
     type: number
-    sql: ${TABLE}.cpu_cores ;;
+    sql: coalesce(${TABLE}.cpu_cores,0) ;;
   }
 
   dimension_group: created {
@@ -118,12 +118,12 @@ view: cnapi {
 
   dimension: disk_pool {
     type: number
-    sql: ${TABLE}."disk pool size G" ;;
+    sql: coalesce(${TABLE}."disk pool size G",0) ;;
   }
 
   dimension: ram_free {
     type: number
-    sql: ${TABLE}."Free" ;;
+    sql: coalesce(${TABLE}."Free",0) ;;
   }
 
   dimension: cn_name {
@@ -143,22 +143,22 @@ view: cnapi {
 
   dimension: joy_num {
     type: number
-    sql: ${TABLE}."joyent" ;;
+    sql: coalesce(${TABLE}."joyent",0) ;;
   }
 
   dimension: joyent_percent {
     type: number
-    sql: ${TABLE}."%joyent" ;;
+    sql: coalesce( ${TABLE}."%joyent",0) ;;
   }
 
   dimension: kvm_num {
     type: number
-    sql: ${TABLE}."kvm" ;;
+    sql:coalesce( ${TABLE}."kvm",0) ;;
   }
 
   dimension: kvm_percent {
     type: number
-    sql: ${TABLE}."%kvm" ;;
+    sql:coalesce( ${TABLE}."%kvm",0) ;;
   }
 
   dimension_group: last_boot {
@@ -182,17 +182,17 @@ view: cnapi {
 
   dimension: lx_percent {
     type: number
-    sql: ${TABLE}."%lx" ;;
+    sql: coalesce( ${TABLE}."%lx", 0) ;;
   }
 
   dimension: cn_minimal {
     type: number
-    sql: ${TABLE}."minimal" ;;
+    sql: coalesce(${TABLE}."minimal",0) ;;
   }
 
   dimension: minimal_percent {
     type: number
-    sql: ${TABLE}."%minimal" ;;
+    sql:coalesce( ${TABLE}."%minimal",0) ;;
   }
   dimension: trait_types {
     type:  string
@@ -205,7 +205,7 @@ view: cnapi {
 
   dimension: ram_overhead {
     type: number
-    sql: ${TABLE}."Overhead" ;;
+    sql: coalesce(${TABLE}."Overhead",0) ;;
   }
 
   dimension: product_name {
@@ -215,7 +215,7 @@ view: cnapi {
 
   dimension: num_zones {
     type: number
-    sql: ${TABLE}."Prov" ;;
+    sql: coalesce(${TABLE}."Prov",0) ;;
   }
 
   dimension: rack_identifier {
@@ -230,7 +230,7 @@ view: cnapi {
 
   dimension: ram_sellable {
     type: number
-    sql: ${TABLE}."Sellable" ;;
+    sql:coalesce( ${TABLE}."Sellable",0) ;;
   }
 
   dimension: serial_number {
@@ -255,7 +255,7 @@ view: cnapi {
 
   dimension: sold_percent {
     type: number
-    sql: ${TABLE}."Sold%" ;;
+    sql: coalesce(${TABLE}."Sold%",0) ;;
   }
 
   dimension: traits {
@@ -289,12 +289,12 @@ view: cnapi {
   }
   dimension: disk_unprovisioned {
     type: number
-    sql: ${TABLE}."unprovisioned pool G" ;;
+    sql: coalesce(${TABLE}."unprovisioned pool G",0) ;;
   }
 
   dimension: unprovisioned_ratio {
     type: number
-    sql: ${TABLE}."unprovisioned ratio " ;;
+    sql: coalesce(${TABLE}."unprovisioned ratio ",0) ;;
   }
 
   dimension: uuid {
@@ -304,7 +304,7 @@ view: cnapi {
 
   dimension: unreserved_cpu {
     type: number
-    sql: ${TABLE}.unreserved_cpu ;;
+    sql: coalesce( ${TABLE}.unreserved_cpu, 0) ;;
   }
 
   dimension: pool {
@@ -342,12 +342,12 @@ view: cnapi {
 
   dimension: unreserved_disk {
     type: number
-    sql: ${TABLE}.unreserved_disk ;;
+    sql: coalesce( ${TABLE}.unreserved_disk, 0) ;;
   }
 
   dimension: unreserved_ram {
     type: number
-    sql: ${TABLE}.unreserved_ram ;;
+    sql: coalesce(${TABLE}.unreserved_ram,0) ;;
   }
 
   dimension: live_pi_bucket{
