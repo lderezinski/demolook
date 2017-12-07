@@ -84,13 +84,13 @@ explore: zinvoiceitems {
 
 explore: datacenters {
   description: "DC"
-  group_label: "Joyent Public Cloud"
+  group_label: "Joyent Clouds"
   label: "dc"
 }
 
 explore: cnapi {
   description: "CNApi"
-  group_label: "Joyent Public Cloud"
+  group_label: "Joyent Clouds"
   label: "cnapi"
   join: datacenters {
     view_label: "DC"
@@ -99,7 +99,17 @@ explore: cnapi {
     relationship: many_to_one
   }
 }
-
+explore:vmapi {
+  description: "VMApi"
+  group_label: "Joyent Clouds"
+  label: "vmapi"
+  join: datacenters {
+    view_label: "DC"
+    sql_on: ${datacenters.name} = ${vmapi.datacenter} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+}
 explore: cnapimonthly {
   description: "CNApi monthly"
   group_label: "Joyent Public Cloud"
