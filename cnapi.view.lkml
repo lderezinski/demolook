@@ -491,4 +491,16 @@ measure: count_manta_meta {
     type:  sum
     sql: ${isHeadnode}::int;;
   }
+  measure: available_ram_G {
+    type:  sum
+    value_format_name:  decimal_4
+    sql:  ${unreserved_ram}/1024 ;;
+    drill_fields: [dc,cn_name,unreserved_ram,unreserved_cpu,product_name]
+  }
+  measure: available_ram_T {
+    type:  sum
+    value_format_name:  decimal_4
+    sql:  ${unreserved_ram}/1024/1024 ;;
+    drill_fields: [dc,cn_name,unreserved_ram,unreserved_cpu,product_name]
+  }
 }
