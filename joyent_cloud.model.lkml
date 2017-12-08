@@ -109,6 +109,18 @@ explore:vmapi {
     type: left_outer
     relationship: many_to_one
   }
+  join: papi {
+    view_label: "Packages"
+    sql_on: ${papi.uuid} = ${vmapi.billing_id} ;;
+    type:  left_outer
+    relationship: many_to_one
+  }
+  join: ufds {
+    view_label: "ufds"
+    sql_on: ${ufds.uuid}=${vmapi.owner_uuid} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
 }
 explore: cnapimonthly {
   description: "CNApi monthly"
@@ -120,6 +132,7 @@ explore: cnapimonthly {
     type: left_outer
     relationship: many_to_one
   }
+
 }
 
 explore: jpcdaily_spend {
