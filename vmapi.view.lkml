@@ -169,4 +169,8 @@ view: vmapi {
     type: count
     drill_fields: [hostname]
   }
+  measure: ram_g {
+    type: sum
+    sql: ${ram}/1024 ;;
+  }
 }
