@@ -54,6 +54,10 @@ view: ufds {
     type: string
     sql: ${TABLE}.uuid ;;
   }
+  dimension: display_name {
+    type: string
+    sql: CONCAT( ${company}, '(',${login},')') ;;
+  }
 
   measure: count {
     type: count
