@@ -59,4 +59,5 @@ view: ufds {
     type: count
     drill_fields: [givenname]
   }
+
 }

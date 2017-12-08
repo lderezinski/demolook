@@ -1,4 +1,4 @@
-include: "joyent_cloud.model.lkml"
+include: "joyent_public_cloud.model.lkml"
 view: jpc_account_facts {
 
     derived_table: {
