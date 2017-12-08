@@ -55,7 +55,10 @@ view: papi {
     type: number
     sql: ${TABLE}.quota ;;
   }
-
+  dimension: quota_g {
+    type: number
+    sql: ${TABLE}.quota/1024/1024 ;;
+  }
   dimension: uuid {
     type: string
     sql: ${TABLE}.uuid ;;
@@ -85,4 +88,21 @@ view: papi {
     type: count
     drill_fields: [name, common_name]
   }
+  measure: total_ram_g {
+    type:  sum
+    sql:   ${max_physical_memory}/1024;;
+  }
+  measure: total_disk_g {
+  type: sum
+  sql:  ${quota_g};;
+  }
+  measure: total_ram_t {
+    type:  sum
+    sql:   ${max_physical_memory}/1024/1024;;
+  }
+  measure: total_disk_t {
+    type: sum
+    sql:  ${quota_g}/1024;;
+  }
+
 }
