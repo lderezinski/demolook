@@ -121,6 +121,12 @@ explore:vmapi {
     type: left_outer
     relationship: many_to_one
   }
+  join: images {
+    view_label: "images"
+    sql_on: ${images.uuid} = ${vmapi.image_uuid} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
 }
 explore: cnapimonthly {
   description: "CNApi monthly"
