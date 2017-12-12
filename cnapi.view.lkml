@@ -4,17 +4,20 @@ view: cnapi {
   sql_table_name: smartdc.cnapi ;;
 
   parameter: input_value {
-    description: "I would create a table that has all the values you're okay with the user selecting. I created a derived
-      table called 'values'
-      Then, this filter field is going to provide a dropdown list of the options they could select from which is how
-      you could control what they select/input. You could also just not put suggest_explore, or suggest_dimension and have
-      it be a free form input of a-z or 0-9. Looker takes care of SQL injection."
+    description: "validates instance ram size"
     type: number
-    suggest_explore: values
+    suggest_explore: ram_values
     suggest_dimension: ram_values.value
   }
 
-
+ parameter: disk_footprint {
+   description: "Amount of Disk in G"
+  type:  number
+ }
+parameter: cpu {
+  description: "dedicated CPU"
+  type: number
+}
 
   dimension: boot_platform {
     type: string

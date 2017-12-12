@@ -128,6 +128,12 @@ explore:vmapi {
     type: left_outer
     relationship: many_to_one
   }
+  join: cnapi {
+    view_label: "cnapi"
+    sql_on: ${cnapi.uuid} = ${vmapi.server_uuid} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
 }
 explore: cnapimonthly {
   description: "CNApi monthly"
