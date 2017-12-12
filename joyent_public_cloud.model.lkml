@@ -22,7 +22,7 @@ explore: customer_facts {
 explore: ufds {
 
     description: "UFDS"
-    group_label: "Joyent Public Cloud"
+    group_label: "Joyent Cloud"
     label: "ufds"
 
   join: zuora_customers {
@@ -46,7 +46,7 @@ explore: ufds {
 
 explore: zinvoiceitems {
   description: "Invoice Items"
-  group_label: "Joyent Public Cloud"
+  group_label: "Joyent Cloud"
   label: "Invoice Items"
 #   always_filter: {
 #     filters: {
@@ -84,13 +84,13 @@ explore: zinvoiceitems {
 
 explore: datacenters {
   description: "DC"
-  group_label: "Joyent Clouds"
+  group_label: "Joyent Cloud"
   label: "dc"
 }
 
 explore: cnapi {
   description: "CNApi"
-  group_label: "Joyent Clouds"
+  group_label: "Joyent Cloud"
   label: "cnapi"
   join: datacenters {
     view_label: "DC"
@@ -98,10 +98,11 @@ explore: cnapi {
     type: left_outer
     relationship: many_to_one
   }
+
 }
 explore:vmapi {
   description: "VMApi"
-  group_label: "Joyent Clouds"
+  group_label: "Joyent Cloud"
   label: "vmapi"
   join: datacenters {
     view_label: "DC"
@@ -130,7 +131,7 @@ explore:vmapi {
 }
 explore: cnapimonthly {
   description: "CNApi monthly"
-  group_label: "Joyent Public Cloud"
+  group_label: "Joyent Cloud"
   label: "cnapi monthly"
   join: datacenters {
     view_label: "DC"
@@ -143,7 +144,7 @@ explore: cnapimonthly {
 
 explore: jpcdaily_spend {
   description: "Billing Preview spend"
-  group_label: "Joyent Public Cloud"
+  group_label: "Joyent Cloud"
   label: "jpc daily spend"
 
     join: zuora_customers {
@@ -165,3 +166,5 @@ explore: jpcdaily_spend {
       relationship: many_to_one
     }
 }
+
+label: "Joyent Cloud"
