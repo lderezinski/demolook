@@ -99,6 +99,13 @@ explore: cnapi {
     relationship: many_to_one
   }
 
+  join: papi {
+    view_label: "Packages"
+    sql_on: ${cnapi.setup} = ${papi.active} ;;
+    type:  full_outer
+    relationship: many_to_one
+  }
+
 }
 explore:vmapi {
   description: "VMApi"
@@ -112,8 +119,8 @@ explore:vmapi {
   }
   join: papi {
     view_label: "Packages"
-    sql_on: ${papi.uuid} = ${vmapi.billing_id} ;;
-    type:  left_outer
+    sql_on: ${vmapi.billing_id} = ${papi.uuid} ;;
+    type:  full_outer
     relationship: many_to_one
   }
   join: ufds {
@@ -125,7 +132,7 @@ explore:vmapi {
   join: images {
     view_label: "images"
     sql_on: ${images.uuid} = ${vmapi.image_uuid} ;;
-    type: left_outer
+    type: full_outer
     relationship: many_to_one
   }
   join: cnapi {

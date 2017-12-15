@@ -7,7 +7,7 @@ view: cnapi {
     description: "validates instance ram size"
     type: number
     suggest_explore: ram_values
-    suggest_dimension: ram_values.value
+    suggest_dimension: papi.max_physical_memory
   }
 
  parameter: disk_footprint {
@@ -394,7 +394,7 @@ sql:  ${TABLE}.ram_g ;;
   dimension: num_ram_slots  {
     type: number
     description: "Variable ram slots"
-    sql: floor( ${unreserved_ram} / (1024.0 * cast ({% parameter input_value %} as DOUBLE PRECISION)));;
+    sql: floor( ${unreserved_ram} /  ${papi.max_physical_memory});;
 
   }
   dimension: ram_slots_available {
@@ -491,10 +491,7 @@ sql:  ${TABLE}.ram_g ;;
     type: average
     sql: ${num_zones} ;;
   }
-measure: sum_ram_slots_available {
-  type:  sum
-  sql:  ${ram_slots_available} ;;
-}
+
 measure: count_manta_meta {
   type: sum
   sql:  ${manta_meta_node}::int ;;
@@ -526,5 +523,9 @@ measure: count_manta_meta {
   measure: count_headnode {
     type:  sum
     sql: ${isHeadnode}::int;;
+  }
+  measure: sum_package_slots_available {
+    type:  sum
+    sql: ${ram_slots_available};;
   }
 }
