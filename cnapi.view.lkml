@@ -394,7 +394,7 @@ sql:  ${TABLE}.ram_g ;;
   dimension: num_ram_slots  {
     type: number
     description: "number of package slots available"
-    sql: min(floor( ${unreserved_ram} /  ${papi.max_physical_memory}), ${unreserved_cpu} / ${papi.cpu_cap}, ${unreserved_disk}/${papi.quota});;
+    sql: min(floor( ${unreserved_ram} /  ${papi.max_physical_memory}), floor(${unreserved_cpu} / ${papi.cpu_cap}), floor(${unreserved_disk}/${papi.quota}));;
 
   }
   dimension: ram_slots_available {
