@@ -393,8 +393,8 @@ sql:  ${TABLE}.ram_g ;;
  }
   dimension: num_ram_slots  {
     type: number
-    description: "Variable ram slots"
-    sql: floor( ${unreserved_ram} /  ${papi.max_physical_memory});;
+    description: "number of package slots available"
+    sql: min(floor( ${unreserved_ram} /  ${papi.max_physical_memory}), ${unreserved_cpu} / ${papi.cpu_cap}, ${unreserved_disk}/${papi.quota});;
 
   }
   dimension: ram_slots_available {
@@ -528,4 +528,5 @@ measure: count_manta_meta {
     type:  sum
     sql: ${ram_slots_available};;
   }
+
 }
