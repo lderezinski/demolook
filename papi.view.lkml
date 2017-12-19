@@ -5,7 +5,10 @@ view: papi {
     type: yesno
     sql: ${TABLE}.active ;;
   }
-
+  dimension: dcgroup {
+    type: string
+    sql: ${TABLE}.dcgroup ;;
+  }
   dimension: billing_tag {
     type: string
     sql: ${TABLE}.billing_tag ;;

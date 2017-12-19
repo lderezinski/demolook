@@ -6,6 +6,10 @@ view: images {
     sql: ${TABLE}.name ;;
   }
 
+  dimension: dcgroup {
+    type: string
+    sql: ${TABLE}.dcgroup ;;
+  }
   dimension: os {
     type: string
     sql: ${TABLE}.os ;;
