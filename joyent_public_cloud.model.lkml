@@ -179,5 +179,15 @@ explore: jpcdaily_spend {
       relationship: many_to_one
     }
 }
+explore: images {
+  description: "Images"
+  group_label: "Joyent Cloud"
+  label: "Images"
+}
+explore: papi {
+  description: "Package"
+  group_label: "Joyent Cloud"
+  label: "Packages"
+}
 
 label: "Joyent Cloud"
