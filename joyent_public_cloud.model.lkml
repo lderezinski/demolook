@@ -19,8 +19,24 @@ explore: status_cnapi {
 explore: customer_facts {
 }
 
+explore: bpr {
+  description: "Billing Preview"
+  group_label: "Joyent Cloud"
+  label: "bpr"
+  join: zuora_customers {
+    view_label: "Customers"
+    sql_on: ${zuora_customers.accountnumber} = ${bpr.account_number} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: papi {
+    view_label: "Packages"
+    sql_on: ${bpr.uom} = ${papi.billing_tag} ;;
+    type:  full_outer
+    relationship: many_to_one
+  }
+}
 explore: ufds {
-
     description: "UFDS"
     group_label: "Joyent Cloud"
     label: "ufds"
