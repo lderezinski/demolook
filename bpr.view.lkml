@@ -82,4 +82,14 @@ view: bpr {
     type: count
     drill_fields: [name]
   }
+  measure: total_quant {
+    type:  sum
+    sql: ${quantity} ;;
+  }
+  measure: total_spend {
+    type:  sum
+    sql: ${charge_amount} ;;
+  }
+
+
 }
