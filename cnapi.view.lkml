@@ -131,7 +131,7 @@ parameter: cpu {
 
   dimension: cn_name {
     type: string
-    sql: ${TABLE}."HOSTNAME" ;;
+    sql: upper(${TABLE}."HOSTNAME") ;;
   }
 
   dimension: hwfamily {
@@ -201,9 +201,25 @@ parameter: cpu {
     type:  string
     sql:  json_object_keys(${TABLE}.traits) ;;
   }
+
+  # https://github.com/joyent/opstools/blob/master/src/bin/ops-cnsetup#L354-L430
   dimension: cn_model {
     type: string
-    sql: ${TABLE}."Model" ;;
+   # sql: ${TABLE}."Model" ;;
+     sql: CASE
+                   WHEN substring(${cn_name},1, 2) = 'HA' THEN 'Hallasan-A'
+                   WHEN substring(${cn_name},1, 2) = 'HB' THEN 'Hallasan-B'
+                   WHEN substring(${cn_name},1, 2) = 'HC' THEN 'Hallasan-C'
+                   WHEN substring(${cn_name},1, 2) = 'HE' THEN 'Headnode'
+                   WHEN substring(${cn_name},1, 2) = 'MS' THEN 'Mantis Shrimp MkII'
+                   WHEN substring(${cn_name},1, 2) = 'PA' THEN 'Priestriver-A'
+                   WHEN substring(${cn_name},1, 2) = 'RA' THEN 'Richmond-A'
+                   WHEN substring(${cn_name},1, 2) = 'RB' THEN 'Richmond-B'
+                   WHEN substring(${cn_name},1, 2) = 'RC' THEN 'Richmond-C'
+                   WHEN substring(${cn_name},1, 2) = 'RM' THEN 'Mantis Shrimp MkII'
+                   WHEN substring(${cn_name},1, 2) = 'TC' THEN 'Tenderloin-C'
+                   ELSE 'PowerEdge R710/R510/Other'
+            END ;;
   }
 
   dimension: ram_overhead {
