@@ -417,7 +417,10 @@ sql:  ${TABLE}.ram_g ;;
     type:  number
     sql: case when ${num_ram_slots} > 0 then ${num_ram_slots} else 0 END;;
   }
-
+  dimension: isSuperMicro {
+    type:  yesno
+    sql:  case when substring(${serial_number},1, 1) = 'S' then true else false END ;;
+  }
   measure: count {
     type: count
     drill_fields: [cn_name]
