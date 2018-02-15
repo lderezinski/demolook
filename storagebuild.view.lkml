@@ -26,7 +26,7 @@ view: storagebuild {
     sql: ${TABLE}."group" ;;
   }
 
-  dimension: manta_capacity_pi_b {
+  dimension: manta_capacity_pib {
     type: number
     sql: ${TABLE}."Manta_capacity_PiB" ;;
   }
@@ -59,5 +59,9 @@ view: storagebuild {
   measure: count {
     type: count
     drill_fields: []
+  }
+  measure: sum_manta_cap_pib {
+    type: sum
+    sql: ${manta_capacity_pib} ;;
   }
 }

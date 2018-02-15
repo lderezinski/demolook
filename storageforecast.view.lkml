@@ -1,7 +1,7 @@
 view: storageforecast {
   sql_table_name: capacity.storageforecast ;;
 
-  dimension: cumulative_data_pi_b {
+  dimension: cumulative_data_pib {
     type: number
     sql: ${TABLE}."cumulative_data_PiB" ;;
   }
@@ -31,7 +31,7 @@ view: storageforecast {
     sql: ${TABLE}."group" ;;
   }
 
-  dimension: manta_capacity_pi_b {
+  dimension: manta_capacity_pib {
     type: number
     sql: ${TABLE}."Manta_capacity_PiB" ;;
   }
@@ -44,5 +44,13 @@ view: storageforecast {
   measure: count {
     type: count
     drill_fields: []
+  }
+  measure: sum_manta_cap_pib {
+    type: sum
+    sql: ${manta_capacity_pib} ;;
+  }
+  measure: sum_cum_data_pib {
+    type: sum
+    sql: ${cumulative_data_pib} ;;
   }
 }
