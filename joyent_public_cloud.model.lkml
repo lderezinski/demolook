@@ -24,6 +24,12 @@ explore: storageforecast {
   label: "Storage Forecast"
 }
 
+explore: storagebuild {
+  description: "SDC Storage Build"
+  group_label: "Joyent Cloud"
+  label: "Storage Build"
+}
+
 explore: bpr {
   description: "Billing Preview"
   group_label: "Joyent Cloud"
