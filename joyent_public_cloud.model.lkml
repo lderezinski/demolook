@@ -18,6 +18,11 @@ explore: status_cnapi {
 }
 explore: customer_facts {
 }
+explore: storageforecast {
+  description: "SDC Storage forecasting"
+  group_label: "Joyent Cloud"
+  label: "Storage Forecast"
+}
 
 explore: bpr {
   description: "Billing Preview"
