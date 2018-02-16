@@ -22,6 +22,16 @@ explore: storageforecast {
   description: "SDC Storage forecasting"
   group_label: "Joyent Cloud"
   label: "Storage Forecast"
+  join: step_storageforecast {
+    from: storageforecast
+    sql_on: ${storageforecast.fcst} = ${step_storageforecast.fcst} and
+            ${storageforecast.region} = ${step_storageforecast.region} and
+            ${storageforecast.half_year} =  ${step_storageforecast.date_month}
+
+    ;;
+    relationship: many_to_one
+
+  }
 }
 
 explore: storagebuild {

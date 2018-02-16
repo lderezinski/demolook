@@ -16,6 +16,11 @@ view: storagebuild {
     sql: ${TABLE}."DeliverDate" ;;
   }
 
+  measure: delivery_month_list {
+    type: string
+    sql: string_agg(${deliver_month},', ') ;;
+  }
+
   dimension: fcst {
     type: string
     sql: ${TABLE}."FCST" ;;
@@ -64,5 +69,6 @@ view: storagebuild {
   measure: sum_manta_cap_pib {
     type: sum
     sql: ${manta_capacity_pib} ;;
+
   }
 }

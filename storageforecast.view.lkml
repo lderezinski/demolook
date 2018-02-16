@@ -6,6 +6,11 @@ view: storageforecast {
     sql: ${TABLE}."cumulative_data_PiB" ;;
   }
 
+  dimension: compound_primary_key {
+    primary_key: yes
+    hidden: yes
+    sql: CONCAT(${region}, ${date_raw},${fcst}) ;;
+  }
   dimension_group: date {
     type: time
     timeframes: [
@@ -14,6 +19,7 @@ view: storageforecast {
       week,
       month,
       quarter,
+      month_num,
       year
     ]
     convert_tz: no
@@ -21,6 +27,27 @@ view: storageforecast {
     sql: ${TABLE}."Date" ;;
   }
 
+  dimension: half_year {
+    type: string
+    sql: case when ${date_month_num} < 7 then concat(${date_year},'-06')
+              when  ${date_month_num} >= 7 then concat(${date_year},'-12')
+              else null end
+        ;;
+  }
+
+  dimension: is_halfyear{
+    type:  yesno
+    sql:  ${date_month_num} = 12 or ${date_month_num} = 6 ;;
+  }
+  measure: halfyear_target {
+    type: sum
+    sql:  ${manta_capacity_pib};;
+    filters: {
+      field: is_halfyear
+      value: "Yes"
+      }
+
+  }
   dimension: fcst {
     type: string
     sql: ${TABLE}."FCST" ;;
