@@ -9,9 +9,9 @@ view: storageforecast {
   dimension: compound_primary_key {
     primary_key: yes
     hidden: yes
-    sql: CONCAT(${region}, ${date_raw},${fcst}) ;;
+    sql: CONCAT(${region}, ${delivery_raw},${fcst}) ;;
   }
-  dimension_group: date {
+  dimension_group: delivery {
     type: time
     timeframes: [
       raw,
@@ -29,15 +29,15 @@ view: storageforecast {
 
   dimension: half_year {
     type: string
-    sql: case when ${date_month_num} < 7 then concat(${date_year},'-06')
-              when  ${date_month_num} >= 7 then concat(${date_year},'-12')
+    sql: case when ${delivery_month_num} < 7 then concat(${delivery_year},'-06')
+              when  ${delivery_month_num} >= 7 then concat(${delivery_year},'-12')
               else null end
         ;;
   }
 
   dimension: is_halfyear{
     type:  yesno
-    sql:  ${date_month_num} = 12 or ${date_month_num} = 6 ;;
+    sql:  ${delivery_month_num} = 12 or ${delivery_month_num} = 6 ;;
   }
   measure: halfyear_target {
     type: sum
@@ -45,7 +45,7 @@ view: storageforecast {
     filters: {
       field: is_halfyear
       value: "Yes"
-      }
+    }
 
   }
   dimension: fcst {

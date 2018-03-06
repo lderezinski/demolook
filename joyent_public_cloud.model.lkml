@@ -24,13 +24,20 @@ explore: storageforecast {
   label: "Storage Forecast"
   join: step_storageforecast {
     from: storageforecast
+    type: left_outer
     sql_on: ${storageforecast.fcst} = ${step_storageforecast.fcst} and
             ${storageforecast.region} = ${step_storageforecast.region} and
-            ${storageforecast.half_year} =  ${step_storageforecast.date_month}
+            ${storageforecast.half_year} =  ${step_storageforecast.delivery_month}
 
     ;;
     relationship: many_to_one
 
+  }
+  join: storage_forecast_build {
+    type: inner
+    sql_on: ${storageforecast.delivery_raw} = ${storage_forecast_build.build_start_raw}
+    and ${step_storageforecast.region} = ${storage_forecast_build.region};;
+    relationship: many_to_one
   }
 }
 
