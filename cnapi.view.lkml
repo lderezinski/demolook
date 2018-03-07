@@ -361,7 +361,7 @@ parameter: cpu {
   dimension: free_ram_tier {
     type: tier
     tiers: [16, 32,64,110, 220]
-    sql:  ${ram_free} / 1024 ;;
+    sql:  ${unreserved_ram} / 1024 ;;
     style: integer
   }
 
