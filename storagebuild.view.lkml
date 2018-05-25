@@ -55,12 +55,38 @@ view: storagebuild {
     datatype: date
     sql: ${TABLE}."StartDate" ;;
   }
-
+  dimension: status_leg {
+    type: number
+    sql: case when ${status} = 'Delivered' then 4
+              when ${status} = 'pre-pumi' then 1
+              when ${status} = 'ordering' then 2
+              when ${status} = 'Building' then 3
+              else null
+          end;;
+   html: {{status._value}} | {{sum_manta_cap_pib._value}} ;;
+  }
   dimension: status {
     type: string
     sql: ${TABLE}."Status" ;;
   }
+  dimension: status_label {
+    type: number
+    sql: case when ${status} = 'Delivered' then 'Delivered'
+              when ${status} = 'pre-pumi' then 'In progress'
+              when ${status} = 'ordering' then 'In progress'
+              when ${status} = 'Building' then 'In progress'
+              else null
+          end;;
+  }
+  dimension: sold_out_date {
+    type: date
+    sql:  DATE ${deliver_raw} + INTERVAL ' 46 days' ;;
 
+  }
+  dimension: region_status {
+    type: string
+    sql:  ${region}|| '-' || ${status_label} ;;
+  }
   measure: count {
     type: count
     drill_fields: []
@@ -70,5 +96,13 @@ view: storagebuild {
     type: sum
     sql: ${manta_capacity_pib} ;;
 
+  }
+  measure: burn_rate_days {
+    type: string
+    sql: ${sum_manta_cap_pib} / 0.9 ;;
+  }
+  measure: label {
+    type: string
+    sql: CONCAT(${}status_label}," : ", ${manta_capacity_pib}, " : ",${sum_manta_cap_pib})  ;;
   }
 }
