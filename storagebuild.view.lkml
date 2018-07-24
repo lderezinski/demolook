@@ -85,7 +85,7 @@ view: storagebuild {
   }
   dimension: region_status {
     type: string
-    sql:  ${region}|| '-' || ${status_label} ;;
+    sql:  ${region}|| '-'||${fcst} || '-'|| ${status_label} ;;
   }
   measure: count {
     type: count
@@ -101,8 +101,5 @@ view: storagebuild {
     type: string
     sql: ${sum_manta_cap_pib} / 0.9 ;;
   }
-  measure: label {
-    type: string
-    sql: CONCAT(${}status_label}," : ", ${manta_capacity_pib}, " : ",${sum_manta_cap_pib})  ;;
-  }
+
 }
