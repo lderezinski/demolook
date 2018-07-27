@@ -18,6 +18,7 @@ view: nodes {
     type: string
     sql:  CASE
             WHEN ${trait} LIKE '%headnode%' THEN 'Headnode'
+            WHEN ${hostname} = 'headnode' THEN 'Headnode'
             ELSE
               CASE
                 WHEN ${product} = 'Joyent-Compute-Platform-3101' THEN 'Hallasan-A.r2'
