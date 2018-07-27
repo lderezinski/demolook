@@ -46,6 +46,22 @@ explore: storagebuild {
   group_label: "Joyent Cloud"
   label: "Storage Build"
 }
+explore: nodes {
+  description: "cnapi summary"
+  group_label: "Joyent Cloud"
+  label: "Nodes"
+
+}
+explore: inventory {
+  description: "Node Inventory"
+  group_label: "Joyent Cloud"
+  label: "Inventory"
+  join: server_sku {
+    from: inventory
+    sql_on: ${inventory.sku} = ${server_sku.sku} ;;
+    relationship: many_to_one
+  }
+}
 
 explore: bpr {
   description: "Billing Preview"
