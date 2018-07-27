@@ -23,6 +23,7 @@ view: nodes {
                 WHEN ${product} = 'Joyent-Compute-Platform-3101' THEN 'Hallasan-A.r2'
                 WHEN ${product} = 'Joyent-Compute-Platform-3301' THEN 'Hallasan-A'
                 WHEN ${product} = 'Joyent-Storage-Platform-7201' THEN 'Hallasan-B'
+                WHEN ${product} = 'Joyent-Compute-Platform-3302' THEN 'Hallasan-C'
                 WHEN ${product} = 'Joyent-Storage-Platform-7001' THEN 'Mantis Shrimp'
                 ELSE 'PowerEdge R710/R510/Other'
               END
