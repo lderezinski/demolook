@@ -17,8 +17,7 @@ view: nodes {
   dimension: shortName {
     type: string
     sql:  CASE
-            WHEN ${trait} = 'triton_headnode inventory_OPS-2154' THEN 'Headnode'
-            WHEN ${trait} = 'spc_headnode triton_headnode' THEN 'Headnode'
+            WHEN ${trait} LIKE '%headnode%' THEN 'Headnode'
             ELSE
               CASE
                 WHEN ${product} = 'Joyent-Compute-Platform-3101' THEN 'Hallasan-A.r2'
