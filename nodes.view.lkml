@@ -10,6 +10,25 @@ view: nodes {
     type: string
     sql: ${TABLE}."Product" ;;
   }
+  dimension: productno {
+    type: string
+    sql: right(${product}, 4) ;;
+  }
+  dimension: shortName {
+    type: string
+    sql:  CASE
+            WHEN ${trait} = 'triton_headnode inventory_OPS-2154' THEN 'Headnode'
+            WHEN ${trait} = 'spc_headnode triton_headnode' THEN 'Headnode'
+            ELSE
+              CASE
+                WHEN ${product} = 'Joyent-Compute-Platform-3101' THEN 'Hallasan-A.r2'
+                WHEN ${product} = 'Joyent-Compute-Platform-3301' THEN 'Hallasan-A'
+                WHEN ${product} = 'Joyent-Storage-Platform-7201' THEN 'Hallasan-B'
+                WHEN ${product} = 'Joyent-Storage-Platform-7001' THEN 'Mantis Shrimp'
+                ELSE 'PowerEdge R710/R510/Other'
+              END
+            END;;
+  }
   dimension: trait {
     type: string
     sql: ${TABLE}."trait" ;;
