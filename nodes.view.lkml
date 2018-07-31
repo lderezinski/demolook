@@ -67,7 +67,12 @@ view: nodes {
   }
   dimension: rack {
     type: string
-    sql: left(${rackPos},-3) ;;
+    sql: case
+    when left(right((nodes."rack"), 3), 1) = '-' then
+          left((nodes."rack"),-3)
+          else
+          left((nodes."rack"),-2)
+          end ;;
   }
   measure: count {
     type: count
