@@ -40,7 +40,7 @@ view: nodes {
               CASE
                 WHEN ${trait} LIKE '%manta%'  THEN 'Manta'
                 WHEN ${trait} LIKE '%qa_true%' THEN 'QA'
-                WHEN ${trait} LIKE '%bhyve_true%' THEN 'CTF'
+                WHEN ${trait} LIKE '%bhyve_true%' THEN 'bhyve'
                 WHEN ${trait} LIKE '%CTF_true%' THEN 'CTF'
                 ELSE 'Compute'
               END
