@@ -30,6 +30,21 @@ view: nodes {
               END
             END;;
   }
+
+  dimension: role {
+    type: string
+    sql:  CASE
+            WHEN ${trait} LIKE '%headnode%' THEN 'Headnode'
+            WHEN ${hostname} = 'headnode' THEN 'Headnode'
+            ELSE
+              CASE
+                WHEN ${trait} LIKE '%manta%'  THEN 'Manta'
+                WHEN ${trait} LIKE '%qa_true%' THEN 'QA/Spare'
+                WHEN ${trait} LIKE '%bhyve_true%' THEN 'bhyve'
+                ELSE 'Compute'
+              END
+            END;;
+  }
   dimension: trait {
     type: string
     sql: ${TABLE}."trait" ;;
