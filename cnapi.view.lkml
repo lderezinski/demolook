@@ -140,7 +140,19 @@ parameter: cpu {
     type: string
     sql: upper(${TABLE}."HOSTNAME") ;;
   }
-
+  dimension: role {
+    type: string
+    sql:  CASE
+            WHEN ${traits} LIKE '%headnode%' THEN 'Headnode'
+            WHEN ${cn_name} = 'headnode' THEN 'Headnode'
+            ELSE
+              CASE
+                WHEN ${traits} LIKE '%manta%'  THEN 'Manta'
+                WHEN ${traits} LIKE '%bhyve_true%' THEN 'bhyve'
+                ELSE 'Compute'
+              END
+            END;;
+  }
   dimension: hwfamily {
     type: string
     sql: ${TABLE}."HWFamily" ;;
@@ -242,8 +254,16 @@ parameter: cpu {
     type: number
     sql: coalesce(${TABLE}."Prov",0) ;;
   }
-
-  dimension: rack_identifier {
+  dimension: rack_name {
+    type: string
+    sql: case
+          when left(right((${rack_identifier}), 3), 1) = '-' then
+                left((${rack_identifier}),-3)
+                else
+                left((${rack_identifier}),-2)
+                end ;;
+  }
+   dimension: rack_identifier {
     type: string
     sql: ${TABLE}."rack identifier" ;;
   }
@@ -427,6 +447,36 @@ sql:  ${TABLE}.ram_g ;;
     type:  yesno
     sql:  case when substring(${serial_number},1, 1) = 'S' then true else false END ;;
   }
+
+  dimension: shortName {
+    type: string
+    sql:  CASE
+            WHEN ${traits} LIKE '%headnode%' THEN 'Headnode'
+            WHEN ${cn_name} = 'headnode' THEN 'Headnode'
+            ELSE
+              CASE
+  WHEN ${sku_number} = '600-0023-001'  THEN 'Hallasan-A'
+  WHEN ${sku_number} = 'SKU=NotProvided;ModelName=Joyent-Compute-Platform-3301' THEN 'Hallasan-A'
+  WHEN ${sku_number} = '600-0024-001' THEN 'Hallasan-C (8)'
+  WHEN ${sku_number} = '600-0026-001' THEN 'Hallasan-C (16)'
+  WHEN ${sku_number} = '600-0025-001' THEN 'Mantis Shrimp Mk.III (8TB)'
+  WHEN ${sku_number} = '600-0025-01 rev 50' THEN 'Mantis Shrimp Mk.III (8TB)'
+  WHEN ${sku_number} = '600-0025-002' THEN 'Mantis Shrimp Mk.III (10TB)'
+  WHEN ${sku_number} = '600-0025-01 rev 51' THEN 'Mantis Shrimp Mk.III (10TB)'
+  WHEN ${sku_number} = '600-0028-001' THEN 'Hallasan-B'
+  WHEN ${sku_number} = '600-0027-001' THEN 'Hallasan-A r2'
+  WHEN ${sku_number} = '600-0027-01 rev 50' THEN 'Hallasan-A r2'
+  WHEN ${sku_number} = '600-0032-001' THEN 'Jirisan-A'
+  WHEN ${sku_number} = '600-0033-001' THEN 'Jirisan-B'
+  WHEN ${sku_number} = '600-0034-001' THEN 'Jirisan-C (12)'
+  WHEN ${sku_number} = '600-0035-001' THEN 'Jirisan-C (24)'
+  WHEN ${sku_number} = '600-0036-001' THEN 'Mantis Shrimp Mk.III.5 (12TB)'
+  WHEN ${sku_number} = 'SKU=NotProvided;ModelName=Joyent-Compute-Platform-3302' THEN 'Hallasan-C'
+                ELSE ${sku_number}
+              END
+            END;;
+  }
+
   measure: count {
     type: count
     drill_fields: [cn_name]
