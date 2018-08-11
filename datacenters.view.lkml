@@ -10,6 +10,13 @@ view: datacenters {
     type: string
     sql: ${TABLE}.name ;;
   }
+  dimension: region {
+    type: string
+    sql:  CASE
+      WHEN ${group} = 'SPC' THEN left(${name}, length(${name}) - 1)
+      else ${name}
+      END;;
+  }
 
   measure: count {
     type: count
