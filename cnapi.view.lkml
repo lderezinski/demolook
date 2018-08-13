@@ -473,6 +473,7 @@ sql:  ${TABLE}.ram_g ;;
   WHEN ${sku_number} = '600-0035-001' THEN 'Jirisan-C (24)'
   WHEN ${sku_number} = '600-0036-001' THEN 'Mantis Shrimp Mk.III.5 (12TB)'
   WHEN ${sku_number} = 'SKU=NotProvided;ModelName=Joyent-Compute-Platform-3302' THEN 'Hallasan-C'
+  WHEN ${sku_number} = '085915D9' THEN 'Hallasan-A r2'
                 ELSE ${sku_number}
               END
             END;;
