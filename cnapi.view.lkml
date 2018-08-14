@@ -111,6 +111,8 @@ parameter: cpu {
       date,
       week,
       month,
+      day_of_month,
+      month_num,
       quarter,
       year
     ]
