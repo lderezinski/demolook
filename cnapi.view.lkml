@@ -515,7 +515,7 @@ sql:  ${TABLE}.ram_g ;;
   }
   measure: disk_pool_total_t {
     type:  sum
-    sql:  ${disk_pool} / 1024 / 1024 ;;
+    sql:  coalesce(${disk_pool}, 0) / 1024 / 1024 ;;
     value_format_name: decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name,cn_model]
   }
