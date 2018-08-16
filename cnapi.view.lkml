@@ -132,7 +132,12 @@ parameter: cpu {
     type: number
     sql: coalesce(${TABLE}."disk pool size G",0) ;;
   }
-
+  dimension: disk_pool_t {
+    type:  number
+    sql:  ${disk_pool} / 1024 / 1024 ;;
+    value_format_name: decimal_2
+    drill_fields: [dc,cn_name,ram_sellable,product_name,cn_model]
+  }
   dimension: ram_free {
     type: number
     sql: coalesce(${TABLE}."Free",0) ;;
@@ -474,12 +479,16 @@ sql:  ${TABLE}.ram_g ;;
   WHEN ${sku_number} = '600-0034-001' THEN 'Jirisan-C (12)'
   WHEN ${sku_number} = '600-0035-001' THEN 'Jirisan-C (24)'
   WHEN ${sku_number} = '600-0036-001' THEN 'Mantis Shrimp Mk.III.5 (12TB)'
-  WHEN ${sku_number} = 'SKU=NotProvided;ModelName=Joyent-Compute-Platform-3302' THEN 'Hallasan-C'
+  WHEN ${sku_number} = 'SKU=NotProvided;ModelName=Joyent-Compute-Platform-3302' THEN
+    case
+      WHEN ${disk_pool} < 10790592 THEN 'Hallasan-C (8)'
+      ELSE 'Hallasan-C (16)' END
   WHEN ${sku_number} = '085915D9' THEN 'Hallasan-A r2'
                 ELSE ${sku_number}
               END
             END;;
   }
+
 
   measure: count {
     type: count
