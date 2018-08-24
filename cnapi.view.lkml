@@ -327,6 +327,10 @@ parameter: cpu {
     type:  yesno
     sql: ${TABLE}.traits ->> 'triton' is not null ;;
   }
+  dimension: triton_manta_node {
+    type:  yesno
+    sql: ${TABLE}.traits ->> 'triton' = 'manta' ;;
+  }
   dimension: internal_node {
     type: yesno
     sql: ${TABLE}.traits ->> 'internal' is not null ;;
