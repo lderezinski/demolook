@@ -197,7 +197,7 @@ explore:vmapi {
   }
   join: cnapi {
     view_label: "cnapi"
-    sql_on: ${cnapi.uuid} = ${vmapi.server_uuid} ;;
+    sql_on: ${cnapi.uuid} = ${vmapi.server_uuid} and ${cnapi.date_date} = ${vmapi.date_date} ;;
     type: left_outer
     relationship: many_to_one
   }
