@@ -186,7 +186,7 @@ explore:vmapi {
   join: ufds {
     view_label: "ufds"
     sql_on: ${ufds.uuid}=${vmapi.owner_uuid} ;;
-    type: left_outer
+    type: full_outer
     relationship: many_to_one
   }
   join: images {
@@ -198,7 +198,7 @@ explore:vmapi {
   join: cnapi {
     view_label: "cnapi"
     sql_on: ${cnapi.uuid} = ${vmapi.server_uuid} and ${cnapi.date_date} = ${vmapi.date_date} ;;
-    type: left_outer
+    type: full_outer
     relationship: many_to_one
   }
 }

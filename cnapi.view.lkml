@@ -151,7 +151,7 @@ parameter: cpu {
     type: string
     sql:  CASE
             WHEN ${traits} LIKE '%headnode%' THEN 'Headnode'
-            WHEN ${cn_name} = 'headnode' THEN 'Headnode'
+            WHEN upper(${cn_name}) = 'HEADNODE' THEN 'Headnode'
             ELSE
               CASE
                 WHEN ${traits} LIKE '%manta%'  THEN 'Manta'
@@ -371,7 +371,7 @@ parameter: cpu {
   dimension: isHeadnode {
     description: "Is this CN a headnode"
     type:  yesno
-    sql:  ${cn_name} = 'headnode' OR ${cn_name} = 'HEADNODE' OR   ${TABLE}.traits ->> 'triton' = 'headnode' ;;
+    sql:  upper(${cn_name}) = 'HEADNODE' OR   upper(${TABLE}.traits ->> 'triton') = 'HEADNODE' ;;
   }
   dimension: general_pool {
     description: "All CNs for public use sans ssd"
@@ -463,8 +463,7 @@ sql:  ${TABLE}.ram_g ;;
     type: string
     sql:  CASE
             WHEN ${traits} LIKE '%headnode%' THEN 'Headnode'
-            WHEN ${cn_name} = 'headnode' THEN 'Headnode'
-            WHEN ${cn_name} = 'HEADNODE' THEN 'Headnode'
+            WHEN upper(${cn_name}) = 'HEADNODE' THEN 'Headnode'
             ELSE
               CASE
   WHEN ${sku_number} = '600-0023-001'  THEN 'Hallasan-A'
