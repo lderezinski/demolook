@@ -464,8 +464,7 @@ sql:  ${TABLE}.ram_g ;;
     sql:  CASE
             WHEN ${traits} LIKE '%headnode%' THEN 'Headnode'
             WHEN upper(${cn_name}) = 'HEADNODE' THEN 'Headnode'
-            ELSE
-              CASE
+
   WHEN ${sku_number} = '600-0023-001'  THEN 'Hallasan-A'
   WHEN ${sku_number} = 'SKU=NotProvided;ModelName=Joyent-Compute-Platform-3301' THEN 'Hallasan-A'
   WHEN ${sku_number} = '600-0024-001' THEN 'Hallasan-C (8)'
@@ -488,7 +487,7 @@ sql:  ${TABLE}.ram_g ;;
       ELSE 'Hallasan-C (16)' END
   WHEN ${sku_number} = '085915D9' THEN 'Hallasan-A r2'
                 ELSE ${sku_number}
-              END
+
             END;;
   }
 
