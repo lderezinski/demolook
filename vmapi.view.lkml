@@ -173,5 +173,6 @@ view: vmapi {
     type: sum
     sql: ${ram}/1024.0 ;;
     value_format_name: decimal_2
+    drill_fields: [ufds.display_name,alias,state,ram_g,cnapi.cn_name,datacenter,create_timestamp_date]
   }
 }
