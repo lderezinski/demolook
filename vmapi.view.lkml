@@ -171,6 +171,7 @@ view: vmapi {
   }
   measure: ram_g {
     type: sum
-    sql: ${ram}/1024 ;;
+    sql: ${ram}/1024.0 ;;
+    value_format_name: decimal_2
   }
 }

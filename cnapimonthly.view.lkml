@@ -258,43 +258,43 @@ view: cnapimonthly {
   }
   measure: ram_total_t {
     type: sum
-    sql:  ${ram_sellable}/1024/1024 ;;
+    sql:  ${ram_sellable}/1024.0/1024.0 ;;
     value_format_name: decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure: ram_free_total_t {
     type:  sum
-    sql: ${ram_free}/1024/1024 ;;
+    sql: ${ram_free}/1024.0/1024.0 ;;
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure: ram_total_g {
     type: sum
-    sql:  ${ram_sellable}/1024 ;;
+    sql:  ${ram_sellable}/1024.0 ;;
     value_format_name: decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure: ram_free_total_g {
     type:  sum
-    sql: ${ram_free}/1024 ;;
+    sql: ${ram_free}/1024.0 ;;
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure: disk_pool_total_t {
     type:  sum
-    sql:  ${disk_pool}/1024/1024 ;;
+    sql:  ${disk_pool}/1024.0/1024.0 ;;
     value_format_name: decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name,cn_model]
   }
   measure: disk_unprovisioned_total_t {
     type:  sum
-    sql:  ${disk_unprovisioned}/1024/1024 ;;
+    sql:  ${disk_unprovisioned}/1024.0/1024.0 ;;
     value_format_name: decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name,cn_model]
   }
   measure: ram_sold_total_t {
     type: sum
-    sql: ${ram_sold}/1024/1024 ;;
+    sql: ${ram_sold}/1024.0/1024.0 ;;
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }

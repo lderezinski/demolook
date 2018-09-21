@@ -134,7 +134,7 @@ parameter: cpu {
   }
   dimension: disk_pool_t {
     type:  number
-    sql:  ${disk_pool} / 1024 / 1024 ;;
+    sql:  ${disk_pool} / 1024.0 / 1024.0 ;;
     value_format_name: decimal_2
     drill_fields: [dc,cn_name,ram_sellable,product_name,cn_model]
   }
@@ -502,19 +502,19 @@ sql:  ${TABLE}.ram_g ;;
   }
   measure: ram_total_t {
     type: sum
-    sql:  (${memory_total_bytes} - ${ram_overhead})  / 1024 / 1024 / 1024 ;;
+    sql:  (${memory_total_bytes} - ${ram_overhead})  / 1024.0 / 1024.0 / 1024.0 ;;
     value_format_name: decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure: ram_free_total_t {
     type:  sum
-    sql: ${unreserved_ram} / 1024  ;;
+    sql: ${unreserved_ram} / 1024.0  ;;
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure: ram_total_g {
     type: sum
-    sql:  (${memory_total_bytes} - ${ram_overhead}) / 1024 / 1024 ;;
+    sql:  (${memory_total_bytes} - ${ram_overhead}) / 1024.0 / 1024.0 ;;
     value_format_name: decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
@@ -526,19 +526,19 @@ sql:  ${TABLE}.ram_g ;;
   }
   measure: disk_pool_total_t {
     type:  sum
-    sql:  ${disk_pool} / 1024 / 1024 ;;
+    sql:  ${disk_pool} / 1024.0 / 1024.0 ;;
     value_format_name: decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name,cn_model]
   }
   measure: disk_unprovisioned_total_t {
     type:  sum
-    sql:  ${disk_unprovisioned} / 1024 / 1024 ;;
+    sql:  ${disk_unprovisioned} / 1024.0 / 1024.0 ;;
     value_format_name: decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name,cn_model]
   }
   measure: ram_sold_total_t {
     type: sum
-    sql: (${memory_total_bytes} - ${ram_overhead}) / 1024 / 1024 / 1024 - ${unreserved_ram}/1024;;
+    sql: (${memory_total_bytes} - ${ram_overhead}) / 1024.0 / 1024.0 / 1024.0 - ${unreserved_ram}/1024.0;;
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
@@ -559,20 +559,20 @@ sql:  ${TABLE}.ram_g ;;
 
   measure: unreserved_disk_g {
     type:  sum
-    sql: ${unreserved_disk} / 1024 ;;
+    sql: ${unreserved_disk} / 1024.0 ;;
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure: unreserved_ram_t {
     type:  sum
-    sql: ${unreserved_ram} / 1024  ;;
+    sql: ${unreserved_ram} / 1024.0  ;;
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
 
   measure: unreserved_disk_t {
     type:  sum
-    sql: ${unreserved_disk} / 1024 / 1024 ;;
+    sql: ${unreserved_disk} / 1024.0 / 1024.0 ;;
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }

@@ -60,7 +60,8 @@ view: papi {
   }
   dimension: quota_g {
     type: number
-    sql: ${TABLE}.quota/1024/1024 ;;
+    sql: ${TABLE}.quota/1024.0/1024.0 ;;
+    value_format_name: decimal_2
   }
   dimension: uuid {
     type: string
@@ -93,7 +94,8 @@ view: papi {
   }
   measure: total_ram_g {
     type:  sum
-    sql:   ${max_physical_memory}/1024;;
+    sql:   ${max_physical_memory}/1024.0;;
+    value_format_name: decimal_2
   }
   measure: total_disk_g {
   type: sum
@@ -101,11 +103,13 @@ view: papi {
   }
   measure: total_ram_t {
     type:  sum
-    sql:   ${max_physical_memory}/1024/1024;;
+    sql:   ${max_physical_memory}/1024.0/1024.0;;
+    value_format_name: decimal_2
   }
   measure: total_disk_t {
     type: sum
-    sql:  ${quota_g}/1024;;
+    sql:  ${quota_g}/1024.0;;
+    value_format_name: decimal_2
   }
 
 }
