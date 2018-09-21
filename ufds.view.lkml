@@ -74,7 +74,11 @@ dimension: grouped_name {
             WHEN ${login} = 'griffin_dev' THEN 'SCloud'
             WHEN ${login} = 'griffin_srpol' THEN 'SCloud'
             WHEN ${login} = 'griffin_stage' THEN 'SCloud'
+
+            WHEN ${login} = 'nereid' THEN 'ceres'
+
             ELSE ${login} END ;;
+
             drill_fields: [uuid]
 }
   dimension: display_name {
