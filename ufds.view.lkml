@@ -77,6 +77,15 @@ dimension: grouped_name {
 
             WHEN ${login} = 'nereid' THEN 'ceres'
 
+            WHEN ${login} = 'spcportalstaging' then 'SPCPortal'
+            WHEN ${login} = 'spcportalprod' then 'SPCPortal'
+            WHEN ${login} = 'spcportaladmin' then 'SPCPortal'
+
+            WHEN ${login} = 'ryan.kitchen' then 'Joyent QA'
+            WHEN ${login} = 'angela.fong' then 'Joyent QA'
+            WHEN ${login} = 'khangngu' then 'Joyent QA'
+
+
             ELSE ${login} END ;;
 
             drill_fields: [uuid]
