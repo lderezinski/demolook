@@ -80,11 +80,21 @@ dimension: grouped_name {
             WHEN ${login} = 'spcportalstaging' then 'SPCPortal'
             WHEN ${login} = 'spcportalprod' then 'SPCPortal'
             WHEN ${login} = 'spcportaladmin' then 'SPCPortal'
+            WHEN ${login} = 'webconsoledev' then 'SPCPortal'
 
             WHEN ${login} = 'ryan.kitchen' then 'Joyent QA'
             WHEN ${login} = 'angela.fong' then 'Joyent QA'
             WHEN ${login} = 'khangngu' then 'Joyent QA'
 
+            WHEN ${login} = 'kiener' then 'Joyent QA'
+            WHEN ${login} = 'wcp' then 'Joyent QA'
+            WHEN ${login} = 'cody.mello' then 'Joyent QA'
+            WHEN ${login} = 'akp140030' then 'Joyent QA'
+            WHEN ${login} = 'joyent_acceptance_tester' then 'Joyent QA'
+
+
+            WHEN ${login} = 'bbennett' then 'joyent_ops'
+            WHEN ${login} = 'joyent_cloudapi_health' then 'joyent_ops'
 
             ELSE ${login} END ;;
 
