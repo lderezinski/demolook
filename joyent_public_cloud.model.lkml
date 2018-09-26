@@ -174,13 +174,13 @@ explore:vmapi {
   join: datacenters {
     view_label: "DC"
     sql_on: ${datacenters.name} = ${vmapi.datacenter} ;;
-    type: left_outer
+    type: full_outer
     relationship: many_to_one
   }
   join: papi {
     view_label: "Packages"
     sql_on: ${vmapi.billing_id} = ${papi.uuid} ;;
-    type:  full_outer
+    type:  left_outer
     relationship: many_to_one
   }
   join: ufds {
