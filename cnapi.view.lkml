@@ -5,7 +5,7 @@ view: cnapi {
   dimension: compound_primary_key {
     primary_key: yes
     hidden: yes
-    sql: CONCAT(${TABLE}.date.date, '  ', ${TABLE}.cn_name) ;;
+    sql: ${TABLE}.date.date || ${TABLE}.cn_name) || ${TABLE}.dc ;;
   }
 
   sql_table_name: smartdc.cnapi ;;

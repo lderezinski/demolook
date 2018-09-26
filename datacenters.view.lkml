@@ -5,7 +5,11 @@ view: datacenters {
     type: string
     sql: ${TABLE}."group" ;;
   }
-
+  dimension: compound_primary_key {
+    primary_key: yes
+    hidden: yes
+    sql: CONCAT(${TABLE}.group, '  ', ${TABLE}.name) ;;
+  }
   dimension: name {
     type: string
     sql: ${TABLE}.name ;;

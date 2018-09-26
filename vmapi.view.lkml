@@ -11,6 +11,11 @@ view: vmapi {
     sql: ${TABLE}.billing_id ;;
   }
 
+  dimension: compound_primary_key {
+    primary_key: yes
+    hidden: yes
+    sql: ${TABLE}.uuid ||  '  ' || ${TABLE}.datacenter || ${TABLE}.owner_uuid || ${TABLE}.${datacenter}  ;;
+  }
   dimension: brand {
     type: string
     sql: ${TABLE}.brand ;;

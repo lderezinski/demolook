@@ -72,6 +72,7 @@ explore: bpr {
     sql_on: ${zuora_customers.accountnumber} = ${bpr.account_number} ;;
     type: left_outer
     relationship: many_to_one
+
   }
   join: papi {
     view_label: "Packages"
@@ -171,6 +172,12 @@ explore:vmapi {
   description: "VMApi"
   group_label: "Joyent Cloud"
   label: "vmapi"
+  join: ufds {
+    view_label: "ufds"
+    sql_on: ${ufds.uuid}=${vmapi.owner_uuid} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
   join: datacenters {
     view_label: "DC"
     sql_on: ${datacenters.name} = ${vmapi.datacenter} ;;
@@ -183,16 +190,11 @@ explore:vmapi {
     type:  left_outer
     relationship: many_to_one
   }
-  join: ufds {
-    view_label: "ufds"
-    sql_on: ${ufds.uuid}=${vmapi.owner_uuid} ;;
-    type: full_outer
-    relationship: many_to_one
-  }
+
   join: images {
     view_label: "images"
     sql_on: ${images.uuid} = ${vmapi.image_uuid} ;;
-    type: full_outer
+    type: left_outer
     relationship: many_to_one
   }
   join: cnapi {

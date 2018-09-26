@@ -18,7 +18,11 @@ view: papi {
     type: string
     sql: ${TABLE}.common_name ;;
   }
-
+  dimension: compound_primary_key {
+    primary_key: yes
+    hidden: yes
+    sql: ${TABLE}.uuid|| ${TABLE}.name || ${TABLE}.version || ${TABLE}.dcgroup;;
+  }
   dimension: cpu_cap {
     type: number
     sql: ${TABLE}.cpu_cap ;;

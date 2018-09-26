@@ -5,7 +5,11 @@ view: images {
     type: string
     sql: ${TABLE}.name ;;
   }
-
+  dimension: compound_primary_key {
+    primary_key: yes
+    hidden: yes
+    sql:${TABLE}.uuid || ${TABLE}.version || ${TABLE}.owner
+  }
   dimension: dcgroup {
     type: string
     sql: ${TABLE}.dcgroup ;;

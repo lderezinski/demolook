@@ -53,6 +53,7 @@ view: ufds {
   dimension: uuid {
     type: string
     sql: ${TABLE}.uuid ;;
+    primary_key: yes
   }
 
 dimension: grouped_name {
