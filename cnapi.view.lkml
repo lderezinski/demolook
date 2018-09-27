@@ -619,5 +619,9 @@ measure: count_manta_meta {
     type:  sum
     sql: ${ram_slots_available};;
   }
+  measure: count_distinct {
+    type: count_distinct
+    sql: ${uuid} ;;
+  }
 
 }
