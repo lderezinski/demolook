@@ -69,6 +69,7 @@ dimension: grouped_name {
             WHEN ${login} = 'samsung.ops' THEN 'SCloud'
             WHEN ${login} = 'scloud.dev' THEN 'SCloud'
             WHEN ${login} = 'samsung.stg' THEN 'SCloud'
+            WHEN ${login} = 'scloud.stg' THEN 'SCloud'
 
             WHEN ${login} = 'griffin_srcb' THEN 'Griffin'
             WHEN ${login} = 'griffin' THEN 'SCloud'
