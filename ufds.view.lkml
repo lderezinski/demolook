@@ -105,6 +105,11 @@ dimension: grouped_name {
     type: string
     sql: CONCAT( ${company}, '(',${login},')') ;;
   }
+  measure: count_distinct_groups {
+    type: count_distinct
+    sql: ${grouped_name} ;;
+    drill_fields: [givenname]
+  }
   measure: count_distinct {
     type: count_distinct
     sql: ${uuid} ;;
