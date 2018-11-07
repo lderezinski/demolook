@@ -101,7 +101,11 @@ dimension: grouped_name {
             WHEN ${login} = 'cody.mello' then 'Joyent QA'
             WHEN ${login} = 'akp140030' then 'Joyent QA'
             WHEN ${login} = 'joyent_acceptance_tester' then 'Joyent QA'
+            WHEN ${login} = 'maxb' then 'Joyent QA'
 
+            WHEN ${login} = 'joyentsup' then 'Joyent Support'
+
+            WHEN ${login} = 'admin' then 'Joyent Ops'
             WHEN ${login} = 'joyent_ops' then 'Joyent Ops'
             WHEN ${login} = 'bbennett' then 'Joyent Ops'
             WHEN ${login} = 'joyent_cloudapi_health' then 'Joyent Ops'
