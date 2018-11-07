@@ -58,31 +58,39 @@ view: ufds {
 
 dimension: grouped_name {
   type: string
-  sql: CASE WHEN ${login} = 'spassdev' THEN 'Pass'
-            WHEN ${login} = 'spassprd' THEN 'Pass'
-            WHEN ${login} = 'spasspre' THEN 'Pass'
-            WHEN ${login} = 'spassstg' THEN 'Pass'
+  sql: CASE WHEN ${login} = 'spassdev' THEN 'Samsung Pass'
+            WHEN ${login} = 'spassprd' THEN 'Samsung Pass'
+            WHEN ${login} = 'spasspre' THEN 'Samsung Pass'
+            WHEN ${login} = 'spassstg' THEN 'Samsung Pass'
+            WHEN ${login} = 'opsvctraining' THEN 'Samsung Pass'
 
-            WHEN ${login} = 'scloud.prd' THEN 'SCloud'
-            WHEN ${login} = 'cloudpi' THEN 'SCloud'
-            WHEN ${login} = 'nereid' THEN 'SCloud'
-            WHEN ${login} = 'samsung.ops' THEN 'SCloud'
-            WHEN ${login} = 'scloud.dev' THEN 'SCloud'
-            WHEN ${login} = 'samsung.stg' THEN 'SCloud'
-            WHEN ${login} = 'scloud.stg' THEN 'SCloud'
+            WHEN ${login} = 'samsungmax' THEN 'Samsung Max'
 
-            WHEN ${login} = 'griffin_srcb' THEN 'Griffin'
-            WHEN ${login} = 'griffin' THEN 'SCloud'
-            WHEN ${login} = 'griffin_dev' THEN 'SCloud'
-            WHEN ${login} = 'griffin_srpol' THEN 'SCloud'
-            WHEN ${login} = 'griffin_stage' THEN 'SCloud'
+            WHEN ${login} = 'scloud.dev' THEN 'Samsung Cloud'
+            WHEN ${login} = 'scloud.stg' THEN 'Samsung Cloud'
+            WHEN ${login} = 'scloud.prd' THEN 'Samsung Cloud'
+            WHEN ${login} = 'samsung.ops' THEN 'Samsung Cloud'
 
-            WHEN ${login} = 'nereid' THEN 'ceres'
 
-            WHEN ${login} = 'spcportalstaging' then 'SPCPortal'
-            WHEN ${login} = 'spcportalprod' then 'SPCPortal'
-            WHEN ${login} = 'spcportaladmin' then 'SPCPortal'
-            WHEN ${login} = 'webconsoledev' then 'SPCPortal'
+            WHEN ${login} = 'neptune' THEN 'PI Team'
+            WHEN ${login} = 'mediator' THEN 'PI Team'
+            WHEN ${login} = 'ceres' THEN 'PI Team'
+            WHEN ${login} = 'nereid' THEN 'PI Team'
+            WHEN ${login} = 'proteus' THEN 'PI Team'
+            WHEN ${login} = 'griffin_srcb' THEN 'PI Team'
+            WHEN ${login} = 'griffin' THEN 'PI Team'
+            WHEN ${login} = 'griffin_dev' THEN 'PI Team'
+            WHEN ${login} = 'griffin_srpol' THEN 'PI Team'
+            WHEN ${login} = 'griffin_stage' THEN 'PI Team'
+            WHEN ${login} = 'hermes' THEN 'PI Team'
+            WHEN ${login} = 'cloudpi' THEN 'PI Team'
+            WHEN ${login} = 'ucci' THEN 'PI Team'
+            WHEN ${login} = 'cds' THEN 'PI Team'
+
+            WHEN ${login} = 'spcportalstaging' then 'SPC Portal'
+            WHEN ${login} = 'spcportalprod' then 'SPC Portal'
+            WHEN ${login} = 'spcportaladmin' then 'SPC Portal'
+            WHEN ${login} = 'webconsoledev' then 'SPC Portal'
 
             WHEN ${login} = 'ryan.kitchen' then 'Joyent QA'
             WHEN ${login} = 'angela.fong' then 'Joyent QA'
@@ -94,9 +102,9 @@ dimension: grouped_name {
             WHEN ${login} = 'akp140030' then 'Joyent QA'
             WHEN ${login} = 'joyent_acceptance_tester' then 'Joyent QA'
 
-
-            WHEN ${login} = 'bbennett' then 'joyent_ops'
-            WHEN ${login} = 'joyent_cloudapi_health' then 'joyent_ops'
+            WHEN ${login} = 'joyent_ops' then 'Joyent Ops'
+            WHEN ${login} = 'bbennett' then 'Joyent Ops'
+            WHEN ${login} = 'joyent_cloudapi_health' then 'Joyent Ops'
 
             ELSE ${login} END ;;
 
