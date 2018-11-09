@@ -623,6 +623,7 @@ measure: count_manta_meta {
   measure: count_distinct {
     type: count_distinct
     sql: ${uuid} ;;
+    drill_fields: [cn_name]
   }
 
 }
