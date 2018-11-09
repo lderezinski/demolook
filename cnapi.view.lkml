@@ -550,6 +550,7 @@ sql:  ${TABLE}.ram_g ;;
   measure: total_num_cns {
     type: count_distinct
     sql: ${cn_name} ;;
+    drill_fields: [cn_name]
   }
   measure: unreserved_ram_g {
     type:  sum
