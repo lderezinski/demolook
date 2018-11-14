@@ -23,12 +23,12 @@ view: manta_zfs {
 
   dimension: zfs_available_bytes {
     type: number
-    sql: ${TABLE}.zfs_available ;;
+    sql: ${TABLE}.zfs_available/2 ;;
   }
 
   dimension: zfs_used_bytes {
     type: number
-    sql: ${TABLE}.zfs_used ;;
+    sql: ${TABLE}.zfs_used/2 ;;
   }
   dimension: zfs_available_pib {
     type: number
