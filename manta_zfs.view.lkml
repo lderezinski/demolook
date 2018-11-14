@@ -30,17 +30,22 @@ view: manta_zfs {
     type: number
     sql: ${TABLE}.zfs_used ;;
   }
-  measure: zfs_available_pib {
+  dimension: zfs_available_pib {
     type: number
     sql: ${zfs_available_bytes}/1125899906842624.0 ;;
   }
 
-  measure: zfs_used_pib {
+  dimension: zfs_used_pib {
     type: number
     sql: ${zfs_used_bytes}/1125899906842624.0 ;;
   }
   measure: count {
     type: count
     drill_fields: []
+  }
+  measure: total_pib {
+    type:  sum
+    sql: ${zfs_used_pib} ;;
+    drill_fields: [date_date,region,zfs_used_pib,zfs_available_pib]
   }
 }
