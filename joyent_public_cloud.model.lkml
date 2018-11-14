@@ -18,6 +18,11 @@ explore: status_cnapi {
 }
 explore: customer_facts {
 }
+explore: manta_zfs {
+  description: "ZFS capacity"
+  group_label: "Joyent Cloud"
+  label: "manta capacity"
+}
 explore: storageforecast {
   description: "SDC Storage forecasting"
   group_label: "Joyent Cloud"
