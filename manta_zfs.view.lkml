@@ -43,6 +43,11 @@ view: manta_zfs {
     type: count
     drill_fields: []
   }
+  measure: total_pib {
+    type:  sum
+    sql: ${zfs_used_pib} + ${zfs_available_pib} ;;
+    drill_fields: [date_date,region,zfs_used_pib,zfs_available_pib]
+  }
   measure: total_used_pib {
     type:  sum
     sql: ${zfs_used_pib} ;;
