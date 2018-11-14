@@ -30,14 +30,14 @@ view: manta_zfs {
     type: number
     sql: ${TABLE}.zfs_used ;;
   }
-  dimension: zfs_available_pib {
+  measure: zfs_available_pib {
     type: number
-    sql: ${zfs_available_bytes}/1125899906842624 ;;
+    sql: ${zfs_available_bytes}/1125899906842624.0 ;;
   }
 
-  dimension: zfs_used_pib {
+  measure: zfs_used_pib {
     type: number
-    sql: ${zfs_used_bytes}/1125899906842624 ;;
+    sql: ${zfs_used_bytes}/1125899906842624.0 ;;
   }
   measure: count {
     type: count
