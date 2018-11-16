@@ -95,6 +95,7 @@ view: storagebuild {
   measure: sum_manta_cap_pib {
     type: sum
     sql: ${manta_capacity_pib} ;;
+    value_format_name: decimal_2
 
   }
   measure: burn_rate_days {
