@@ -72,9 +72,9 @@ view: storagebuild {
   dimension: status_label {
     type: number
     sql: case when ${status} = 'Delivered' then 'Delivered'
-              when ${status} = 'pre-pumi' then 'In progress'
-              when ${status} = 'ordering' then 'In progress'
-              when ${status} = 'Building' then 'In progress'
+              when ${status} = 'pre-pumi'  then 'Pre-Pumi'
+              when ${status} = 'ordering'  then 'In progress'
+              when ${status} = 'Building'  then 'In progress'
               else null
           end;;
   }
