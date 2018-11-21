@@ -468,10 +468,10 @@ sql:  ${TABLE}.ram_g ;;
 
   WHEN ${sku_number} = '600-0023-001'  THEN 'Hallasan-A'
   WHEN ${sku_number} = 'SKU=NotProvided;ModelName=Joyent-Compute-Platform-3301' THEN 'Hallasan-A'
-  WHEN ${sku_number} = '600-0024-001' THEN 'Hallasan-C (8)'
+  WHEN ${sku_number} = '600-0024-001' THEN 'Hallasan-C (08)'
   WHEN ${sku_number} = '600-0026-001' THEN 'Hallasan-C (16)'
-  WHEN ${sku_number} = '600-0025-001' THEN 'Mantis Shrimp Mk.III (8TB)'
-  WHEN ${sku_number} = '600-0025-01 rev 50' THEN 'Mantis Shrimp Mk.III (8TB)'
+  WHEN ${sku_number} = '600-0025-001' THEN 'Mantis Shrimp Mk.III (08TB)'
+  WHEN ${sku_number} = '600-0025-01 rev 50' THEN 'Mantis Shrimp Mk.III (08TB)'
   WHEN ${sku_number} = '600-0025-002' THEN 'Mantis Shrimp Mk.III (10TB)'
   WHEN ${sku_number} = '600-0025-01 rev 51' THEN 'Mantis Shrimp Mk.III (10TB)'
   WHEN ${sku_number} = '600-0028-001' THEN 'Hallasan-B'
@@ -484,7 +484,7 @@ sql:  ${TABLE}.ram_g ;;
   WHEN ${sku_number} = '600-0036-001' THEN 'Mantis Shrimp Mk.III.5 (12TB)'
   WHEN ${sku_number} = 'SKU=NotProvided;ModelName=Joyent-Compute-Platform-3302' THEN
     case
-      WHEN ${disk_pool} < 10790592 THEN 'Hallasan-C (8)'
+      WHEN ${disk_pool} < 10790592 THEN 'Hallasan-C (08)'
       ELSE 'Hallasan-C (16)' END
   WHEN ${sku_number} = '085915D9' THEN 'Hallasan-A r2'
                 ELSE ${sku_number}
