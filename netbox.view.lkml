@@ -36,6 +36,24 @@ view: netbox {
     sql: ${TABLE}.site ;;
   }
 
+  dimension: region{
+    type: string
+    sql: CASE
+            WHEN ${site} = 'us-east-1a' THEN 'us-east-1'
+            WHEN ${site} = 'us-east-1b' THEN 'us-east-1'
+            WHEN ${site} = 'us-east-1c' THEN 'us-east-1'
+            WHEN ${site} = 'eu-central-1a' THEN 'eu-central-1'
+            WHEN ${site} = 'eu-central-1b' THEN 'eu-central-1'
+            WHEN ${site} = 'eu-central-1c' THEN 'eu-central-1'
+            WHEN ${site} = 'ap-northeast-1a' THEN 'ap-northeast-1'
+            WHEN ${site} = 'ap-northeast-1b' THEN 'ap-northeast-1'
+            WHEN ${site} = 'ap-northeast-1c' THEN 'ap-northeast-1'
+            WHEN ${site} = 'ap-southeast-1a' THEN 'ap-southeast-1'
+            WHEN ${site} = 'ap-southeast-1b' THEN 'ap-southeast-1'
+            WHEN ${site} = 'ap-southeast-1c' THEN 'ap-southeast-1'
+            ELSE ${site}
+            END;;
+  }
   dimension: tags {
     type: string
     sql: ${TABLE}.tags ;;
