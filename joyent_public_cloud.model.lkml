@@ -68,6 +68,11 @@ explore: inventory {
   }
 }
 
+explore: netbox {
+  description: "Hardware inventory"
+  group_label: "Joyent Cloud"
+  label: "servers"
+}
 explore: bpr {
   description: "Billing Preview"
   group_label: "Joyent Cloud"
