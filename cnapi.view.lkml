@@ -5,7 +5,7 @@ view: cnapi {
   dimension: compound_primary_key {
     primary_key: yes
     hidden: yes
-    sql: ${TABLE}.date.date || ${TABLE}.cn_name) || ${TABLE}.dc ;;
+    sql: ${TABLE}.date.date  || ${TABLE}."DCENTER" || ${TABLE}."HOSTNAME";;
   }
 
   sql_table_name: smartdc.cnapi ;;
@@ -123,6 +123,7 @@ parameter: cpu {
     type: yesno
     sql: (date_trunc('MONTH', ${date_date}) + INTERVAL '1 MONTH - 1 day')::date = ${date_date};;
   }
+
   dimension: dc {
     type: string
     sql: ${TABLE}."DCENTER" ;;

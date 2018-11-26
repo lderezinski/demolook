@@ -68,16 +68,6 @@ explore: inventory {
   }
 }
 
-explore: netbox {
-  description: "SPC servers"
-  group_label: "Joyent Cloud"
-  label: "servers"
-  join: cnapi {
-    from: netbox
-    sql_on: ${cnapi.name} = ${netbox.name} and ${cnapi.date_date} = ${netbox.date_date} ;;
-    relationship: one_to_one
-  }
-}
 
 explore: bpr {
   description: "Billing Preview"
@@ -267,5 +257,25 @@ explore: papi {
   group_label: "Joyent Cloud"
   label: "Packages"
 }
+
+
+explore: netbox {
+  description: "SPC servers"
+  group_label: "Joyent Cloud"
+  label: "servers"
+  join: cnapi {
+    type: full_outer
+    sql_on: ${cnapi.cn_name} = ${netbox.name} and ${cnapi.date_date} = ${netbox.date_date} and ${cnapi.dc} = ${netbox.site} ;;
+    relationship: one_to_one
+  }
+  join: papi {
+    view_label: "Packages"
+    sql_on: ${cnapi.setup} = ${papi.active} ;;
+    type:  full_outer
+    relationship: many_to_one
+  }
+
+}
+
 
 label: "Joyent Cloud"

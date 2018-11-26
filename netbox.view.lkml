@@ -3,7 +3,7 @@ view: netbox {
   dimension: compound_primary_key {
     primary_key: yes
     hidden: yes
-    sql: ${TABLE}.date.date || ${TABLE}.name) || ${TABLE}.site ;;
+    sql: ${TABLE}.name || ${TABLE}.site ||  ${TABLE}.date.date;;
   }
   dimension: device_type {
     type: string
