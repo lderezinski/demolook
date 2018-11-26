@@ -69,10 +69,16 @@ explore: inventory {
 }
 
 explore: netbox {
-  description: "Hardware inventory"
+  description: "SPC servers"
   group_label: "Joyent Cloud"
   label: "servers"
+  join: cnapi {
+    from: netbox
+    sql_on: ${cnapi.name} = ${netbox.name} and ${cnapi.date_date} = ${netbox.date_date} ;;
+    relationship: one_to_one
+  }
 }
+
 explore: bpr {
   description: "Billing Preview"
   group_label: "Joyent Cloud"

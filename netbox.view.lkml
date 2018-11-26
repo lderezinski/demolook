@@ -1,6 +1,10 @@
 view: netbox {
   sql_table_name: capacity.netbox ;;
-
+  dimension: compound_primary_key {
+    primary_key: yes
+    hidden: yes
+    sql: ${TABLE}.date.date || ${TABLE}.name) || ${TABLE}.site ;;
+  }
   dimension: device_type {
     type: string
     sql: ${TABLE}.device_type ;;
@@ -35,7 +39,21 @@ view: netbox {
     type: string
     sql: ${TABLE}.site ;;
   }
-
+  dimension_group: date {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      day_of_month,
+      month_num,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.date ;;
+  }
   dimension: region{
     type: string
     sql: CASE
