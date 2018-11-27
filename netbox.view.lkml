@@ -81,7 +81,14 @@ view: netbox {
     type: string
     sql: ${TABLE}.tenant ;;
   }
-
+  dimension: manufacture {
+    type: string
+    sql: CASE
+           WHEN length(${serial}) = 7 THEN 'DELL'
+           WHEN length(${serial}) = 15 THEN 'SMCI'
+           ELSE 'Unknown'
+          END;;
+  }
   measure: count {
     type: count
     drill_fields: [name]
