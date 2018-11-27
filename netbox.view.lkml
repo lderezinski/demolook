@@ -74,7 +74,7 @@ view: netbox {
   }
   dimension: tags {
     type: string
-    sql: ${TABLE}.tags ;;
+    sql: ${TABLE}.tags::TEXT ;;
   }
 
   dimension: tenant {
