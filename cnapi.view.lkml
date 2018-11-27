@@ -290,7 +290,14 @@ parameter: cpu {
     type: string
     sql: ${TABLE}."Serial Number" ;;
   }
-
+  dimension: manufacture {
+    type: string
+    sql: CASE
+           WHEN length(${serial_number}) = 7 THEN 'DELL'
+           WHEN length(${serial_number}) = 15 THEN 'SMCI'
+           ELSE 'Unknown'
+          END;;
+  }
   dimension: setup {
     type: yesno
     sql: ${TABLE}."Setup" ;;
