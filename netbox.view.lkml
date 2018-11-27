@@ -86,6 +86,7 @@ view: netbox {
     sql: CASE
            WHEN length(${serial}) = 7 THEN 'DELL'
            WHEN length(${serial}) = 15 THEN 'SMCI'
+           WHEN ${device_type}  = 'Super Server-19' THEN 'SMCI'
            ELSE 'Unknown'
           END;;
   }
