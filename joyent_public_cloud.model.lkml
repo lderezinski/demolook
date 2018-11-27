@@ -265,7 +265,7 @@ explore: netbox {
   label: "servers"
   join: cnapi {
     type: full_outer
-    sql_on: ${cnapi.serial_number} = ${netbox.serial} and ${cnapi.date_date} = ${netbox.date_date} ;;
+    sql_on: ${cnapi.cn_name} = ${netbox.name} and ${cnapi.date_date} = ${netbox.date_date} ;;
     relationship: one_to_one
   }
   join: papi {
@@ -274,7 +274,12 @@ explore: netbox {
     type:  full_outer
     relationship: many_to_one
   }
-
+  join: datacenters {
+    view_label: "DC"
+    sql_on: ${datacenters.name} = ${netbox.site} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
 }
 
 
