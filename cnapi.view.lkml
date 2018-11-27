@@ -294,7 +294,7 @@ parameter: cpu {
     type: string
     sql: CASE
            WHEN length(${serial_number}) = 7 THEN 'DELL'
-           WHEN length(${serial_number}) = 15 THEN 'SMCI'
+           WHEN length(${serial_number}) >= 13 and length(${serial_number}) <= 15 THEN 'SMCI'
            ELSE 'Unknown'
           END;;
   }
