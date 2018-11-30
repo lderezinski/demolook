@@ -27,22 +27,27 @@ explore: storageforecast {
   description: "SDC Storage forecasting"
   group_label: "Joyent Cloud"
   label: "Storage Forecast"
-  join: step_storageforecast {
-    from: storageforecast
-    type: left_outer
-    sql_on: ${storageforecast.fcst} = ${step_storageforecast.fcst} and
-            ${storageforecast.region} = ${step_storageforecast.region} and
-            ${storageforecast.half_year} =  ${step_storageforecast.delivery_month}
+  #join: step_storageforecast {
+  #  from: storageforecast
+  #  type: left_outer
+  #  sql_on: ${storageforecast.fcst} = ${step_storageforecast.fcst} and
+  #          ${storageforecast.region} = ${step_storageforecast.region} and
+  #          ${storageforecast.half_year} =  ${step_storageforecast.delivery_month}
 
-    ;;
-    relationship: many_to_one
+#    ;;
+ #   relationship: many_to_one
 
-  }
-  join: storage_forecast_build {
-    type: inner
-    sql_on: ${storageforecast.delivery_raw} = ${storage_forecast_build.build_start_raw}
-    and ${step_storageforecast.region} = ${storage_forecast_build.region};;
-    relationship: many_to_one
+  #}
+  #join: storage_forecast_build {
+  #  type: inner
+  #  sql_on: ${storageforecast.delivery_raw} = ${storage_forecast_build.build_start_raw}
+  #  and ${step_storageforecast.region} = ${storage_forecast_build.region};;
+  #  relationship: many_to_one
+  #}
+  join: manta_zfs {
+    type: full_outer
+    sql_on: ${manta_zfs.region} = ${storageforecast.region} and ${manta_zfs.date_date} = ${storageforecast.delivery_date};;
+    relationship: one_to_many
   }
 }
 

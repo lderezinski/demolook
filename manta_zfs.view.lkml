@@ -65,4 +65,16 @@ view: manta_zfs {
     drill_fields: [date_date,region,zfs_used_pib,zfs_available_pib]
     value_format_name: decimal_2
   }
+  measure: used_or_null_pib {
+    type:  number
+    sql:
+    CASE
+  WHEN ${zfs_used_pib} = 0
+  THEN NULL
+  ELSE ${zfs_used_pib}
+END
+    ;;
+    drill_fields: [date_date,region,zfs_used_pib,zfs_available_pib]
+    value_format_name: decimal_2
+  }
 }
