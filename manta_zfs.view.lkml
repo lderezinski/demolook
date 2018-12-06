@@ -23,7 +23,7 @@ view: manta_zfs {
 
   dimension: zfs_available_bytes {
     type: number
-    sql: ${TABLE}.zfs_available/2 ;;
+    sql: MAXIMUM(${TABLE}.zfs_available/2 - 0.04 *(${TABLE}.zfs_available/2 +${zfs_used_bytes}),0);;
     value_format_name: decimal_2
   }
 
@@ -49,7 +49,7 @@ view: manta_zfs {
   }
   measure: total_pib {
     type:  sum
-    sql: ${zfs_used_pib} + ${zfs_available_pib} ;;
+    sql: ${zfs_used_pib} + ${zfs_available_pib}  ;;
     drill_fields: [date_date,region,zfs_used_pib,zfs_available_pib]
     value_format_name: decimal_2
   }
