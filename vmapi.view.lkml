@@ -180,4 +180,8 @@ view: vmapi {
     value_format_name: decimal_2
     drill_fields: [ufds.display_name,alias,state,ram_g,cnapi.cn_name,datacenter,create_timestamp_date]
   }
+  measure: number_of_unique_customers {
+    type: count_distinct
+    sql: ${owner_uuid} ;;
+  }
 }
