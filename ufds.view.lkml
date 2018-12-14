@@ -104,6 +104,7 @@ dimension: grouped_name {
             WHEN ${login} = 'maxb' then 'Joyent QA'
 
             WHEN ${login} = 'joyentsup' then 'Joyent Support'
+            WHEN ${login} = 'mhood' then 'Joyent Support'
             WHEN ${login} = 'ryanpuckett' then 'Joyent Support'
             WHEN ${login} = 'mohamed.khalfella' then 'Joyent Support'
 
