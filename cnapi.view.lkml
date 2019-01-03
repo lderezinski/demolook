@@ -293,6 +293,7 @@ parameter: cpu {
   dimension: manufacture {
     type: string
     sql: CASE
+           WHEN length(${TABLE}.manufacturer) > 4 THEN ${TABLE}.manufacturer
            WHEN length(${serial_number}) = 7 THEN 'DELL'
            WHEN length(${serial_number}) >= 13 and length(${serial_number}) <= 15 THEN 'SMCI'
            WHEN ${serial_number} = '0123456789' and left(upper(${cn_name}),2) = 'RA' THEN 'SMCI'
