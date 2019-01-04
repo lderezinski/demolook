@@ -288,14 +288,14 @@ explore: netbox {
 }
 explore: sdcdataloaded {
   description: "SmartDC Data loaded"
-  group_label: "SmartDC"
-  label: "Data loaded stats"
+  group_label: "Dataloaded"
+  label: "SmartDC stats"
 }
 
 explore: capdataloaded {
   description: "Capacity Data loaded"
-  group_label: "capacity"
-  label: "Data loaded stats"
+  group_label: "Dataloaded"
+  label: "Capacity stats"
 }
 
 
