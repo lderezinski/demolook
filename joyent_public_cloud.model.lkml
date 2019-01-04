@@ -286,6 +286,17 @@ explore: netbox {
     relationship: many_to_one
   }
 }
+explore: sdcdataloaded {
+  description: "SmartDC Data loaded"
+  group_label: "SmartDC"
+  label: "Data loaded stats"
+}
+
+explore: capdataloaded {
+  description: "Capacity Data loaded"
+  group_label: "capacity"
+  label: "Data loaded stats"
+}
 
 
 label: "Joyent Cloud"
