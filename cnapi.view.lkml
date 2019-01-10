@@ -249,6 +249,7 @@ parameter: cpu {
   }
 
   dimension: ram_overhead {
+    # this is in MB
     type: number
     sql: coalesce(${TABLE}."Overhead",0) ;;
   }
@@ -418,10 +419,12 @@ parameter: cpu {
   }
 
   dimension: unreserved_ram {
+    # MB
     type: number
     sql: coalesce(${TABLE}.unreserved_ram,0) ;;
   }
   dimension:memory_total_bytes  {
+    # bytes
   type:  number
   sql:  ${TABLE}.memory_total_bytes ;;
   }
@@ -519,7 +522,7 @@ sql:  ${TABLE}.ram_g ;;
   }
   measure: ram_total_t {
     type: sum
-    sql:  (${memory_total_bytes} - ${ram_overhead})  / 1024.0 / 1024.0 / 1024.0 /1024.0;;
+    sql:  (${memory_total_bytes}/1024.0/1024.0 - ${ram_overhead})  / 1024.0 / 1024.0 ;;
     value_format_name: decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
@@ -531,7 +534,7 @@ sql:  ${TABLE}.ram_g ;;
   }
   measure: ram_total_g {
     type: sum
-    sql:  (${memory_total_bytes} - ${ram_overhead}) / 1024.0 / 1024.0 / 1024.0;;
+    sql:  (${memory_total_bytes}/1024.0/1024.0 - ${ram_overhead})  / 1024.0 ;;
     value_format_name: decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
@@ -553,9 +556,21 @@ sql:  ${TABLE}.ram_g ;;
     value_format_name: decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name,cn_model]
   }
+  measure: ram_sold_total_g {
+    type: sum
+    sql: (((${memory_total_bytes}/ 1024.0 / 1024.0) - ${ram_overhead})  - ${unreserved_ram}) / 1024.0 ;;
+    value_format_name:  decimal_4
+    drill_fields: [dc,cn_name,ram_sellable,product_name]
+  }
   measure: ram_sold_total_t {
     type: sum
-    sql: ((${memory_total_bytes} - ${ram_overhead}) / 1024.0 / 1024.0 / 1024.0 - ${unreserved_ram}/1024.0) / 1024.0;;
+    sql: (((${memory_total_bytes}/ 1024.0 / 1024.0) - ${ram_overhead}) - ${unreserved_ram}) / 1024.0 / 1024.0 ;;
+    value_format_name:  decimal_4
+    drill_fields: [dc,cn_name,ram_sellable,product_name]
+  }
+  measure: ram_overhead_g{
+    type: sum
+    sql: ( ${ram_overhead} / 1024.0 ) ;;
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
