@@ -252,6 +252,7 @@ parameter: cpu {
     # this is in MB
     type: number
     sql: coalesce(${TABLE}."Overhead",0) ;;
+    value_format_name:  decimal_4
   }
 
   dimension: product_name {
@@ -285,6 +286,7 @@ parameter: cpu {
   dimension: ram_sellable {
     type: number
     sql:coalesce( ${TABLE}."Sellable",0) ;;
+    value_format_name:  decimal_4
   }
 
   dimension: serial_number {
@@ -314,6 +316,7 @@ parameter: cpu {
   dimension: ram_sold {
     type: number
     sql: ${TABLE}."Sold" ;;
+    value_format_name:  decimal_4
   }
 
   dimension: sold_percent {
@@ -422,6 +425,7 @@ parameter: cpu {
     # MB
     type: number
     sql: coalesce(${TABLE}.unreserved_ram,0) ;;
+    value_format_name:  decimal_4
   }
   dimension:memory_total_bytes  {
     # bytes
@@ -455,6 +459,7 @@ sql:  ${TABLE}.disk_zone_quota_bytes ;;
 dimension:ram_g  {
 type:  number
 sql:  ${TABLE}.ram_g / 1024.0;;
+  value_format_name:  decimal_4
 }
 
   dimension: live_pi_bucket{
@@ -665,16 +670,19 @@ measure: count_manta_meta {
   measure:physical_ram_g  {
     type:  sum
     sql:  ${TABLE}.ram_g / 1024.0;;
+    value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure:physical_ram_t  {
     type:  sum
     sql:  ${TABLE}.ram_g / 1024.0 / 1024.0;;
+    value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure:mem_total_ram_mb  {
     type:  sum
     sql:  ${memory_total_bytes}/1024.0/1024.0 ;;
+    value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
 
