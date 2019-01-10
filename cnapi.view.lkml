@@ -313,11 +313,12 @@ parameter: cpu {
     sql: ${TABLE}."Sku Number" ;;
   }
 
-  dimension: ram_sold {
-    type: number
-    sql: ${TABLE}."Sold" ;;
-    value_format_name:  decimal_4
-  }
+# This is a really bad number often negative
+#dimension: ram_sold {
+#    type: number
+#    sql: ${TABLE}."Sold" ;;
+#    value_format_name:  decimal_4
+#  }
 
   dimension: sold_percent {
     type: number
@@ -561,15 +562,22 @@ sql:  ${TABLE}.ram_g / 1024.0;;
     value_format_name: decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name,cn_model]
   }
+
+
+
   measure: ram_sold_total_g {
     type: sum
-    sql: (((${memory_total_bytes}/ 1024.0 / 1024.0) - ${ram_overhead})  - ${unreserved_ram}) / 1024.0 ;;
+     # Note table.ram_g is really in MB ${ram_g} is in Gig
+    sql: (((${TABLE}.ram_g) - ${ram_overhead})  - ${unreserved_ram}) / 1024.0 ;;
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
+
+
   measure: ram_sold_total_t {
     type: sum
-    sql: (((${memory_total_bytes}/ 1024.0 / 1024.0) - ${ram_overhead}) - ${unreserved_ram}) / 1024.0 / 1024.0 ;;
+      # Note table.ram_g is really in MB ${ram_g} is in Gig
+    sql: (((${TABLE}.ram_g) - ${ram_overhead}) - ${unreserved_ram}) / 1024.0 / 1024.0 ;;
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
