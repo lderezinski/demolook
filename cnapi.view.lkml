@@ -564,7 +564,7 @@ sql:  ${TABLE}.ram_g ;;
   }
   measure: unreserved_ram_g {
     type:  sum
-    sql: ${unreserved_ram} ;;
+    sql: ${unreserved_ram} / 1024.0;;
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
@@ -577,7 +577,7 @@ sql:  ${TABLE}.ram_g ;;
   }
   measure: unreserved_ram_t {
     type:  sum
-    sql: ${unreserved_ram} / 1024.0  ;;
+    sql: ${unreserved_ram} / 1024.0 / 1024.0 ;;
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
