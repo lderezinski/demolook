@@ -574,6 +574,12 @@ sql:  ${TABLE}.ram_g / 1024.0;;
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
+  measure: ram_overhead_t{
+    type: sum
+    sql: ( ${ram_overhead} / 1024.0 /1024.0) ;;
+    value_format_name:  decimal_4
+    drill_fields: [dc,cn_name,ram_sellable,product_name]
+  }
   measure: total_num_zones {
     type:  sum
     sql: ${num_zones} ;;
@@ -656,5 +662,14 @@ measure: count_manta_meta {
     sql: ${uuid} ;;
     drill_fields: [cn_name]
   }
-
+  measure:physical_ram_g  {
+    type:  sum
+    sql:  ${TABLE}.ram_g / 1024.0;;
+    drill_fields: [dc,cn_name,ram_sellable,product_name]
+  }
+  measure:physical_ram_t  {
+    type:  sum
+    sql:  ${TABLE}.ram_g / 1024.0 / 1024.0;;
+    drill_fields: [dc,cn_name,ram_sellable,product_name]
+  }
 }
