@@ -525,7 +525,7 @@ sql:  ${TABLE}.ram_g ;;
   }
   measure: ram_free_total_t {
     type:  sum
-    sql: ${unreserved_ram} / 1024.0  ;;
+    sql: ${unreserved_ram} / 1024.0 /1024.0 / 1024.0;;
     value_format_name:  decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
