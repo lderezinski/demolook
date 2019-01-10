@@ -324,6 +324,12 @@ parameter: cpu {
     type: string
     sql: ${TABLE}."traits"::text ;;
   }
+  dimension: qa_node {
+    type: yesno
+    sql: ${TABLE}.traits ->> 'qa' is not null;;
+
+  }
+
   dimension: ssd_node {
     type: yesno
     sql: ${TABLE}.traits ->> 'ssd' is not null;;
