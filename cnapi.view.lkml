@@ -252,7 +252,7 @@ parameter: cpu {
     # this is in MB
     type: number
     sql: coalesce(${TABLE}."Overhead",0) ;;
-    value_format_name:  decimal_4
+    value_format_name:  decimal_2
   }
 
   dimension: product_name {
@@ -286,7 +286,7 @@ parameter: cpu {
   dimension: ram_sellable {
     type: number
     sql:coalesce( ${TABLE}."Sellable",0) ;;
-    value_format_name:  decimal_4
+    value_format_name:  decimal_2
   }
 
   dimension: serial_number {
@@ -317,7 +317,7 @@ parameter: cpu {
 #dimension: ram_sold {
 #    type: number
 #    sql: ${TABLE}."Sold" ;;
-#    value_format_name:  decimal_4
+#    value_format_name:  decimal_2
 #  }
 
   dimension: sold_percent {
@@ -426,7 +426,7 @@ parameter: cpu {
     # MB
     type: number
     sql: coalesce(${TABLE}.unreserved_ram,0) ;;
-    value_format_name:  decimal_4
+    value_format_name:  decimal_2
   }
   dimension:memory_total_bytes  {
     # bytes
@@ -460,7 +460,7 @@ sql:  ${TABLE}.disk_zone_quota_bytes ;;
 dimension:ram_g  {
 type:  number
 sql:  ${TABLE}.ram_g / 1024.0;;
-  value_format_name:  decimal_4
+  value_format_name:  decimal_2
 }
 
   dimension: live_pi_bucket{
@@ -529,37 +529,37 @@ sql:  ${TABLE}.ram_g / 1024.0;;
   measure: ram_total_t {
     type: sum
     sql:  (${memory_total_bytes}/1024.0/1024.0 - ${ram_overhead})  / 1024.0 / 1024.0 ;;
-    value_format_name: decimal_4
+    value_format_name: decimal_2
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure: ram_free_total_t {
     type:  sum
     sql: ${unreserved_ram} / 1024.0 /1024.0;;
-    value_format_name:  decimal_4
+    value_format_name:  decimal_2
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure: ram_total_g {
     type: sum
     sql:  (${memory_total_bytes}/1024.0/1024.0 - ${ram_overhead})  / 1024.0 ;;
-    value_format_name: decimal_4
+    value_format_name: decimal_2
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure: ram_free_total_g {
     type:  sum
     sql:  ${unreserved_ram} / 1024.0 ;;
-    value_format_name:  decimal_4
+    value_format_name:  decimal_2
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure: disk_pool_total_t {
     type:  sum
     sql:  ${disk_pool} / 1024.0 / 1024.0 ;;
-    value_format_name: decimal_4
+    value_format_name: decimal_2
     drill_fields: [dc,cn_name,ram_sellable,product_name,cn_model]
   }
   measure: disk_unprovisioned_total_t {
     type:  sum
     sql:  ${disk_unprovisioned} / 1024.0 / 1024.0 ;;
-    value_format_name: decimal_4
+    value_format_name: decimal_2
     drill_fields: [dc,cn_name,ram_sellable,product_name,cn_model]
   }
 
@@ -569,7 +569,7 @@ sql:  ${TABLE}.ram_g / 1024.0;;
     type: sum
      # Note table.ram_g is really in MB ${ram_g} is in Gig
     sql: (((${TABLE}.ram_g) - ${ram_overhead})  - ${unreserved_ram}) / 1024.0 ;;
-    value_format_name:  decimal_4
+    value_format_name:  decimal_2
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
 
@@ -578,19 +578,19 @@ sql:  ${TABLE}.ram_g / 1024.0;;
     type: sum
       # Note table.ram_g is really in MB ${ram_g} is in Gig
     sql: (((${TABLE}.ram_g) - ${ram_overhead}) - ${unreserved_ram}) / 1024.0 / 1024.0 ;;
-    value_format_name:  decimal_4
+    value_format_name:  decimal_2
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure: ram_overhead_g{
     type: sum
     sql: ( ${ram_overhead} / 1024.0 ) ;;
-    value_format_name:  decimal_4
+    value_format_name:  decimal_2
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure: ram_overhead_t{
     type: sum
     sql: ( ${ram_overhead} / 1024.0 /1024.0) ;;
-    value_format_name:  decimal_4
+    value_format_name:  decimal_2
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure: total_num_zones {
@@ -605,27 +605,27 @@ sql:  ${TABLE}.ram_g / 1024.0;;
   measure: unreserved_ram_g {
     type:  sum
     sql: ${unreserved_ram} / 1024.0;;
-    value_format_name:  decimal_4
+    value_format_name:  decimal_2
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
 
   measure: unreserved_disk_g {
     type:  sum
     sql: ${unreserved_disk} / 1024.0 ;;
-    value_format_name:  decimal_4
+    value_format_name:  decimal_2
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure: unreserved_ram_t {
     type:  sum
     sql: ${unreserved_ram} / 1024.0 / 1024.0 ;;
-    value_format_name:  decimal_4
+    value_format_name:  decimal_2
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
 
   measure: unreserved_disk_t {
     type:  sum
     sql: ${unreserved_disk} / 1024.0 / 1024.0 ;;
-    value_format_name:  decimal_4
+    value_format_name:  decimal_2
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
 
@@ -678,19 +678,19 @@ measure: count_manta_meta {
   measure:physical_ram_g  {
     type:  sum
     sql:  ${TABLE}.ram_g / 1024.0;;
-    value_format_name:  decimal_4
+    value_format_name:  decimal_2
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure:physical_ram_t  {
     type:  sum
     sql:  ${TABLE}.ram_g / 1024.0 / 1024.0;;
-    value_format_name:  decimal_4
+    value_format_name:  decimal_2
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure:mem_total_ram_mb  {
     type:  sum
     sql:  ${memory_total_bytes}/1024.0/1024.0 ;;
-    value_format_name:  decimal_4
+    value_format_name:  decimal_2
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
 
