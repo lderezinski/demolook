@@ -454,7 +454,7 @@ sql:  ${TABLE}.disk_zone_quota_bytes ;;
 }
 dimension:ram_g  {
 type:  number
-sql:  ${TABLE}.ram_g ;;
+sql:  ${TABLE}.ram_g / 1024.0;;
 }
 
   dimension: live_pi_bucket{
