@@ -672,4 +672,10 @@ measure: count_manta_meta {
     sql:  ${TABLE}.ram_g / 1024.0 / 1024.0;;
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
+  measure:mem_total_ram_mb  {
+    type:  sum
+    sql:  ${memory_total_bytes}/1024.0/1024.0 ;;
+    drill_fields: [dc,cn_name,ram_sellable,product_name]
+  }
+
 }
