@@ -531,7 +531,7 @@ sql:  ${TABLE}.ram_g ;;
   }
   measure: ram_total_g {
     type: sum
-    sql:  (${memory_total_bytes} - ${ram_overhead}) / 1024.0 / 1024.0 ;;
+    sql:  (${memory_total_bytes} - ${ram_overhead}) / 1024.0 / 1024.0 / 1024.0;;
     value_format_name: decimal_4
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
