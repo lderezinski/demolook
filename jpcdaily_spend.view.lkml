@@ -113,24 +113,28 @@ view: jpcdaily_spend {
       description: "This is the average spend"
       type: average
       sql: ${spend} ;;
+      drill_fields: [accountnumber,day_date,jpcspend,jpctotal,total,spend]
       value_format_name: usd
     }
   measure: max_spend {
     description: "This is the max spend"
     type: max
     sql: ${spend} ;;
+    drill_fields: [accountnumber,day_date,jpcspend,jpctotal,total,spend]
     value_format_name: usd
   }
   measure: min_spend {
     description: "This is the min spend"
     type: min
     sql: ${spend} ;;
+    drill_fields: [accountnumber,day_date,jpcspend,jpctotal,total,spend]
     value_format_name: usd
   }
   measure: median_spend {
     description: "This is the max spend"
     type: median
     sql: ${spend} ;;
+    drill_fields: [accountnumber,day_date,jpcspend,jpctotal,total,spend]
     value_format_name: usd
   }
     measure: sum_spend_yesterday {
