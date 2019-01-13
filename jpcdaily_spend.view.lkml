@@ -1,6 +1,11 @@
 view: jpcdaily_spend {
     sql_table_name: smartdc.zdailyspend ;;
 
+  dimension: primary_compound_key{
+    primary_key: yes
+    hidden: yes
+    sql:  ${TABLE}.accountnumber || '-' ||  ${TABLE}.day_date;;
+  }
     dimension: accountnumber {
       type: string
       sql: ${TABLE}.accountnumber ;;
@@ -58,11 +63,13 @@ view: jpcdaily_spend {
     dimension: jpcspend {
       type: number
       sql: ${TABLE}.jpcspend ;;
+      value_format_name: usd
     }
 
     dimension: jpctotal {
       type: number
       sql: ${TABLE}.jpctotal ;;
+      value_format_name: usd
     }
 
     dimension: spend {
