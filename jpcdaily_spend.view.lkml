@@ -115,7 +115,24 @@ view: jpcdaily_spend {
       sql: ${spend} ;;
       value_format_name: usd
     }
-
+  measure: max_spend {
+    description: "This is the max spend"
+    type: max
+    sql: ${spend} ;;
+    value_format_name: usd
+  }
+  measure: min_spend {
+    description: "This is the min spend"
+    type: min
+    sql: ${spend} ;;
+    value_format_name: usd
+  }
+  measure: median_spend {
+    description: "This is the max spend"
+    type: median
+    sql: ${spend} ;;
+    value_format_name: usd
+  }
     measure: sum_spend_yesterday {
       type: sum
       sql: ${spend} ;;
