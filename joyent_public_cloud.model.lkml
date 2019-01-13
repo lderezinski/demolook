@@ -97,6 +97,12 @@ explore: ufds {
     group_label: "Joyent Cloud"
     label: "ufds"
 
+  join: ufdsgroupname{
+    view_label: "Customer group"
+    sql_on: ${ufdsgroupname.uuid} = ${ufds.uuid} ;;
+    type: left_outer
+    relationship: one_to_one
+  }
   join: zuora_customers {
     view_label: "Customers"
     sql_on: ${zuora_customers.accountnumber} = ${ufds.uuid} ;;
@@ -132,7 +138,12 @@ explore: zinvoiceitems {
     type: left_outer
     relationship: many_to_one
   }
-
+  join: ufdsgroupname{
+    view_label: "Customer group"
+    sql_on: ${ufdsgroupname.uuid} = ${zinvoiceitems.account_number} ;;
+    type: left_outer
+    relationship: one_to_one
+  }
   join: zuora_customers {
     view_label: "Customers"
     sql_on: ${zuora_customers.accountnumber} = ${zinvoiceitems.account_number} ;;
@@ -188,6 +199,12 @@ explore:vmapi {
     sql_on: ${ufds.uuid}=${vmapi.owner_uuid} ;;
     type: left_outer
     relationship: many_to_one
+  }
+  join: ufdsgroupname{
+    view_label: "Customer group"
+    sql_on:  ${vmapi.owner_uuid} = ${ufdsgroupname.uuid};;
+    type: left_outer
+    relationship: one_to_one
   }
   join: datacenters {
     view_label: "DC"
@@ -251,6 +268,12 @@ explore: jpcdaily_spend {
       type: left_outer
       relationship: many_to_one
     }
+  join: ufdsgroupname{
+    view_label: "Customer group"
+    sql_on:  ${jpcdaily_spend.accountnumber} = ${ufdsgroupname.uuid}  ;;
+    type: left_outer
+    relationship: one_to_one
+  }
 }
 explore: images {
   description: "Images"
