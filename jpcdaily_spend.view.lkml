@@ -96,11 +96,13 @@ view: jpcdaily_spend {
       type:  sum
       sql: ${jpcspend} ;;
       drill_fields: [accountnumber,day_date,jpcspend,jpctotal,total,spend]
+      value_format_name: usd
     }
     measure: notJPCSpend {
       type: number
       sql: ${total} - ${jpcspend} ;;
       drill_fields: [accountnumber,day_date]
+      value_format_name: usd
     }
     measure: sum_spend {
       type: sum
