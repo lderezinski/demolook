@@ -285,7 +285,11 @@ explore: papi {
   group_label: "Joyent Cloud"
   label: "Packages"
 }
-
+explore: ufdsgroupname {
+  description: "UFDS Groupname"
+  group_label: "Joyent Cloud"
+  label: "UFDS groups"
+}
 
 explore: netbox {
   description: "SPC servers"
