@@ -14,7 +14,7 @@ view: vmapi {
   dimension: compound_primary_key {
     primary_key: yes
     hidden: yes
-    sql: ${TABLE}.uuid ||  '  ' || ${TABLE}.datacenter || ${TABLE}.owner_uuid || ${TABLE}.${datacenter}  ;;
+    sql: ${TABLE}.uuid ||  '  ' || ${TABLE}.datacenter || ${TABLE}.owner_uuid  ;;
   }
   dimension: brand {
     type: string
@@ -134,6 +134,10 @@ view: vmapi {
     type: number
     sql: ${TABLE}.ram ;;
   }
+  dimension: ram_lsd {
+    type: number
+    sql: ${ram}/1024.0 ;;
+  }
 
   dimension: server_uuid {
     type: string
@@ -175,7 +179,7 @@ view: vmapi {
     drill_fields: [hostname]
   }
   measure: ram_g {
-    type: sum
+    type: sum_distinct
     sql: ${ram}/1024.0 ;;
     value_format_name: decimal_2
     drill_fields: [ufds.display_name,alias,state,ram_g,cnapi.cn_name,datacenter,create_timestamp_date]
