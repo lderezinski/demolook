@@ -184,4 +184,8 @@ view: vmapi {
     type: count_distinct
     sql: ${owner_uuid} ;;
   }
+  measure: number_of_unique_images {
+    type: count_distinct
+    sql: ${image_uuid} ;;
+  }
 }
