@@ -4,7 +4,7 @@ view: jpcdaily_spend {
   dimension: primary_compound_key{
     primary_key: yes
     hidden: yes
-    sql:  ${TABLE}.accountnumber || '-' ||  ${TABLE}.day_date;;
+    sql:  ${TABLE}.accountnumber || '-' ||  ${TABLE}.day;;
   }
     dimension: accountnumber {
       type: string
@@ -93,15 +93,15 @@ view: jpcdaily_spend {
       drill_fields: []
     }
     measure: jpcmonthToDate {
-      type:  sum
+      type:  sum_distinct
       sql: ${jpcspend} ;;
       drill_fields: [accountnumber,day_date,jpcspend,jpctotal,total,spend]
       value_format_name: usd
     }
 
   measure: monthToDate {
-    type:  sum
-    sql: ${total} ;;
+    type:   sum_distinct
+    sql: ${spend} ;;
     drill_fields: [accountnumber,day_date,jpcspend,jpctotal,total,spend]
     value_format_name: usd
   }
