@@ -12,6 +12,7 @@ view: mantastorage {
   dimension: bytes {
     type: number
     sql: ${TABLE}.bytes ;;
+    value_format_name: decimal_0
   }
 
   dimension_group: date {
@@ -56,14 +57,17 @@ view: mantastorage {
   dimension: bytes_g {
     type: number
     sql: ${bytes}/1024.0/1024.0/1024.0 ;;
+    value_format_name: decimal_4
   }
   dimension: bytes_t {
     type: number
     sql: ${bytes}/1024.0/1024.0/1024.0/1024.0 ;;
+    value_format_name: decimal_4
   }
   dimension: bytes_p {
     type: number
     sql: ${bytes}/1024.0/1024.0/1024.0/1024.0/1024.0 ;;
+    value_format_name: decimal_4
   }
   measure: count {
     type: count
@@ -72,18 +76,22 @@ view: mantastorage {
   measure: sumbytes {
     type: sum_distinct
     sql: ${bytes} ;;
+    value_format_name: decimal_0
   }
   measure: sumbytes_g {
     type: sum_distinct
     sql: ${bytes_g} ;;
+    value_format_name: decimal_4
   }
   measure: sumbytes_t {
     type: sum_distinct
     sql: ${bytes_t} ;;
+    value_format_name: decimal_4
   }
   measure: sumbytes_p {
     type: sum_distinct
     sql: ${bytes_p} ;;
+    value_format_name: decimal_4
   }
 
 }
