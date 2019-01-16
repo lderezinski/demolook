@@ -1,10 +1,6 @@
 view: ufdsgroupname {
   sql_table_name: smartdc.ufdsgroupname ;;
-  dimension: compound_primary_key {
-    primary_key: yes
-    hidden: yes
-    sql: ${TABLE}.uuid  ;;
-  }
+
   dimension: groupname {
     type: string
     sql: ${TABLE}.groupname ;;
@@ -12,6 +8,7 @@ view: ufdsgroupname {
 
   dimension: uuid {
     type: string
+    primary_key: yes
     sql: ${TABLE}.uuid ;;
   }
 
