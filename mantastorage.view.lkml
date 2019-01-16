@@ -62,4 +62,17 @@ view: mantastorage {
     type: sum_distinct
     sql: ${bytes} ;;
   }
+  measure: sumbytes_g {
+    type: sum_distinct
+    sql: ${bytes}/1024.0/1024.0/1024.0 ;;
+  }
+  measure: sumbytes_t {
+    type: sum_distinct
+    sql: ${bytes}/1024.0/1024.0/1024.0/1024.0 ;;
+  }
+  measure: sumbytes_p {
+    type: sum_distinct
+    sql: ${bytes}/1024.0/1024.0/1024.0/1024.0/1024.0 ;;
+  }
+
 }
