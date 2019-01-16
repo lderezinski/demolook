@@ -121,6 +121,30 @@ explore: ufds {
  }
 }
 
+explore: mantastorage {
+  description: "Manta Storage"
+  group_label: "Joyent Cloud"
+  label: "Storage"
+
+  join: ufds {
+    view_label: "Customers"
+    sql_on: ${mantastorage.owner} = ${ufds.uuid} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: ufdsgroupname{
+    view_label: "Customer group"
+    sql_on: ${ufdsgroupname.uuid} = ${mantastorage.owner} ;;
+    type: left_outer
+    relationship: one_to_one
+  }
+  join: zuora_customers {
+    view_label: "Customers"
+    sql_on: ${zuora_customers.accountnumber} = ${mantastorage.owner} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+}
 
 explore: zinvoiceitems {
   description: "Invoice Items"
