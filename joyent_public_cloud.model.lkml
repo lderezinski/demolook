@@ -129,19 +129,19 @@ explore: mantastorage {
   join: ufds {
     view_label: "Customers"
     sql_on: ${mantastorage.owner} = ${ufds.uuid} ;;
-    type: full_outer
+    type: left_outer
     relationship: many_to_one
   }
   join: ufdsgroupname{
     view_label: "Customer group"
     sql_on: ${ufdsgroupname.uuid} = ${mantastorage.owner} ;;
-    type: full_outer
+    type: left_outer
     relationship: many_to_one
   }
   join: zuora_customers {
     view_label: "Customers"
     sql_on: ${zuora_customers.accountnumber} = ${mantastorage.owner} ;;
-    type: full_outer
+    type: left_outer
     relationship: many_to_one
   }
 }
