@@ -93,5 +93,15 @@ view: mantastorage {
     sql: ${bytes_p} ;;
     value_format_name: decimal_4
   }
+  measure: sumdirs {
+    type: sum_distinct
+    sql: ${directories} ;;
+    value_format_name: decimal_0
+  }
+  measure: sumobjs {
+    type: sum_distinct
+    sql: ${objects} ;;
+    value_format_name: decimal_0
+  }
 
 }
