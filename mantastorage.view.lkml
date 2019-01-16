@@ -53,7 +53,18 @@ view: mantastorage {
     type: string
     sql: ${TABLE}.type ;;
   }
-
+  dimension: bytes_g {
+    type: number
+    sql: ${bytes}/1024.0/1024.0/1024.0 ;;
+  }
+  dimension: bytes_t {
+    type: number
+    sql: ${bytes}/1024.0/1024.0/1024.0/1024.0 ;;
+  }
+  dimension: bytes_p {
+    type: number
+    sql: ${bytes}/1024.0/1024.0/1024.0/1024.0/1024.0 ;;
+  }
   measure: count {
     type: count
     drill_fields: []
@@ -64,15 +75,15 @@ view: mantastorage {
   }
   measure: sumbytes_g {
     type: sum_distinct
-    sql: ${bytes}/1024.0/1024.0/1024.0 ;;
+    sql: ${bytes_g} ;;
   }
   measure: sumbytes_t {
     type: sum_distinct
-    sql: ${bytes}/1024.0/1024.0/1024.0/1024.0 ;;
+    sql: ${bytes_t} ;;
   }
   measure: sumbytes_p {
     type: sum_distinct
-    sql: ${bytes}/1024.0/1024.0/1024.0/1024.0/1024.0 ;;
+    sql: ${bytes_p} ;;
   }
 
 }
