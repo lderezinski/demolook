@@ -24,20 +24,6 @@ view: mantagoal {
     sql: ${TABLE}.date ;;
   }
 
-  dimension_group: enddate {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.enddate ;;
-  }
 
   dimension: goal {
     type: number
