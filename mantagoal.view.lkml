@@ -8,7 +8,6 @@ view: mantagoal {
     sql: ${TABLE}.date.date  || ${TABLE}.region;;
   }
 
-
   dimension_group: date {
     type: time
     timeframes: [
@@ -23,7 +22,6 @@ view: mantagoal {
     datatype: date
     sql: ${TABLE}.date ;;
   }
-
 
   dimension: goal {
     type: number
