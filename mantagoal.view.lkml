@@ -1,6 +1,14 @@
 view: mantagoal {
   sql_table_name: capacity.mantagoal ;;
 
+
+  dimension: compound_primary_key {
+    primary_key: yes
+    hidden: yes
+    sql: ${TABLE}.date.date  || ${TABLE}.region;;
+  }
+
+
   dimension_group: date {
     type: time
     timeframes: [
