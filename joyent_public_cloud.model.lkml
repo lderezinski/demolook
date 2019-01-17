@@ -22,6 +22,11 @@ explore: manta_zfs {
   description: "ZFS capacity"
   group_label: "Joyent Cloud"
   label: "manta capacity"
+  join: mantagoal {
+    type: full_outer
+    sql_on: ${mantagoal.date_date} = ${manta_zfs.date_date} and ${mantagoal.region} = ${manta_zfs.region} ;;
+    relationship: many_to_one
+  }
 }
 explore: storageforecast {
   description: "SDC Storage forecasting"
