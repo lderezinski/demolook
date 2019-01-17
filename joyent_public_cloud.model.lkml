@@ -49,6 +49,11 @@ explore: storageforecast {
     sql_on: ${manta_zfs.region} = ${storageforecast.region} and ${manta_zfs.date_date} = ${storageforecast.delivery_date};;
     relationship: one_to_many
   }
+  join: mantagoal {
+    type: full_outer
+    sql_on: ${mantagoal.date_date} = ${storageforecast.delivery_date} and ${mantagoal.region} = ${storageforecast.region} ;;
+    relationship: many_to_one
+  }
 }
 
 explore: storagebuild {
