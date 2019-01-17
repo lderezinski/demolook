@@ -5,7 +5,7 @@ view: mantagoal {
   dimension: compound_primary_key {
     primary_key: yes
     hidden: yes
-    sql: ${TABLE}.date.date  || ${TABLE}.region;;
+    sql: ${TABLE}.date  || ${TABLE}.region;;
   }
 
   dimension_group: date {
