@@ -253,7 +253,7 @@ parameter: cpu {
     # this is in MB
     type: number
     sql: coalesce(${TABLE}."Overhead",0) ;;
-    value_format_name:  decimal_2
+    value_format_name:  decimal_0
   }
 
   dimension: product_name {
@@ -427,7 +427,7 @@ parameter: cpu {
     # MB
     type: number
     sql: coalesce(${TABLE}.unreserved_ram,0) ;;
-    value_format_name:  decimal_2
+    value_format_name:  decimal_0
   }
   dimension:memory_total_bytes  {
     # bytes
