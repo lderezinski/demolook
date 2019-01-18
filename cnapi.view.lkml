@@ -461,7 +461,7 @@ sql:  ${TABLE}.disk_zone_quota_bytes ;;
 dimension:ram_g  {
   # This is really in MB not GB as the column name suggests, so lets make it be GB
 type:  number
-sql:  ${TABLE}.ram_g / 1024;;
+sql:  ${TABLE}.ram_g / 1024.0;;
   value_format_name:  decimal_0
 }
 
