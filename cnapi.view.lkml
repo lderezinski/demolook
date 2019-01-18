@@ -5,7 +5,7 @@ view: cnapi {
   dimension: compound_primary_key {
     primary_key: yes
     hidden: yes
-    sql: ${TABLE}.date.date  || ${TABLE}."DCENTER" || ${TABLE}."HOSTNAME";;
+    sql: ${TABLE}."DATE"  || ${TABLE}."DCENTER" || ${TABLE}."HOSTNAME";;
   }
 
   sql_table_name: smartdc.cnapi ;;
@@ -142,6 +142,7 @@ parameter: cpu {
   dimension: ram_free {
     type: number
     sql: coalesce(${TABLE}."Free",0) ;;
+    value_format_name: decimal_0
   }
 
   dimension: cn_name {
@@ -458,9 +459,10 @@ type:  number
 sql:  ${TABLE}.disk_zone_quota_bytes ;;
 }
 dimension:ram_g  {
+  # This is really in MB not GB as the column name suggests, so lets make it be GB
 type:  number
-sql:  ${TABLE}.ram_g / 1024.0;;
-  value_format_name:  decimal_2
+sql:  ${TABLE}.ram_g / 1024;;
+  value_format_name:  decimal_0
 }
 
   dimension: live_pi_bucket{
@@ -677,14 +679,14 @@ measure: count_manta_meta {
   }
   measure:physical_ram_g  {
     type:  sum
-    sql:  ${TABLE}.ram_g / 1024.0;;
+    sql:  ${ram_g};;
     value_format_name:  decimal_0
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure:physical_ram_t  {
     type:  sum
     sql:  ${TABLE}.ram_g / 1024.0 / 1024.0;;
-    value_format_name:  decimal_0
+    value_format_name:  decimal_2
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure:mem_total_ram_mb  {
