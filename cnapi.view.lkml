@@ -678,13 +678,13 @@ measure: count_manta_meta {
   measure:physical_ram_g  {
     type:  sum
     sql:  ${TABLE}.ram_g / 1024.0;;
-    value_format_name:  decimal_2
+    value_format_name:  decimal_0
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure:physical_ram_t  {
     type:  sum
     sql:  ${TABLE}.ram_g / 1024.0 / 1024.0;;
-    value_format_name:  decimal_2
+    value_format_name:  decimal_0
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
   measure:mem_total_ram_mb  {
