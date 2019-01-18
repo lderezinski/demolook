@@ -570,7 +570,7 @@ sql:  ${TABLE}.ram_g / 1024.0;;
   measure: ram_sold_total_g {
     type: sum
      # Note table.ram_g is really in MB ${ram_g} is in Gig
-    sql: (((${TABLE}.ram_g) - ${ram_overhead})  - ${unreserved_ram}) / 1024.0 ;;
+    sql: (((${TABLE}.ram_g) - ${unreserved_ram}) / 1024.0 ;;
     value_format_name:  decimal_2
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
@@ -579,7 +579,7 @@ sql:  ${TABLE}.ram_g / 1024.0;;
   measure: ram_sold_total_t {
     type: sum
       # Note table.ram_g is really in MB ${ram_g} is in Gig
-    sql: (((${TABLE}.ram_g) - ${ram_overhead}) - ${unreserved_ram}) / 1024.0 / 1024.0 ;;
+    sql: (((${TABLE}.ram_g) - ${unreserved_ram}) / 1024.0 / 1024.0 ;;
     value_format_name:  decimal_2
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
