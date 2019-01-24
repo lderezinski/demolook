@@ -513,8 +513,11 @@ sql:  ${TABLE}.ram_g / 1024.0;;
     case
       WHEN ${disk_pool} < 10790592 THEN 'Hallasan-C (08)'
       ELSE 'Hallasan-C (16)' END
-  WHEN ${sku_number} = '085915D9' THEN 'Hallasan-A r2'
-                ELSE ${sku_number}
+  WHEN ${sku_number} = '085915D9' THEN
+     case WHEN left(${cn_name},2) = 'HA' THEN 'Hallasan-A r2'
+          WHEN left(${cn_name},2) = 'MS' THEN 'Mantis Shrimp Mk.III (10TB)'
+     END
+  ELSE ${sku_number}
 
             END;;
   }
