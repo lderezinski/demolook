@@ -491,8 +491,12 @@ sql:  ${TABLE}.ram_g / 1024.0;;
     sql:  CASE
             WHEN ${traits} LIKE '%headnode%' THEN 'Headnode'
             WHEN upper(${cn_name}) = 'HEADNODE' THEN 'Headnode'
-            WHEN left(${cn_name},2) = 'HB' THEN  'Hallasan-B'
-
+            WHEN left(${cn_name},2) = 'HB' THEN
+              case WHEN ${sku_number} = '600-0025-01 rev 50' THEN 'Hallasan-B (08TB)'
+                   WHEN ${sku_number} = '600-0025-01 rev 51' THEN 'Hallasan-B (10TB)'
+                   WHEN ${sku_number} = '600-0036-001' THEN 'Hallasan-B (12TB)'
+                  ELSE ${sku_number}
+              END
   WHEN ${sku_number} = '600-0023-001'  THEN 'Hallasan-A'
   WHEN ${sku_number} = 'SKU=NotProvided;ModelName=Joyent-Compute-Platform-3301' THEN 'Hallasan-A'
   WHEN ${sku_number} = '600-0024-001' THEN 'Hallasan-C (08)'
@@ -516,6 +520,7 @@ sql:  ${TABLE}.ram_g / 1024.0;;
   WHEN ${sku_number} = '085915D9' THEN
      case WHEN left(${cn_name},2) = 'HA' THEN 'Hallasan-A r2'
           WHEN left(${cn_name},2) = 'MS' THEN 'Mantis Shrimp Mk.III (10TB)'
+          ELSE ${sku_number}
      END
   ELSE ${sku_number}
 
