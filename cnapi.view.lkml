@@ -142,7 +142,7 @@ parameter: cpu {
 
   dimension: disk_pool_tier {
     type:  tier
-    tiers: [0,1,2,3,4,5,6,7,8,9,10,11,12,13]
+    tiers: [0,100,150,200,250,300,350]
     sql:  ${disk_pool_t} ;;
     style: integer
   }
