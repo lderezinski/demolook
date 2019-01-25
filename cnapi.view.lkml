@@ -139,6 +139,13 @@ parameter: cpu {
     value_format_name: decimal_2
     drill_fields: [dc,cn_name,ram_sellable,product_name,cn_model]
   }
+
+  dimension: disk_pool_tier {
+    type:  tier
+    tiers: [0,1,2,3,4,5,6,7,8,9,10,11,12,13]
+    sql:  ${disk_pool_t} ;;
+    style: integer
+  }
   dimension: ram_free {
     type: number
     sql: coalesce(${TABLE}."Free",0) ;;
