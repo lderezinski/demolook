@@ -78,7 +78,7 @@ END
     value_format_name: decimal_2
   }
 
-  measure: goal640 {
+  dimension: goal640 {
     type: number
     sql: CASE when ${region} = 'us-east' THEN 195
               when ${region} = 'eu-central' THEN 227
