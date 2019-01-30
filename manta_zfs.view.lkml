@@ -77,4 +77,14 @@ END
     drill_fields: [date_date,region,zfs_used_pib,zfs_available_pib]
     value_format_name: decimal_2
   }
+
+  measure: goal640 {
+    type: number
+    sql: CASE when ${region} = 'us-east' THEN 195
+              when ${region} = 'eu-central' THEN 227
+             when ${region} = 'ap-northeast' THEN 115
+             when ${region} = 'ap-southeast' THEN 103
+            END
+    ;;
+  }
 }

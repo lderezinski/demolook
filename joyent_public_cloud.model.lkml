@@ -2,8 +2,8 @@ connection: "joyent"
 
 include: "*.view.lkml"         # include all views in this project
 include: "*.dashboard.lookml"  # include all dashboards in this project
-include: "/zendesk/users.view.lkml"
-include: "/zendesk/tickets.view.lkml"
+include: "//zendesk/users.view.lkml"
+include: "//zendesk/tickets.view.lkml"
 
 
 # # Select the views that should be a part of this model,
