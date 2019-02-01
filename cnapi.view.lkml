@@ -395,7 +395,7 @@ parameter: cpu {
   dimension: pool {
     description: "Compute CNs"
     type: yesno
-    sql:   ${role} = 'compute';;
+    sql:   ${role} = 'Compute';;
   }
   dimension: isHeadnode {
     description: "Is this CN a headnode"
