@@ -393,9 +393,9 @@ parameter: cpu {
   }
 
   dimension: pool {
-    description: "All unreserved CNs except internal or triton traited"
+    description: "Compute CNs"
     type: yesno
-    sql:   ${TABLE}.traits ->> 'internal' is  null and  ${TABLE}.traits ->> 'triton' is  null and ${TABLE}.traits ->> 'customers' is  null and NOT ${cn_reserved};;
+    sql:   ${role} = 'compute';;
   }
   dimension: isHeadnode {
     description: "Is this CN a headnode"
