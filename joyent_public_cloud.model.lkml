@@ -333,14 +333,14 @@ explore: mako {
   label: "Mako"
   join: makotomb {
     type:  left_outer
-    sql_on: ${makotomb.account} = ${mako.account} ;;
+    sql_on: ${makotomb.region} = ${mako.region} ;;
     relationship: many_to_many
   }
   join: ufds {
     view_label: "Customers"
     sql_on: ${mako.account} =  ${ufds.uuid}  ;;
     type: left_outer
-    relationship: many_to_one
+    relationship: one_to_one
   }
   join: ufdsgroupname{
     view_label: "Customer group"
