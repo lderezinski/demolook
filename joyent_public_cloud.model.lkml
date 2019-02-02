@@ -327,6 +327,28 @@ explore: ufdsgroupname {
   label: "UFDS groups"
 }
 
+explore: mako {
+  description: "SmartDC mako stats"
+  group_label: "Joyent Cloud"
+  label: "Mako"
+  join: makotomb {
+    type:  left_outer
+    sql_on: ${makotomb.account} = ${mako.account} ;;
+    relationship: many_to_many
+  }
+  join: ufds {
+    view_label: "Customers"
+    sql_on: ${mako.account} =  ${ufds.uuid}  ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: ufdsgroupname{
+    view_label: "Customer group"
+    sql_on:  ${mako.account} = ${ufdsgroupname.uuid}  ;;
+    type: left_outer
+    relationship: one_to_one
+  }
+}
 explore: netbox {
   description: "SPC servers"
   group_label: "Joyent Cloud"
