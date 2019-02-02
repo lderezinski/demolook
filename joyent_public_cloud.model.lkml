@@ -326,7 +326,11 @@ explore: ufdsgroupname {
   group_label: "Joyent Cloud"
   label: "UFDS groups"
 }
-
+explore: makotomb {
+  description: "SmartDC mako tombstone"
+  group_label: "Joyent Cloud"
+  label: "mako tombstone"
+}
 explore: mako {
   description: "SmartDC mako stats"
   group_label: "Joyent Cloud"
