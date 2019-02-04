@@ -48,14 +48,17 @@ view: makoregiontomb {
   measure: sum_p {
     type:  sum
     sql: ${kilobytes}/1024.0/1024.0/1024.0/1024.0 ;;
+    value_format_name: decimal_3
   }
   measure: sum_t {
     type:  sum
     sql: ${kilobytes}/1024.0/1024.0/1024.0 ;;
+    value_format_name: decimal_3
   }
   measure: sum_g {
     type:  sum
     sql: ${kilobytes}/1024.0/1024.0 ;;
+    value_format_name: decimal_3
   }
   measure: total_objects {
     type:  sum
