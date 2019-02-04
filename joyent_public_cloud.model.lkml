@@ -356,7 +356,7 @@ explore: makoregion {
   join: makoregiontomb {
     view_label: "region tombstone"
     sql_on: ${makoregion.storage_id} = ${makoregiontomb.storage_id}
-    type: left_outer;;
+    type: full_outer;;
     relationship: one_to_many
   }
 }
