@@ -335,11 +335,6 @@ explore: mako {
   description: "SmartDC mako stats"
   group_label: "Joyent Cloud"
   label: "Mako"
-  join: makotomb {
-    type:  left_outer
-    sql_on: ${makotomb.region} = ${mako.region} ;;
-    relationship: many_to_many
-  }
   join: ufds {
     view_label: "Customers"
     sql_on: ${mako.account} =  ${ufds.uuid}  ;;
@@ -353,6 +348,19 @@ explore: mako {
     relationship: one_to_one
   }
 }
+
+explore: makoregion {
+  description: "SmartDC mako regions stats"
+  group_label: "Joyent Cloud"
+  label: "Mako Region"
+}
+
+explore: makoregiontomb {
+  description: "SmartDC mako regions stats"
+  group_label: "Joyent Cloud"
+  label: "Mako Region tombstone"
+}
+
 explore: netbox {
   description: "SPC servers"
   group_label: "Joyent Cloud"
