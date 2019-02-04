@@ -1,6 +1,12 @@
 view: makoregiontomb {
   sql_table_name: smartdc.makoregiontomb ;;
 
+  dimension: primary_key {
+    primary_key: yes
+    hidden: yes
+    sql: ${TABLE}.storage_id || ${TABLE}.date  ;;
+  }
+
   dimension: datacenter {
     type: string
     sql: ${TABLE}.datacenter ;;

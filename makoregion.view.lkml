@@ -27,6 +27,7 @@ view: makoregion {
   }
 
   dimension: storage_id {
+    primary_key: yes
     type: string
     sql: ${TABLE}.storage_id ;;
   }

@@ -353,6 +353,12 @@ explore: makoregion {
   description: "SmartDC mako regions stats"
   group_label: "Joyent Cloud"
   label: "Mako Region"
+  join: makoregiontomb {
+    view_label: "region tombstone"
+    sql_on: ${makoregion.storage_id} = ${makoregiontomb.storage_id}
+    type: left_outer;;
+    relationship: one_to_many
+  }
 }
 
 explore: makoregiontomb {
