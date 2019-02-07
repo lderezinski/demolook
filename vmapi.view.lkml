@@ -174,6 +174,67 @@ view: vmapi {
     sql: ${TABLE}.zpool ;;
   }
 
+
+  dimension: tags {
+    type: string
+    sql: ${TABLE}."tags"::text ;;
+  }
+
+  dimension: is_manta_compute {
+    type: yesno
+    sql: ${TABLE}.tags ->> 'manta_compute' is not null;;
+  }
+
+  dimension: manta_compute {
+    type: string
+    sql: ${TABLE}.tags ->> 'manta_compute' ;;
+  }
+  dimension: is_manta_role {
+    type: yesno
+    sql: ${TABLE}.tags ->> 'manta_role' is not null;;
+
+  }
+  dimension: manta_role {
+    type: string
+    sql: ${TABLE}.tags ->> 'manta_role';;
+  }
+  dimension: is_smartdc_role {
+    type: yesno
+    sql: ${TABLE}.tags ->> 'smartdc_role' is not null;;
+
+  }
+  dimension: smartdc_role {
+    type: string
+    sql: ${TABLE}.tags ->> 'smartdc_role';;
+  }
+  dimension: is_smartdc_type {
+    type: yesno
+    sql: ${TABLE}.tags ->> 'smartdc_type' is not null;;
+
+  }
+  dimension: smartdc_type {
+    type: string
+    sql: ${TABLE}.tags ->> 'smartdc_type';;
+  }
+  dimension: is_manta_storage {
+    type: yesno
+    sql: ${TABLE}.tags ->> 'manta_storage_id' is not null;;
+
+  }
+  dimension: manta_storage_id {
+    type: string
+    sql: ${TABLE}.tags ->> 'manta_storage_id';;
+  }
+  dimension: is_manta_reshard {
+    type: yesno
+    sql: ${TABLE}.tags ->> 'manta_reshard_plan' is not null;;
+
+  }
+  dimension: manta_reshard_plan {
+    type: string
+    sql: ${TABLE}.tags ->> 'manta_reshard_plan';;
+  }
+
   measure: count {
     type: count
     drill_fields: [hostname]
