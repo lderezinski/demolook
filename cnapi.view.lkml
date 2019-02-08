@@ -711,4 +711,16 @@ measure: count_manta_meta {
     drill_fields: [dc,cn_name,ram_sellable,product_name]
   }
 
+  measure: disk_pool_alloc_t {
+    type: sum
+    sql: ${disk_pool_alloc_bytes}/ 1024.0 / 1024.0/ 1024.0 / 1024.0;;
+    value_format_name: decimal_3
+
+  }
+
+  measure: disk_pool_free_t {
+    type: sum
+    sql:  (${disk_pool} - ${disk_pool_alloc_bytes}/ 1024.0 / 1024.0 - ${disk_pool}* 0.05) / 1024.0 / 1024.0 ;;
+    value_format_name: decimal_3
+  }
 }
