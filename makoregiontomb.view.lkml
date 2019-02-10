@@ -8,9 +8,9 @@ view: makoregiontomb {
   }
   dimension: cloud {
     type: string
-    sql: when case region = 'us-east-1' then 'JPC'
-              case region = 'us-east-2' then 'JPC'
-              case region = 'us-east-3' then 'JPC'
+    sql: case when region = 'us-east-1' then 'JPC'
+              when region = 'us-east-2' then 'JPC'
+              when region = 'us-east-3' then 'JPC'
               else 'SPC'
         end ;;
   }
