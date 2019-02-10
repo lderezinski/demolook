@@ -6,7 +6,14 @@ view: makoregiontomb {
     hidden: yes
     sql: ${TABLE}.storage_id || ${TABLE}.date  ;;
   }
-
+  dimension: cloud {
+    type: string
+    sql: when case region = 'us-east-1' then 'JPC'
+              case region = 'us-east-2' then 'JPC'
+              case region = 'us-east-3' then 'JPC'
+              else 'SPC'
+        end ;;
+  }
   dimension: datacenter {
     type: string
     sql: ${TABLE}.datacenter ;;
