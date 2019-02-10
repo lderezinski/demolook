@@ -22,11 +22,7 @@ view: makoregion {
   }
   dimension: cloud {
     type: string
-    sql: case when region = 'us-east-1' then 'JPC'
-              when region = 'us-east-2' then 'JPC'
-              when region = 'us-east-3' then 'JPC'
-              else 'SPC'
-        end ;;
+    sql: ${TABLE}.cloud ;;
   }
   dimension: region {
     type: string
