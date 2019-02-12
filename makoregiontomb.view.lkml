@@ -14,7 +14,20 @@ view: makoregiontomb {
     type: string
     sql: ${TABLE}.datacenter ;;
   }
-
+  dimension_group: modify_date {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}.modify_date ;;
+  }
   dimension_group: date {
     type: time
     timeframes: [
