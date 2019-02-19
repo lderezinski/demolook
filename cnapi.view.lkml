@@ -119,6 +119,12 @@ parameter: cpu {
     sql: ${TABLE}."DATE" ;;
   }
 
+  measure: last_reported_date {
+    type: date
+    sql: MAX(${date_raw}) ;;
+    convert_tz: no
+  }
+
   dimension: is_last_day_of_month{
     type: yesno
     sql: (date_trunc('MONTH', ${date_date}) + INTERVAL '1 MONTH - 1 day')::date = ${date_date};;
