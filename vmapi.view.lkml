@@ -63,7 +63,16 @@ view: vmapi {
     ]
     sql: ${TABLE}.date ;;
   }
-
+  measure: last_reported_date {
+    type: date
+    sql: MAX(${date_raw}) ;;
+    convert_tz: no
+  }
+  measure: first_reported_date {
+    type: date
+    sql: MIN(${date_raw}) ;;
+    convert_tz: no
+  }
   dimension: dns_domain {
     type: string
     sql: ${TABLE}.dns_domain ;;
