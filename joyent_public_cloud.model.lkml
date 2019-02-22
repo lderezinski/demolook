@@ -401,5 +401,9 @@ explore: capdataloaded {
   label: "Capacity stats"
 }
 
-
+explore: muskiedelete {
+  description: "Deleted from manta"
+  group_label: "Joyent Cloud"
+  label: "Manta Deleted"
+}
 label: "Joyent Cloud"
