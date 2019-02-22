@@ -405,5 +405,22 @@ explore: muskiedelete {
   description: "Deleted from manta"
   group_label: "Joyent Cloud"
   label: "Manta Deleted"
+  join: ufds {
+    view_label: "Customers"
+    sql_on: ${muskiedelete.owner_uuid} = ${ufds.uuid} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: ufdsgroupname{
+    view_label: "Customer group"
+    sql_on: ${ufdsgroupname.uuid} = ${muskiedelete.owner_uuid} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: zuora_customers {
+    view_label: "Customers"
+    sql_on: ${zuora_customers.accountnumber} = ${muskiedelete.owner_uuid} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
 }
-label: "Joyent Cloud"

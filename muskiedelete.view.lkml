@@ -20,6 +20,10 @@ view: muskiedelete {
     type: string
     sql: ${TABLE}.region ;;
   }
+  dimension: owner_uuid {
+    type: string
+    sql: ${TABLE}.owner_uuid ;;
+  }
 
   dimension_group: timestamp {
     type: time
