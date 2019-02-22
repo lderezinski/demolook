@@ -12,6 +12,10 @@ view: muskiedelete {
     value_format_name: decimal_4
   }
 
+  dimension: accelerated_gc {
+    type: string
+    sql: ${TABLE}.accelerated_gc ;;
+  }
   dimension: region {
     type: string
     sql: ${TABLE}.region ;;
