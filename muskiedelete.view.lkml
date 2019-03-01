@@ -12,6 +12,11 @@ view: muskiedelete {
     value_format_name: decimal_4
   }
 
+  dimension: normalized_deletedtb {
+    type: number
+    sql: ${deletedtb} / 2.0 ;;
+    value_format_name: decimal_4
+  }
   dimension: accelerated_gc {
     type: string
     sql: ${TABLE}.accelerated_gc ;;
@@ -44,6 +49,7 @@ view: muskiedelete {
     type: count
     drill_fields: []
   }
+
   measure: sumdelete_TB {
     type: sum
     sql: deletedtb ;;
@@ -52,6 +58,17 @@ view: muskiedelete {
   measure: sumdelete_PB {
     type: sum
     sql: deletedtb / 1024.0 ;;
+    value_format_name: decimal_4
+  }
+  measure: normalized_sumdelete_TB {
+    type: sum
+    sql: normalized_deletedtb ;;
+    value_format_name: decimal_4
+  }
+
+  measure: normalized_sumdelete_PB {
+    type: sum
+    sql: normalized_deletedtb / 1024.0 ;;
     value_format_name: decimal_4
   }
 }
