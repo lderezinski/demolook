@@ -62,13 +62,13 @@ view: muskiedelete {
   }
   measure: normalized_sumdelete_TB {
     type: sum
-    sql: normalized_deletedtb ;;
+    sql: deletedtb / 2.0 ;;
     value_format_name: decimal_4
   }
 
   measure: normalized_sumdelete_PB {
     type: sum
-    sql: normalized_deletedtb / 1024.0 ;;
+    sql: deletedtb / 2.0 / 1024.0 ;;
     value_format_name: decimal_4
   }
 }
