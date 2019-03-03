@@ -1,6 +1,13 @@
 view: manta_zfs {
   sql_table_name: capacity.manta_zfs ;;
 
+
+  dimension: compound_primary_key {
+    primary_key: yes
+    hidden: yes
+    sql: ${TABLE}."date"  || ${TABLE}."region" ;;
+  }
+
   dimension_group: date {
     type: time
     timeframes: [
