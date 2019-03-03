@@ -27,6 +27,11 @@ explore: manta_zfs {
     sql_on: ${mantagoal.date_date} = ${manta_zfs.date_date} and ${mantagoal.region} = ${manta_zfs.region} ;;
     relationship: many_to_one
   }
+  join: muskiedelete {
+    type: full_outer
+    sql_on: ${muskiedelete.timestamp_date} = ${manta_zfs.date_date} and ${muskiedelete.region} = ${manta_zfs.region} ;;
+    relationship: many_to_many
+  }
 }
 explore: storageforecast {
   description: "SDC Storage forecasting"
@@ -58,6 +63,11 @@ explore: storageforecast {
     type: full_outer
     sql_on: ${mantagoal.date_date} = ${storageforecast.delivery_date} and ${mantagoal.region} = ${storageforecast.region} ;;
     relationship: many_to_one
+  }
+  join: muskiedelete{
+    type: full_outer
+    sql_on: ${muskiedelete.region} = ${storageforecast.region} and ${muskiedelete.timestamp_date} = ${storageforecast.delivery_date} ;;
+    relationship: many_to_many
   }
 }
 
