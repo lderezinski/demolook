@@ -1,6 +1,13 @@
 view: muskiedelete {
   sql_table_name: smartdc.muskiedelete ;;
 
+
+  dimension: compound_primary_key {
+    primary_key: yes
+    hidden: yes
+    sql: ${TABLE}."timestamp"  || ${TABLE}."datacenter" || ${TABLE}."ower_uuid";;
+  }
+
   dimension: datacenter {
     type: string
     sql: ${TABLE}.datacenter ;;
