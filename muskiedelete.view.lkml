@@ -67,15 +67,16 @@ view: muskiedelete {
     sql: deletedtb / 1024.0 ;;
     value_format_name: decimal_4
   }
+  # Per Elijah this is calculated from the web pov so it is already normalized
   measure: normalized_sumdelete_TB {
     type: sum
-    sql: deletedtb / 2.0 ;;
+    sql: deletedtb ;;
     value_format_name: decimal_4
   }
-
+# Per Elijah this is calculated from the web pov so it is already normalized
   measure: normalized_sumdelete_PB {
     type: sum
-    sql: deletedtb / 2.0 / 1024.0 ;;
+    sql: deletedtb / 1024.0 ;;
     value_format_name: decimal_4
   }
 }
