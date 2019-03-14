@@ -92,6 +92,6 @@ view: netbox {
   }
   measure: count {
     type: count
-    drill_fields: [name]
+    drill_fields: [name, region, rack, role, device_type]
   }
 }
