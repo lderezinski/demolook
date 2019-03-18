@@ -57,24 +57,24 @@ view: muskiedelete {
     drill_fields: []
   }
 
-  measure: sumdelete_TB {
+  measure: sumdelete_TiB {
     type: sum
     sql: deletedtb ;;
     value_format_name: decimal_4
   }
-  measure: sumdelete_PB {
+  measure: sumdelete_PiB {
     type: sum
     sql: deletedtb / 1024.0 ;;
     value_format_name: decimal_4
   }
   # Per Elijah this is calculated from the web pov so it is already normalized
-  measure: normalized_sumdelete_TB {
+  measure: normalized_sumdelete_TiB {
     type: sum
     sql: deletedtb ;;
     value_format_name: decimal_4
   }
 # Per Elijah this is calculated from the web pov so it is already normalized
-  measure: normalized_sumdelete_PB {
+  measure: normalized_sumdelete_PiB {
     type: sum
     sql: deletedtb / 1024.0 ;;
     value_format_name: decimal_4
