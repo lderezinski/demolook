@@ -121,4 +121,40 @@ view: mantastorage {
     sql: ${bytes}/1024.0/1024.0/1024.0 ;;
     value_format_name: decimal_4
   }
+  measure: reports_g {
+    type: sum
+    filters: {
+      field: type
+      value: "reports"
+    }
+    sql: ${bytes}/1024.0/1024.0/1024.0 ;;
+    value_format_name: decimal_4
+  }
+  measure: jobs_g {
+    type: sum
+    filters: {
+      field: type
+      value: "jobs"
+    }
+    sql: ${bytes}/1024.0/1024.0/1024.0 ;;
+    value_format_name: decimal_4
+  }
+  measure: stor_g {
+    type: sum
+    filters: {
+      field: type
+      value: "stor"
+    }
+    sql: ${bytes}/1024.0/1024.0/1024.0 ;;
+    value_format_name: decimal_4
+  }
+  measure: public_g {
+    type: sum
+    filters: {
+      field: type
+      value: "public"
+    }
+    sql: ${bytes}/1024.0/1024.0/1024.0 ;;
+    value_format_name: decimal_4
+  }
 }
