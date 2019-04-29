@@ -103,5 +103,22 @@ view: mantastorage {
     sql: ${objects} ;;
     value_format_name: decimal_0
   }
-
+  measure: public_stor_g {
+    type: sum
+    filters: {
+      field: type
+      value: "public, stor"
+    }
+    sql: ${bytes}/1024.0/1024.0/1024.0 ;;
+    value_format_name: decimal_4
+  }
+  measure: reports_jobs_g {
+    type: sum
+    filters: {
+      field: type
+      value: "reports, jobs"
+    }
+    sql: ${bytes}/1024.0/1024.0/1024.0 ;;
+    value_format_name: decimal_4
+  }
 }
