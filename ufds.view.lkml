@@ -108,6 +108,7 @@ dimension: grouped_name {
             WHEN ${login} = 'mhood' then 'Joyent Support'
             WHEN ${login} = 'ryanpuckett' then 'Joyent Support'
             WHEN ${login} = 'mohamed.khalfella' then 'Joyent Support'
+            WHEN ${login} = 'jesse.butryn@joyent.com' then 'Joyent Support'
 
             WHEN ${login} = 'admin' then 'Joyent Ops'
             WHEN ${login} = 'joyent_ops' then 'Joyent Ops'
@@ -116,6 +117,10 @@ dimension: grouped_name {
             WHEN ${login} = 'daren.darrow@joyent.com' then 'Joyent Ops'
             WHEN ${login} = 'useast_temporary_admin' then 'Joyent Ops'
             WHEN ${login} = 'superadmin' then 'Joyent Ops'
+            WHEN ${login} = 'jeff.emershaw' then 'Joyent Ops'
+
+            WHEN ${login} = 'csk' then 'Joyent Engineering'
+
             ELSE ${login} END ;;
 
             drill_fields: [uuid]
