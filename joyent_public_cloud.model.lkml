@@ -18,6 +18,14 @@ explore: status_cnapi {
 }
 explore: customer_facts {
 }
+explore: vmapi_jpc_facts {
+  join: ufds {
+    view_label: "Customers"
+    sql_on: ${vmapi_jpc_facts.ufds_uuid} = ${ufds.uuid} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+}
 explore: manta_zfs {
   description: "ZFS capacity"
   group_label: "Joyent Cloud"
