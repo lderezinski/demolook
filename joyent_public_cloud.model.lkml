@@ -25,6 +25,12 @@ explore: vmapi_jpc_facts {
     type: left_outer
     relationship: many_to_one
   }
+  join: ufdsgroupname{
+    view_label: "Customer group"
+    sql_on: ${ufdsgroupname.uuid} = ${vmapi_jpc_facts.ufds_uuid} ;;
+    type: left_outer
+    relationship: one_to_one
+  }
 }
 explore: manta_zfs {
   description: "ZFS capacity"
