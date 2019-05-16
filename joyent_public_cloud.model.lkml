@@ -18,6 +18,7 @@ explore: status_cnapi {
 }
 explore: customer_facts {
 }
+explore: irdata {}
 explore: vmapi_jpc_facts {
   join: ufds {
     view_label: "Customers"
