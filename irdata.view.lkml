@@ -12,6 +12,7 @@ view: irdata {
   }
 
   dimension: incticket {
+    primary_key: yes
     type: string
     sql: ${TABLE}.incticket ;;
   }
