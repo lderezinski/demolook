@@ -21,7 +21,7 @@ view: irdata {
     type: string
     sql: ${TABLE}.irlink ;;
     html:
-    {% if irlink  == null %}
+    {% if irlink  == NULL %}
       No Report
     {% elsif irlink  == "" %}
       No Report
