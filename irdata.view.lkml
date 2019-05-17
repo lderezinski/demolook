@@ -20,6 +20,14 @@ view: irdata {
   dimension: irlink {
     type: string
     sql: ${TABLE}.irlink ;;
+    html:
+    {% if irlink  == null %}
+      No Report
+    {% elsif irlink  == "" %}
+      No Report
+    {% else %}
+      <a href="{{ irlink }}">{{ incticket }} report</a>
+      {% endif %} ;;
   }
 
   dimension_group: jiracreated {
