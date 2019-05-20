@@ -68,8 +68,12 @@ view: irdata {
     sql: ${TABLE}.reportreq ;;
   }
 dimension: irdeliverytime {
-  type: string
+  type: number
   sql:  ${TABLE}.irdeliverytime ;;
+  html:
+  {% if value > 2 %}
+    <font color="red">{{ rendered_value }}</font>
+  {% endif %} ;;
 }
   dimension_group: finalreportsent {
     type: time
