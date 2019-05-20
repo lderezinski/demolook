@@ -71,7 +71,7 @@ dimension: irdeliverytime {
   type: string
   sql:  ${TABLE}.irdeliverytime ;;
 }
-  dimension_group: irdeliverytime {
+  dimension_group: finalreportsent {
     type: time
     timeframes: [
       raw,
@@ -82,9 +82,9 @@ dimension: irdeliverytime {
       quarter,
       year
     ]
-    sql: ${TABLE}.irdeliverytime ;;
+    sql: ${TABLE}.finalreportsent ;;
   }
-dimension: finalreportsent {}
+
   measure: count {
     type: count
     drill_fields: []
