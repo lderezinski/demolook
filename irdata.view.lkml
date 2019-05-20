@@ -73,6 +73,8 @@ dimension: irdeliverytime {
   html:
   {% if value > 2 %}
     <font color="red">{{ rendered_value }}</font>
+    {% else %}
+    {{ rendered_value }}
   {% endif %} ;;
 }
   dimension_group: finalreportsent {
