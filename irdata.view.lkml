@@ -71,7 +71,7 @@ dimension: irdeliverytime {
   type: number
   sql:  ${TABLE}.irdeliverytime ;;
   html:
-  {% if value > 2.0 %}
+  {% if value::number > 2.0 %}
     <font color="red">{{ rendered_value }}</font>
     {% else %}
     {{ rendered_value }}
