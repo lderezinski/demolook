@@ -99,6 +99,13 @@ dimension: irdeliverytime {
   measure: sumirdeliverytime {
     type:  sum
     sql: ${irdeliverytime};;
-    value_format_name:  decimal_2
+
+ value_format_name:  decimal_2
+  html:
+  {% if value > 2.0 %}
+    <font color="red">{{ rendered_value }}</font>
+    {% else %}
+    {{ rendered_value }}
+  {% endif %} ;;
   }
 }
