@@ -70,6 +70,7 @@ view: irdata {
 dimension: irdeliverytime {
   type: number
   sql:  ${TABLE}.irdeliverytime ;;
+  value_format_name:  decimal_2
   html:
   {% if value > 2.0 %}
     <font color="red">{{ rendered_value }}</font>
@@ -94,5 +95,10 @@ dimension: irdeliverytime {
   measure: count {
     type: count
     drill_fields: []
+  }
+  measure: sumirdeliverytime {
+    type:  sum
+    sql: ${irdeliverytime};;
+    value_format_name:  decimal_2
   }
 }
