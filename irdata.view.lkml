@@ -67,7 +67,24 @@ view: irdata {
     type: yesno
     sql: ${TABLE}.reportreq ;;
   }
-
+dimension: irdeliverytime {
+  type: string
+  sql:  ${TABLE}.irdeliverytime ;;
+}
+  dimension_group: irdeliverytime {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.irdeliverytime ;;
+  }
+dimension: finalreportsent {}
   measure: count {
     type: count
     drill_fields: []
