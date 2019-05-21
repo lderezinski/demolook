@@ -94,6 +94,13 @@ view: incdata {
     value_format_name:  decimal_2
   }
 
+  dimension: incstarttojira_tier{
+    type: tier
+    tiers: [0,15,30,45,60]
+    style: integer
+    sql: ${incstarttojira};;
+  }
+
   dimension: incticket {
     type: string
     sql: ${TABLE}.incticket ;;
@@ -197,6 +204,7 @@ view: incdata {
     type: count
     drill_fields: []
   }
+
   measure: sumincstarttojira {
     type:  sum
     sql: ${incstarttojira};;
@@ -209,5 +217,4 @@ view: incdata {
         {{ rendered_value }}
       {% endif %} ;;
   }
-
 }
