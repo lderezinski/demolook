@@ -81,7 +81,7 @@ dimension: irdeliverytime {
 
   dimension: irdeliverytime_tier{
     type: tier
-    tiers: [3,4,5,6]
+    tiers: [2,3,4,5]
     style: classic
     sql: ${irdeliverytime};;
   }
