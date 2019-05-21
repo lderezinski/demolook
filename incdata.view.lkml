@@ -109,6 +109,14 @@ view: incdata {
   dimension: irlink {
     type: string
     sql: ${TABLE}.irlink ;;
+    html:
+    {% if value  == null %}
+    <font color="grey">No Report</font>
+    {% elsif value  == '' %}
+    <font color="grey">No Report</font>
+    {% else %}
+    <a href="{{ irlink }}">{{ incticket }} report</a>
+    {% endif %} ;;
   }
 
   dimension_group: jiracreated {
