@@ -19,6 +19,13 @@ explore: status_cnapi {
 explore: customer_facts {
 }
 explore: irdata {}
+explore: incdata {
+  join: irdata {
+    sql_on: ${incdata.incticket} = ${irdata.incticket} ;;
+    type: left_outer
+    relationship: one_to_one
+  }
+}
 explore: vmapi_jpc_facts {
   join: ufds {
     view_label: "Customers"
