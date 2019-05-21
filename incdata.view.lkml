@@ -83,8 +83,14 @@ view: incdata {
   }
 
   dimension: incstarttojira {
-    type: string
-    sql: ${TABLE}.incstarttojira ;;
+    type: number
+    sql: ${TABLE}.incstarttojira * 24 * 60.0 ;;
+    html:
+    {% if value > 15.0 %}
+    <font color="red">{{ rendered_value }}</font>
+    {% else %}
+    {{ rendered_value }}
+    {% endif %} ;;
   }
 
   dimension: incticket {
@@ -190,4 +196,17 @@ view: incdata {
     type: count
     drill_fields: []
   }
+  measure: sumincstarttojira {
+    type:  sum
+    sql: ${incstarttojira};;
+
+    value_format_name:  decimal_2
+    html:
+      {% if value > 15.0 %}
+        <font color="red">{{ rendered_value }}</font>
+        {% else %}
+        {{ rendered_value }}
+      {% endif %} ;;
+  }
+
 }
