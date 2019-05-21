@@ -78,6 +78,14 @@ dimension: irdeliverytime {
     {{ rendered_value }}
   {% endif %} ;;
 }
+
+  dimension: irdeliverytime_tier{
+    type: tier
+    tiers: [3,4,5,6]
+    style: integer
+    sql: ${irdeliverytime};;
+  }
+
   dimension_group: finalreportsent {
     type: time
     timeframes: [
