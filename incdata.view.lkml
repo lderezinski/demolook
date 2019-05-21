@@ -91,6 +91,7 @@ view: incdata {
     {% else %}
     {{ rendered_value }}
     {% endif %} ;;
+    value_format_name:  decimal_2
   }
 
   dimension: incticket {
