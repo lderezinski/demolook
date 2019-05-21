@@ -84,7 +84,7 @@ view: incdata {
 
   dimension: incstarttojira {
     type: number
-    sql: ${TABLE}.incstarttojira * 24 * 60.0 ;;
+    sql: ${TABLE}.incstarttojira ;;
     html:
     {% if value > 15.0 %}
     <font color="red">{{ rendered_value }}</font>
@@ -96,7 +96,7 @@ view: incdata {
 
   dimension: incstarttojira_tier{
     type: tier
-    tiers: [0,15,30,45,60]
+    tiers: [16,31,46,61]
     style: integer
     sql: ${incstarttojira};;
   }
