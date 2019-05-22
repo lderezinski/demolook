@@ -22,7 +22,7 @@ explore: irdata {}
 explore: incdata {
   join: irdata {
     sql_on: ${incdata.incticket} = ${irdata.incticket} ;;
-    type: left_outer
+    type: full_outer
     relationship: one_to_one
   }
 }
