@@ -100,6 +100,13 @@ dimension: irdeliverytime {
     sql: ${TABLE}.finalreportsent ;;
   }
 
+
+  dimension: ontime {
+    type: yesno
+    sql: ${TABLE}.irdeliverytime <= 2.0 ;;
+  }
+
+
   measure: count {
     type: count
     drill_fields: []
