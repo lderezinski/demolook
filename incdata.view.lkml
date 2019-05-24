@@ -107,6 +107,11 @@ view: incdata {
     html: <a href="https://jira.joyent.us/browse/{{value}}">{{value}}</a> ;;
   }
 
+  dimension: detected {
+    type: yesno
+    sql: ${TABLE}.detected ;;
+  }
+
   dimension_group: initialnottime {
     type: time
     timeframes: [
