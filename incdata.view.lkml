@@ -97,7 +97,7 @@ view: incdata {
   dimension: incstarttojira_tier{
     type: tier
     tiers: [16,31,46,61]
-    style: integer
+    style: relational
     sql: ${incstarttojira};;
   }
 

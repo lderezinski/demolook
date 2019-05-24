@@ -82,7 +82,7 @@ dimension: irdeliverytime {
   dimension: irdeliverytime_tier{
     type: tier
     tiers: [2,3,4,5]
-    style: interval
+    style: relational
     sql: ${irdeliverytime};;
   }
 
