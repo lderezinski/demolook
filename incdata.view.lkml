@@ -104,6 +104,7 @@ view: incdata {
   dimension: incticket {
     type: string
     sql: ${TABLE}.incticket ;;
+    html: <a href="https://jira.joyent.us/browse/{{value}}">{{value}}</a> ;;
   }
 
   dimension_group: initialnottime {
