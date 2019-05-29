@@ -16,7 +16,7 @@ view: incdata {
     sql: ${TABLE}.duration ;;
   }
 
-  dimension_group: finalreporttime {
+  dimension_group: finalreportsent {
     type: time
     timeframes: [
       raw,
@@ -29,6 +29,8 @@ view: incdata {
     ]
     sql: ${TABLE}.finalreporttime ;;
   }
+
+
 
   dimension_group: firstzdticket {
     type: time
@@ -206,6 +208,30 @@ view: incdata {
     sql: ${TABLE}.type ;;
   }
 
+  dimension: irdeliverytime {
+    type: number
+    sql:  ${TABLE}.irdeliverytime ;;
+    value_format_name:  decimal_2
+    html:
+      {% if value > 2.0 %}
+        <font color="red">{{ rendered_value }}</font>
+        {% else %}
+        {{ rendered_value }}
+      {% endif %} ;;
+  }
+
+  dimension: irdeliverytime_tier{
+    type: tier
+    tiers: [2,3,4,5]
+    style: relational
+    sql: ${irdeliverytime};;
+  }
+  dimension: ontime {
+    type: yesno
+    sql: ${TABLE}.irdeliverytime <= 2.0001 ;;
+  }
+
+
   measure: count {
     type: count
     drill_fields: []
@@ -218,6 +244,18 @@ view: incdata {
     value_format_name:  decimal_2
     html:
       {% if value > 15.0 %}
+        <font color="red">{{ rendered_value }}</font>
+        {% else %}
+        {{ rendered_value }}
+      {% endif %} ;;
+  }
+  measure: sumirdeliverytime {
+    type:  sum
+    sql: ${irdeliverytime};;
+
+    value_format_name:  decimal_2
+    html:
+      {% if value > 2.0 %}
         <font color="red">{{ rendered_value }}</font>
         {% else %}
         {{ rendered_value }}

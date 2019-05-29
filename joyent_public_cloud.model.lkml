@@ -18,13 +18,11 @@ explore: status_cnapi {
 }
 explore: customer_facts {
 }
-explore: irdata {}
+
 explore: incdata {
-  join: irdata {
-    sql_on: ${incdata.incticket} = ${irdata.incticket} ;;
-    type: full_outer
-    relationship: one_to_one
-  }
+  description: "SPC Incidents and Reports"
+  view_label: "Incidents"
+  group_label: "Joyent Cloud"
 }
 explore: vmapi_jpc_facts {
   join: ufds {
