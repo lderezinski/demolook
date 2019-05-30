@@ -28,6 +28,7 @@ view: incdata {
       year
     ]
     sql: ${TABLE}.finalreporttime ;;
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
 
@@ -44,16 +45,19 @@ view: incdata {
       year
     ]
     sql: ${TABLE}.firstzdticket ;;
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
   dimension: followup {
     type: string
     sql: ${TABLE}.followup ;;
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
   dimension: impact {
     type: string
     sql: ${TABLE}.impact ;;
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
   dimension_group: incend {
@@ -82,6 +86,7 @@ view: incdata {
       year
     ]
     sql: ${TABLE}.incstart ;;
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
   dimension: incstarttojira {
@@ -94,6 +99,7 @@ view: incdata {
     {{ rendered_value }}
     {% endif %} ;;
     value_format_name:  decimal_2
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
   dimension: incstarttojira_tier{
@@ -107,11 +113,13 @@ view: incdata {
     type: string
     sql: ${TABLE}.incticket ;;
     html: <a href="https://jira.joyent.us/browse/{{value}}">{{value}}</a> ;;
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
   dimension: detected {
     type: yesno
     sql: ${TABLE}.detected ;;
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
   dimension_group: initialnottime {
@@ -126,6 +134,7 @@ view: incdata {
       year
     ]
     sql: ${TABLE}.initialnottime ;;
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
   dimension: irlink {
@@ -139,6 +148,7 @@ view: incdata {
     {% else %}
     <a href="{{ irlink }}">{{ incticket }} report</a>
     {% endif %} ;;
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
   dimension_group: jiracreated {
@@ -153,6 +163,7 @@ view: incdata {
       year
     ]
     sql: ${TABLE}.jiracreated ;;
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
   dimension_group: jiraresolved {
@@ -167,6 +178,7 @@ view: incdata {
       year
     ]
     sql: ${TABLE}.jiraresolved ;;
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
   dimension: less15notice {
@@ -191,6 +203,7 @@ view: incdata {
   dimension: priorty {
     type: string
     sql: ${TABLE}.priorty ;;
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
   dimension: reportreq {
@@ -206,6 +219,7 @@ view: incdata {
   dimension: type {
     type: string
     sql: ${TABLE}.type ;;
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
   dimension: irdeliverytime {
@@ -218,6 +232,7 @@ view: incdata {
         {% else %}
         {{ rendered_value }}
       {% endif %} ;;
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
   dimension: irdeliverytime_tier{
@@ -225,18 +240,20 @@ view: incdata {
     tiers: [2,3,4,5]
     style: relational
     sql: ${irdeliverytime};;
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
 
   dimension: ontime {
     type: yesno
     sql: ${TABLE}.irdeliverytime <= 2.0001 ;;
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
 
   measure: count {
     type: count
-    drill_fields: []
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
   measure: sumincstarttojira {
