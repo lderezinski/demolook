@@ -11,6 +11,7 @@ view: sdcdataloaded {
     timeframes: [
       raw,
       date,
+      time,
       week,
       month,
       quarter,
