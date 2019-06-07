@@ -24,6 +24,7 @@ view: incdata {
       date,
       week,
       month,
+      month_num,
       quarter,
       year
     ]
@@ -41,6 +42,7 @@ view: incdata {
       date,
       week,
       month,
+      month_num,
       quarter,
       year
     ]
@@ -68,6 +70,7 @@ view: incdata {
       date,
       week,
       month,
+      month_num,
       quarter,
       year
     ]
@@ -82,6 +85,7 @@ view: incdata {
       date,
       week,
       month,
+      month_num,
       quarter,
       year
     ]
@@ -89,6 +93,15 @@ view: incdata {
     drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
+dimension: instart_fiscalhalf {
+  type: string
+  sql: CASE
+            WHEN ${incstart_month_num} < 7 then concat(${incstart_year}::text,'-H1')
+            ELSE concat(${incstart_year}::text,'-H2')
+       END;;
+  drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
+
+}
   dimension: incstarttojira {
     type: number
     sql: ${TABLE}.incstarttojira ;;
@@ -130,6 +143,7 @@ view: incdata {
       date,
       week,
       month,
+      month_num,
       quarter,
       year
     ]
@@ -159,6 +173,7 @@ view: incdata {
       date,
       week,
       month,
+          month_num,
       quarter,
       year
     ]
@@ -174,6 +189,7 @@ view: incdata {
       date,
       week,
       month,
+          month_num,
       quarter,
       year
     ]
@@ -194,6 +210,7 @@ view: incdata {
       date,
       week,
       month,
+          month_num,
       quarter,
       year
     ]
