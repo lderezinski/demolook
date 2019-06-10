@@ -19,8 +19,6 @@ view: status {
       quarter,
       year
     ]
-    convert_tz: no
-    datatype: date
     sql: ${TABLE}."date" ;;
   }
 
@@ -42,5 +40,9 @@ view: status {
   measure: count {
     type: count
     drill_fields: []
+  }
+  measure: five_minute_moving_avg{
+    type: number
+    sql:  ${TABLE}."value" ;;
   }
 }

@@ -18,8 +18,7 @@ view: latency {
       quarter,
       year
     ]
-    convert_tz: no
-    datatype: date
+
     sql: ${TABLE}."date" ;;
   }
 
@@ -41,5 +40,9 @@ view: latency {
   measure: count {
     type: count
     drill_fields: []
+  }
+  measure: five_minute_moving_avg{
+    type: average
+    sql:  ${TABLE}."value" ;;
   }
 }
