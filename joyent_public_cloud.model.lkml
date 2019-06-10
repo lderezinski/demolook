@@ -10,6 +10,20 @@ include: "//zendesk/tickets.view.lkml"
 # # and define the joins that connect them together.
 #
 
+explore: latency {
+  description: "SPC Manta latency"
+  view_label: "SPC Manta latency"
+  group_label: "SPC Manta"
+
+}
+
+explore: status {
+  description: "SPC Manta http status codes"
+  view_label: "SPC Manta status"
+  group_label: "SPC Manta"
+
+}
+
 explore: ram_values {
   hidden: yes
 }
