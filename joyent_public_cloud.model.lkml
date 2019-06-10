@@ -24,6 +24,12 @@ explore: status {
 
 }
 
+explore: updataloaded {
+  description: "SPC Manta uptime datasource status"
+  view_label: "SPC Manta datasource status"
+  group_label: "SPC Manta"
+}
+
 explore: ram_values {
   hidden: yes
 }
