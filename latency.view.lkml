@@ -12,6 +12,7 @@ view: latency {
     timeframes: [
       raw,
       date,
+      time,
       week,
       month,
       quarter,

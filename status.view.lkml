@@ -13,6 +13,7 @@ view: status {
     timeframes: [
       raw,
       date,
+      time,
       week,
       month,
       quarter,
