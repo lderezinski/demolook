@@ -30,8 +30,9 @@ view: status {
 dimension: code_buckets {
   type: tier
   tiers: [200,300,400,500]
+  style: integer
   drill_fields: [httpcode,region,value,date_time]
-  sql: ${TABLE}."httpcode"  ;;
+  sql: ${TABLE}."httpcode"::integer  ;;
 }
   dimension: region {
     type: string
@@ -49,6 +50,10 @@ dimension: code_buckets {
   }
   measure: five_minute_moving_avg{
     type: average
+    sql:  ${TABLE}."value" ;;
+  }
+  measure: five_minute_sum{
+    type: sum
     sql:  ${TABLE}."value" ;;
   }
 }
