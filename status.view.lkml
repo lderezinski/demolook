@@ -43,7 +43,7 @@ view: status {
     drill_fields: []
   }
   measure: five_minute_moving_avg{
-    type: number
+    type: average
     sql:  ${TABLE}."value" ;;
   }
 }
