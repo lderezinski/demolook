@@ -22,7 +22,7 @@ view: incdata {
       raw,
       time,
       date,
-            hour,
+      hour,
       week,
       month,
       month_num,
@@ -41,7 +41,7 @@ view: incdata {
       raw,
       time,
       date,
-            hour,
+      hour,
       week,
       month,
       month_num,
@@ -69,7 +69,7 @@ view: incdata {
     timeframes: [
       raw,
       time,
-            hour,
+      hour,
       date,
       week,
       month,
@@ -144,7 +144,7 @@ dimension: instart_fiscalhalf {
     timeframes: [
       raw,
       time,
-            hour,
+      hour,
       date,
       week,
       month,
@@ -176,10 +176,10 @@ dimension: instart_fiscalhalf {
       raw,
       time,
       date,
-            hour,
+      hour,
       week,
       month,
-          month_num,
+      month_num,
       quarter,
       year
     ]
@@ -193,10 +193,10 @@ dimension: instart_fiscalhalf {
       raw,
       time,
       date,
-            hour,
+      hour,
       week,
       month,
-          month_num,
+      month_num,
       quarter,
       year
     ]
@@ -214,11 +214,11 @@ dimension: instart_fiscalhalf {
     timeframes: [
       raw,
       time,
-            hour,
+      hour,
       date,
       week,
       month,
-          month_num,
+      month_num,
       quarter,
       year
     ]
