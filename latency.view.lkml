@@ -13,6 +13,7 @@ view: latency {
       raw,
       date,
       time,
+      hour,
       week,
       month,
       quarter,

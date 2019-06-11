@@ -14,6 +14,7 @@ view: status {
       raw,
       date,
       time,
+      hour,
       week,
       month,
       quarter,
