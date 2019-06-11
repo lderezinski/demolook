@@ -27,7 +27,12 @@ view: status {
     type: string
     sql: ${TABLE}."httpcode" ;;
   }
-
+dimension: code_buckets {
+  type: tier
+  tiers: [200,300,400,500]
+  drill_fields: [httpcode,region,value,date_time]
+  sql: ${TABLE}."httpcode"  ;;
+}
   dimension: region {
     type: string
     sql: ${TABLE}."region" ;;
