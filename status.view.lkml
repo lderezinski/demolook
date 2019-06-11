@@ -24,7 +24,7 @@ view: status {
   }
 
   dimension: httpcode {
-    type: string
+    type: number
     sql: ${TABLE}."httpcode" ;;
   }
 dimension: code_buckets {
@@ -32,7 +32,7 @@ dimension: code_buckets {
   tiers: [200,300,400,500]
   style: integer
   drill_fields: [httpcode,region,value,date_time]
-  sql: ${TABLE}."httpcode"::integer  ;;
+  sql: ${TABLE}."httpcode"  ;;
 }
   dimension: region {
     type: string
