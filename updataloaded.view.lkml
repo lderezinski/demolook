@@ -12,6 +12,7 @@ view: updataloaded {
       raw,
       time,
       date,
+      hour,
       week,
       month,
       quarter,

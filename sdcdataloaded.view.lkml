@@ -12,6 +12,7 @@ view: sdcdataloaded {
       raw,
       date,
       time,
+      hour,
       week,
       month,
       quarter,
