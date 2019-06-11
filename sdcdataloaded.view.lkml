@@ -18,8 +18,6 @@ view: sdcdataloaded {
       quarter,
       year
     ]
-    convert_tz: no
-    datatype: date
     sql: ${TABLE}.date ;;
   }
 
