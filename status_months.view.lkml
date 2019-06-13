@@ -23,6 +23,7 @@ view: status_months {
   dimension: uptime {
     type: number
     sql: ${TABLE}."value" ;;
+    value_format_name: percent_4
   }
 
   measure: count {
@@ -32,6 +33,7 @@ view: status_months {
   measure: uptime_sum{
     type: sum
     sql:  ${TABLE}."value" ;;
+    value_format_name: percent_4
   }
 
 }

@@ -24,6 +24,7 @@ view: status_hours {
   dimension: uptime {
     type: number
     sql: ${TABLE}."value" ;;
+    value_format_name: percent_4
   }
 
   measure: count {
@@ -33,6 +34,7 @@ view: status_hours {
   measure: uptime_sum{
     type: sum
     sql:  ${TABLE}."value" ;;
+    value_format_name: percent_4
   }
 
 }
