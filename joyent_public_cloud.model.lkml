@@ -12,36 +12,53 @@ include: "//zendesk/tickets.view.lkml"
 
 explore: latency {
   description: "SPC Manta latency"
-  view_label: "SPC Manta latency"
+  view_label: "latency by minute"
   group_label: "SPC Manta"
+}
 
+explore: latency_days {
+  description: "% good latency by day"
+  view_label: "latency day"
+  group_label: "SPC Manta"
+}
+
+explore: latency_hours {
+  description: "% good latency by hour"
+  view_label: "latency hour"
+  group_label: "SPC Manta"
+}
+
+explore: latency_months {
+  description: "% good latency by month"
+  view_label: "latency month"
+  group_label: "SPC Manta"
 }
 
 explore: status {
-  description: "SPC Manta http status codes"
-  view_label: "SPC Manta status"
+  description: "http status codes"
+  view_label: "status"
   group_label: "SPC Manta"
 
 }
 explore: status_days {
-  description: "SPC Manta uptime days average of the hours"
+  description: "uptime days average of the hours"
   view_label: "uptime days"
   group_label: "SPC Manta"
 }
 explore: status_hours {
-  description: "SPC Manta uptime hours average of the minutes"
+  description: "uptime hours average of the minutes"
   view_label: "uptime hours"
   group_label: "SPC Manta"
 }
 
 explore: status_months {
-  description: "SPC Manta uptime months average of the days"
+  description: "uptime months average of the days"
   view_label: "uptime months"
   group_label: "SPC Manta"
 }
 explore: updataloaded {
-  description: "SPC Manta uptime datasource status"
-  view_label: "SPC Manta datasource status"
+  description: "uptime datasource status"
+  view_label: "datasource status"
   group_label: "SPC Manta"
 }
 
