@@ -23,7 +23,22 @@ explore: status {
   group_label: "SPC Manta"
 
 }
+explore: status_days {
+  description: "SPC Manta uptime days average of the hours"
+  view_label: "uptime days"
+  group_label: "SPC Manta"
+}
+explore: status_hours {
+  description: "SPC Manta uptime hours average of the minutes"
+  view_label: "uptime hours"
+  group_label: "SPC Manta"
+}
 
+explore: status_months {
+  description: "SPC Manta uptime months average of the days"
+  view_label: "uptime months"
+  group_label: "SPC Manta"
+}
 explore: updataloaded {
   description: "SPC Manta uptime datasource status"
   view_label: "SPC Manta datasource status"
