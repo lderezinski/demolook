@@ -34,7 +34,7 @@ view: latency_days {
   dimension: latency {
     type: number
     sql: ${TABLE}."value" ;;
-    value_format_name: percent_4
+    value_format_name: percent_1
   }
 
   measure: count {
@@ -44,12 +44,12 @@ view: latency_days {
   measure: latency_sum{
     type: sum
     sql:  ${TABLE}."value" ;;
-    value_format_name: percent_4
+    value_format_name: percent_1
   }
 
   measure: latency_avg{
     type: average
     sql:  ${TABLE}."value" ;;
-    value_format_name: percent_4
+    value_format_name: percent_1
   }
 }
