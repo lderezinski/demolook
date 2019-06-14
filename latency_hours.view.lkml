@@ -15,6 +15,12 @@ view: latency_hours {
     sql: ${TABLE}."date" ;;
   }
 
+  dimension: compound_primary_key {
+    primary_key: yes
+    hidden: yes
+    sql: ${TABLE}."date"  || ${TABLE}."region" || ${TABLE}."type";;
+  }
+
   dimension: region {
     type: string
     sql: ${TABLE}."region" ;;

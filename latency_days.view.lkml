@@ -1,6 +1,12 @@
 view: latency_days {
   sql_table_name: uptime.latency_days ;;
 
+  dimension: compound_primary_key {
+    primary_key: yes
+    hidden: yes
+    sql: ${TABLE}."date"  || ${TABLE}."region" || ${TABLE}."type";;
+  }
+
   dimension_group: date {
     type: time
     timeframes: [
