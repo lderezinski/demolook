@@ -39,7 +39,8 @@ view: status_months {
   measure: uptime_sum{
     type: sum
     sql:  ${TABLE}."value" ;;
-    value_format_name: percent_1
+    value_format_name: percent_2
   }
+
 
 }
