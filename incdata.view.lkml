@@ -4,16 +4,19 @@ view: incdata {
   dimension: description {
     type: string
     sql: ${TABLE}.description ;;
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
   dimension: detectionrate {
     type: number
     sql: ${TABLE}.detectionrate ;;
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
   dimension: duration {
     type: number
     sql: ${TABLE}.duration ;;
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
   dimension_group: finalreportsent {
@@ -207,6 +210,7 @@ dimension: instart_fiscalhalf {
   dimension: less15notice {
     type: yesno
     sql: ${TABLE}.less15notice ;;
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
   dimension_group: pagerdutytime {
@@ -223,6 +227,7 @@ dimension: instart_fiscalhalf {
       year
     ]
     sql: ${TABLE}.pagerdutytime ;;
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
   dimension: priorty {
@@ -234,11 +239,13 @@ dimension: instart_fiscalhalf {
   dimension: reportreq {
     type: yesno
     sql: ${TABLE}.reportreq ;;
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
   dimension: rollavgdetectrate {
     type: number
     sql: ${TABLE}.rollavgdetectrate ;;
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
   }
 
   dimension: type {
@@ -284,7 +291,7 @@ dimension: instart_fiscalhalf {
   measure: sumincstarttojira {
     type:  sum
     sql: ${incstarttojira};;
-
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
     value_format_name:  decimal_2
     html:
       {% if value > 15.0 %}
@@ -296,7 +303,7 @@ dimension: instart_fiscalhalf {
   measure: sumirdeliverytime {
     type:  sum
     sql: ${irdeliverytime};;
-
+    drill_fields: [incend_time,incstart_time,incticket,description,priorty,jiracreated_time,irlink]
     value_format_name:  decimal_2
     html:
       {% if value > 2.0 %}
