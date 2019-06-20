@@ -13,6 +13,7 @@ view: status_months {
       year
     ]
     sql: ${TABLE}."date" ;;
+    drill_fields: [uptime,region,date_date]
   }
 
   dimension: compound_primary_key {
@@ -24,22 +25,25 @@ view: status_months {
   dimension: region {
     type: string
     sql: ${TABLE}."region" ;;
+    drill_fields: [uptime,region,date_date]
   }
 
   dimension: uptime {
     type: number
     sql: ${TABLE}."value" ;;
     value_format_name: percent_1
+    drill_fields: [uptime,region,date_date]
   }
 
   measure: count {
     type: count
-    drill_fields: []
+    drill_fields: [uptime,region,date_date]
   }
   measure: uptime_sum{
     type: sum
     sql:  ${TABLE}."value" ;;
     value_format_name: percent_2
+    drill_fields: [uptime,region,date_date]
   }
 
 

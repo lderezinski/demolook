@@ -21,11 +21,13 @@ view: status {
       year
     ]
     sql: ${TABLE}."date" ;;
+    drill_fields: [httpcode,region,value,date_date]
   }
 
   dimension: httpcode {
     type: number
     sql: ${TABLE}."httpcode" ;;
+    drill_fields: [httpcode,region,value,date_date]
   }
 dimension: code_buckets {
   type: tier
@@ -37,23 +39,27 @@ dimension: code_buckets {
   dimension: region {
     type: string
     sql: ${TABLE}."region" ;;
+    drill_fields: [httpcode,region,value,date_date]
   }
 
   dimension: value {
     type: number
     sql: ${TABLE}."value" ;;
+    drill_fields: [httpcode,region,value,date_date]
   }
 
   measure: count {
     type: count
-    drill_fields: []
+    drill_fields: [httpcode,region,value,date_date]
   }
   measure: five_minute_moving_avg{
     type: average
     sql:  ${TABLE}."value" ;;
+    drill_fields: [httpcode,region,value,date_date]
   }
   measure: five_minute_sum{
     type: sum
     sql:  ${TABLE}."value" ;;
+    drill_fields: [httpcode,region,value,date_date]
   }
 }

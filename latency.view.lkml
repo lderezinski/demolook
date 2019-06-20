@@ -21,29 +21,34 @@ view: latency {
     ]
 
     sql: ${TABLE}."date" ;;
+    drill_fields: [value,region,date_date,type]
   }
 
   dimension: region {
     type: string
     sql: ${TABLE}."region" ;;
+    drill_fields: [value,region,date_date,type]
   }
 
   dimension: type {
     type: string
     sql: ${TABLE}."type" ;;
+    drill_fields: [value,region,date_date,type]
   }
 
   dimension: value {
     type: number
     sql: ${TABLE}."value" ;;
+    drill_fields: [value,region,date_date,type]
   }
 
   measure: count {
     type: count
-    drill_fields: []
+    drill_fields: [value,region,date_date,type]
   }
   measure: five_minute_moving_avg{
     type: average
     sql:  ${TABLE}."value" ;;
+    drill_fields: [value,region,date_date,type]
   }
 }
