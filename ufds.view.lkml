@@ -13,7 +13,7 @@ view: ufds {
 
   dimension: company {
     type: string
-    sql: coalesce(${TABLE}.company,${TABLE}.givenname) ;;
+    sql: coalesce(${TABLE}.company,${TABLE}.cn) ;;
   }
 
   dimension_group: created {
