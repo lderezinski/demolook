@@ -8,7 +8,7 @@ view: ufds {
 
   dimension: cn {
     type: string
-    sql: coalesce(${TABLE}.cn,${givenname} || " " || ${sn}) ;;
+    sql: coalesce(${TABLE}.cn,${givenname} || ' '  || ${sn}) ;;
   }
 
   dimension: company {
