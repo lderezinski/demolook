@@ -32,6 +32,7 @@ parameter: cpu {
   }
   dimension_group: boot_pi_date {
     type: time
+    description: "Next Boot PI date"
     timeframes: [
       raw,
       time,
