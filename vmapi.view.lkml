@@ -14,7 +14,7 @@ view: vmapi {
   dimension: compound_primary_key {
     primary_key: yes
     hidden: yes
-    sql: ${TABLE}.uuid ||  '  ' || ${TABLE}.datacenter || ${TABLE}.owner_uuid  ;;
+    sql: ${TABLE}.uuid ||  '  ' || ${TABLE}.datacenter || ${TABLE}.owner_uuid  || ${TABLE}.date;;
   }
   dimension: brand {
     type: string
