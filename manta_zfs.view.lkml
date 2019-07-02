@@ -30,7 +30,13 @@ view: manta_zfs {
 
   dimension: zfs_available_bytes {
     type: number
-    sql: GREATEST(${TABLE}.zfs_available/2 - 0.04 *(${TABLE}.zfs_available/2 +${zfs_used_bytes}),0);;
+    sql: CASE
+    when ${region} = 'ap-northeast' THEN
+      GREATEST(${TABLE}.zfs_available/2 - 0.06 *(${TABLE}.zfs_available/2 +${zfs_used_bytes}),0)
+    else
+      GREATEST(${TABLE}.zfs_available/2 - 0.05 *(${TABLE}.zfs_available/2 +${zfs_used_bytes}),0)
+    END;;
+
     value_format_name: decimal_2
   }
 
