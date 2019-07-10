@@ -90,6 +90,19 @@ explore: vmapi_jpc_facts {
     relationship: one_to_one
   }
 }
+
+explore: manta_usage {
+  description: "SPC manta usage"
+  group_label: "SPC Manta"
+  label: "SCloud usage"
+  join: ufds {
+    type: full_outer
+    sql_on: ${ufds.login} = ${manta_usage.login}  ;;
+    relationship: many_to_one
+  }
+
+}
+
 explore: manta_zfs {
   description: "ZFS capacity"
   group_label: "Joyent Cloud"
