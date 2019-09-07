@@ -121,6 +121,18 @@ dimension: grouped_name {
 
             WHEN ${login} = 'csk' then 'Joyent Engineering'
 
+            WHEN ${login} = 'dr.lt' then 'HBC'
+            WHEN ${login} = 'dr.o5a' then 'HBC'
+            WHEN ${login} = 'dr.s5a' then 'HBC'
+            WHEN ${login} = 'hbcdigital' then 'HBC'
+            WHEN ${login} = 'preview.dr.lt' then 'HBC'
+            WHEN ${login} = 'preview.dr.o5a' then 'HBC'
+            WHEN ${login} = 'preview.dr.s5a' then 'HBC'
+
+            WHEN ${login} = 'mgtsecurity' then 'LB'
+            WHEN ${login} = 'vscadmin' then 'LB'
+
+
             ELSE ${login} END ;;
 
             drill_fields: [uuid]
