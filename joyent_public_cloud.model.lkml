@@ -94,10 +94,16 @@ explore: bandwidth {
     relationship: one_to_one
   }
   join: zuora_customers {
-    view_label: "Customers"
+    view_label: "ZCustomers"
     sql_on: ${zuora_customers.accountnumber} = ${bandwidth.owner_uuid} ;;
     type: left_outer
     relationship: many_to_one
+  }
+  join: vmapi {
+    view_label: "vmapi"
+    sql_on: ${vmapi.owner_uuid} = ${bandwidth.owner_uuid} ;;
+    type: left_outer
+    relationship: many_to_many
   }
 }
 
@@ -209,7 +215,7 @@ explore: bpr {
   group_label: "Joyent Cloud"
   label: "bpr"
   join: zuora_customers {
-    view_label: "Customers"
+    view_label: "ZCustomers"
     sql_on: ${zuora_customers.accountnumber} = ${bpr.account_number} ;;
     type: left_outer
     relationship: many_to_one
@@ -234,7 +240,7 @@ explore: ufds {
     relationship: one_to_one
   }
   join: zuora_customers {
-    view_label: "Customers"
+    view_label: "ZCustomers"
     sql_on: ${zuora_customers.accountnumber} = ${ufds.uuid} ;;
     type: left_outer
     relationship: many_to_one
@@ -269,7 +275,7 @@ explore: mantastorage {
     relationship: many_to_one
   }
   join: zuora_customers {
-    view_label: "Customers"
+    view_label: "ZCustomers"
     sql_on: ${zuora_customers.accountnumber} = ${mantastorage.owner} ;;
     type: left_outer
     relationship: many_to_one
@@ -301,7 +307,7 @@ explore: zinvoiceitems {
     relationship: one_to_one
   }
   join: zuora_customers {
-    view_label: "Customers"
+    view_label: "ZCustomers"
     sql_on: ${zuora_customers.accountnumber} = ${zinvoiceitems.account_number} ;;
     type: left_outer
     relationship: many_to_one
@@ -407,7 +413,7 @@ explore: jpcdaily_spend {
   label: "jpc daily spend"
 
     join: zuora_customers {
-      view_label: "Customers"
+      view_label: "ZCustomers"
       sql_on: ${jpcdaily_spend.accountnumber} = ${zuora_customers.accountnumber} ;;
       type: left_outer
       relationship: many_to_one
@@ -538,7 +544,7 @@ explore: muskiedelete {
     relationship: many_to_one
   }
   join: zuora_customers {
-    view_label: "Customers"
+    view_label: "ZCustomers"
     sql_on: ${zuora_customers.accountnumber} = ${muskiedelete.owner_uuid} ;;
     type: left_outer
     relationship: many_to_one
