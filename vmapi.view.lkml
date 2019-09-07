@@ -151,10 +151,6 @@ view: vmapi {
     type: number
     sql: ${TABLE}.ram ;;
   }
-  dimension: ram_lsd {
-    type: number
-    sql: ${ram}/1024.0 ;;
-  }
 
   dimension: server_uuid {
     type: string

@@ -76,6 +76,31 @@ explore: incdata {
   view_label: "Incidents"
   group_label: "Joyent Cloud"
 }
+
+explore: bandwidth {
+  description: "JPC Instance bandwidth"
+  view_label: "Bandwidth"
+  group_label: "Joyent Public Cloud"
+  join: ufds {
+    view_label: "Customers"
+    sql_on: ${bandwidth.owner_uuid} = ${ufds.uuid} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: ufdsgroupname{
+    view_label: "Customer group"
+    sql_on: ${ufdsgroupname.uuid} = ${bandwidth.owner_uuid} ;;
+    type: left_outer
+    relationship: one_to_one
+  }
+  join: zuora_customers {
+    view_label: "Customers"
+    sql_on: ${zuora_customers.accountnumber} = ${bandwidth.owner_uuid} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+}
+
 explore: vmapi_jpc_facts {
   join: ufds {
     view_label: "Customers"
