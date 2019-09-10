@@ -14,13 +14,16 @@ view: capacity_derived {
   }
   dimension: region_status {}
   dimension_group: deliver {
+    description: "Delivery date"
     type: time
     sql: ${TABLE}.deliver_date ;;
   }
   dimension: sold_out_date {
+    description: "Date it will be sold out"
     type: date
   }
   dimension: sum_manta_cap_pib {
+    description: "The manta capacity in PiB"
     type: number
   }
 }
