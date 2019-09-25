@@ -1,6 +1,8 @@
 # Announcements
 
 ## Looker upgrades
+- 2019-09-24 upgraded [6.20.13](https://discourse.looker.com/t/looker-6-20-release-notes/13857)
+
 - 2019-08-25 upgraded [6.18.14](https://discourse.looker.com/t/looker-6-18-release-notes/13347)
 
 - 2019-07-23 Upgraded [6.16.11](https://discourse.looker.com/t/looker-6-16-release-notes/12994)
