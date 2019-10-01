@@ -70,6 +70,7 @@ view: mantastorage {
     value_format_name: decimal_4
   }
   measure: count {
+    description: "Number of distinct objects returned in query"
     type: count
     drill_fields: []
   }

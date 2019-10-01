@@ -57,6 +57,7 @@ view: manta_zfs {
     value_format_name: decimal_2
   }
   measure: count {
+    description: "Number of distinct objects returned in query"
     type: count
     drill_fields: []
   }

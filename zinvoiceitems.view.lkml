@@ -101,6 +101,7 @@ dimension: isInstance {
     sql: split_part(${sub_uuid},'_',1) = 'support' ;;
   }
   measure: count {
+    description: "Number of distinct objects returned in query"
     type: count
     drill_fields: []
   }

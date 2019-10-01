@@ -11,20 +11,24 @@ view: jpc_account_facts {
     }
 
     dimension: account_number {
+      description: "UFDS UUID"
       primary_key: yes
       hidden: yes
     }
 
     dimension: total_orders {
+      description: "Total amount of orders for this account"
       type: number
     }
 
     dimension: total_spend {
+      description: "Total spend for this account"
       type: number
       value_format_name: usd
     }
 
     dimension: total_spend_tier {
+      description: "total spend broken into tiers"
       type: tier
       tiers: [100,250,500,1000,5000,10000]
       sql: ${total_spend} ;;
@@ -38,6 +42,7 @@ view: jpc_account_facts {
     }
 
     dimension: account_health_score {
+      description: "The account health score number"
       sql: case
           when ${total_spend} > 1000 then 100
           when ${total_spend} > 20 then 70
@@ -46,6 +51,7 @@ view: jpc_account_facts {
     }
 
     dimension: account_health {
+      description: "The account health score string "
       type: string
       sql: CASE
         WHEN ${account_health_score} < 50 THEN '1. At Risk'
@@ -67,6 +73,7 @@ view: jpc_account_facts {
 
 #### Comparitor logic ####
     filter: account_select {
+      description: "Account selected"
       view_label: "Account comparisons"
       suggest_explore: zuora_customers
       suggest_dimension: zuora_customers.accountnumber

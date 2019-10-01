@@ -9,6 +9,7 @@ view: status {
 
 
   dimension_group: date {
+    description: "timestamp of the data collection"
     type: time
     timeframes: [
       raw,
@@ -37,18 +38,21 @@ dimension: code_buckets {
   sql: ${TABLE}."httpcode"  ;;
 }
   dimension: region {
+    description: "Name of the region"
     type: string
     sql: ${TABLE}."region" ;;
     drill_fields: [httpcode,region,value,date_date]
   }
 
   dimension: value {
+    description: "Number of http codes found"
     type: number
     sql: ${TABLE}."value" ;;
     drill_fields: [httpcode,region,value,date_date]
   }
 
   measure: count {
+    description: "Number of distinct objects returned in query"
     type: count
     drill_fields: [httpcode,region,value,date_date]
   }

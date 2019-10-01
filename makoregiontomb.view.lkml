@@ -7,14 +7,17 @@ view: makoregiontomb {
     sql: ${TABLE}.storage_id || ${TABLE}.date  ;;
   }
   dimension: cloud {
+    description: "JPC or SPC"
     type: string
     sql: ${TABLE}.cloud ;;
   }
   dimension: datacenter {
+    description: "Name of the datacenter"
     type: string
     sql: ${TABLE}.datacenter ;;
   }
   dimension_group: modify_date {
+    description: "timestamp of the last time data was updated"
     type: time
     timeframes: [
       raw,
@@ -29,6 +32,7 @@ view: makoregiontomb {
     sql: ${TABLE}.modify_date ;;
   }
   dimension_group: date {
+    description: "date of the data collection"
     type: time
     timeframes: [
       raw,
@@ -64,6 +68,7 @@ view: makoregiontomb {
   }
 
   measure: count {
+    description: "Number of distinct objects returned in query"
     type: count
     drill_fields: []
   }

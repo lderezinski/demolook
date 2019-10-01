@@ -47,6 +47,7 @@ ORDER BY 4 DESC
 
 
   measure: count {
+    description: "Number of distinct objects returned in query"
     type: count
 
   }

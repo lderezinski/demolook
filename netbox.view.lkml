@@ -91,6 +91,7 @@ view: netbox {
           END;;
   }
   measure: count {
+    description: "Number of distinct objects returned in query"
     type: count
     drill_fields: [name, region, rack, role, device_type, serial]
   }

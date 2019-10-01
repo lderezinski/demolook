@@ -93,6 +93,7 @@ view: papi {
   }
 
   measure: count {
+    description: "Number of distinct objects returned in query"
     type: count
     drill_fields: [name, common_name]
   }

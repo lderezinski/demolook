@@ -147,11 +147,13 @@ dimension: grouped_name {
     drill_fields: [givenname]
   }
   measure: count_distinct {
+    description: "Number of distinct objects returned in query"
     type: count_distinct
     sql: ${uuid} ;;
     drill_fields: [givenname]
   }
   measure: count {
+    description: "Number of distinct objects returned in query"
     type: count
     drill_fields: [givenname]
   }

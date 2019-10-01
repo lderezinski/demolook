@@ -24,6 +24,7 @@ view: ufdsgroupname {
   }
 
   measure: count {
+    description: "Number of distinct objects returned in query"
     type: count
     drill_fields: [groupname]
   }

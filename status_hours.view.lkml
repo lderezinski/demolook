@@ -2,6 +2,7 @@ view: status_hours {
   sql_table_name: uptime.status_hours ;;
 
   dimension_group: date {
+    description: "timestamp of the data collection"
     type: time
     timeframes: [
       raw,
@@ -24,12 +25,14 @@ view: status_hours {
   }
 
   dimension: region {
+    description: "Name of the region"
     type: string
     sql: ${TABLE}."region" ;;
     drill_fields: [uptime,region,date_date]
   }
 
   dimension: uptime {
+    description: "Uptime percentage"
     type: number
     sql: ${TABLE}."value" ;;
     value_format_name: percent_1
@@ -37,6 +40,7 @@ view: status_hours {
   }
 
   measure: count {
+    description: "Number of distinct objects returned in query"
     type: count
     drill_fields: [uptime,region,date_date]
   }

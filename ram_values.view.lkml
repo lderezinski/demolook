@@ -19,6 +19,7 @@ view: ram_values {
   }
 
   measure: count {
+    description: "Number of distinct objects returned in query"
     type: count
     drill_fields: [detail*]
   }
