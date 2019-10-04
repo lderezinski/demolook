@@ -9,6 +9,7 @@ view: mantagoal {
   }
 
   dimension_group: date {
+    description: ""
     type: time
     timeframes: [
       raw,
@@ -24,11 +25,13 @@ view: mantagoal {
   }
 
   dimension: goal {
+    description: ""
     type: number
     sql: ${TABLE}.goal ;;
   }
 
   dimension: region {
+    description: ""
     type: string
     sql: ${TABLE}.region ;;
   }
@@ -39,6 +42,7 @@ view: mantagoal {
     drill_fields: []
   }
   measure: goalsum {
+    description: ""
     type: sum
     sql: ${goal} ;;
   }

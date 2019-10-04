@@ -36,11 +36,13 @@ view: manta_usage {
   }
 
   dimension: region {
+    description: "Region of manta"
     type: string
     sql: ${TABLE}."region" ;;
   }
 
   dimension: used_bytes {
+    description: "amount of manta data in bytes"
     type: number
     sql: ${TABLE}."used_bytes" ;;
   }
@@ -51,31 +53,37 @@ view: manta_usage {
     drill_fields: []
   }
   measure: used_kib {
+    description: "amount of manta data in KiB"
     type: sum
     sql: ${used_bytes} / 1024.0 ;;
     value_format_name: decimal_2
   }
   measure: used_mib {
+    description: "amount of manta data in MiB"
     type: sum
     sql: ${used_bytes} / 1024.0 / 1024.0 ;;
     value_format_name: decimal_2
   }
   measure: used_gib {
+    description: "amount of manta data in GiB"
     type: sum
     sql: ${used_bytes} / 1024.0 / 1024.0 / 1024.0 ;;
     value_format_name: decimal_2
   }
   measure: used_tib {
+    description: "amount of manta data in TiB"
     type: sum
     sql: ${used_bytes} / 1024.0 / 1024.0 / 1024.0 / 1024.0 ;;
     value_format_name: decimal_2
   }
   measure: used_pib {
+    description: "amount of manta data in PiB"
     type: sum
     sql: ${used_bytes} / 1024.0 / 1024.0 / 1024.0 / 1024.0 / 1024.0 ;;
     value_format_name: decimal_2
   }
   measure: total_objects_million {
+    description: "Total count of manta objects in millions"
     type: sum
     sql: ${object_count}/1000000.0 ;;
     value_format_name: decimal_2

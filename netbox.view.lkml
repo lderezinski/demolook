@@ -6,40 +6,48 @@ view: netbox {
     sql: ${TABLE}.name || ${TABLE}.site ||  ${TABLE}.date.date;;
   }
   dimension: device_type {
+    description: ""
     type: string
     sql: ${TABLE}.device_type ;;
   }
 
   dimension: name {
+    description: ""
     type: string
     sql: ${TABLE}.name ;;
   }
 
   dimension: platform {
+    description: ""
     type: string
     sql: ${TABLE}.platform ;;
   }
 
   dimension: rack {
+    description: ""
     type: string
     sql: ${TABLE}.rack ;;
   }
 
   dimension: role {
+    description: ""
     type: string
     sql: ${TABLE}.role ;;
   }
 
   dimension: serial {
+    description: ""
     type: string
     sql: ${TABLE}.serial ;;
   }
 
   dimension: site {
+    description: "the name of the AZ"
     type: string
     sql: ${TABLE}.site ;;
   }
   dimension_group: date {
+    description: ""
     type: time
     timeframes: [
       raw,
@@ -55,33 +63,27 @@ view: netbox {
     sql: ${TABLE}.date ;;
   }
   dimension: region{
+    description: ""
     type: string
-    sql: CASE
-            WHEN ${site} = 'us-east-1a' THEN 'us-east-1'
-            WHEN ${site} = 'us-east-1b' THEN 'us-east-1'
-            WHEN ${site} = 'us-east-1c' THEN 'us-east-1'
-            WHEN ${site} = 'eu-central-1a' THEN 'eu-central-1'
-            WHEN ${site} = 'eu-central-1b' THEN 'eu-central-1'
-            WHEN ${site} = 'eu-central-1c' THEN 'eu-central-1'
-            WHEN ${site} = 'ap-northeast-1a' THEN 'ap-northeast-1'
-            WHEN ${site} = 'ap-northeast-1b' THEN 'ap-northeast-1'
-            WHEN ${site} = 'ap-northeast-1c' THEN 'ap-northeast-1'
-            WHEN ${site} = 'ap-southeast-1a' THEN 'ap-southeast-1'
-            WHEN ${site} = 'ap-southeast-1b' THEN 'ap-southeast-1'
-            WHEN ${site} = 'ap-southeast-1c' THEN 'ap-southeast-1'
-            ELSE ${site}
-            END;;
+    sql: CASE WHEN  right(${site}, 2) = '1a' THEN left(${site}, (char_length(${site})::integer - 1))
+              WHEN  right(${site}, 2) = '1b' THEN left(${site}, (char_length(${site})::integer - 1))
+              WHEN  right(${site}, 2) = '1c' THEN left(${site}, (char_length(${site})::integer - 1))
+              ELSE ${site}
+        END;;
   }
   dimension: tags {
+    description: ""
     type: string
     sql: ${TABLE}.tags::TEXT ;;
   }
 
   dimension: tenant {
+    description: ""
     type: string
     sql: ${TABLE}.tenant ;;
   }
   dimension: manufacture {
+    description: ""
     type: string
     sql: CASE
            WHEN length(${serial}) = 7 THEN 'DELL'
