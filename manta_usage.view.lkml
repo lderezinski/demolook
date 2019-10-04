@@ -8,6 +8,7 @@ view: manta_usage {
   }
 
   dimension_group: date {
+    description: "Timestamp of data collected"
     type: time
     timeframes: [
       raw,
@@ -23,11 +24,13 @@ view: manta_usage {
   }
 
   dimension: login {
+    description: "UFDS login for account"
     type: string
     sql: ${TABLE}."login" ;;
   }
 
   dimension: object_count {
+    description: "The total number of objects for this account"
     type: number
     sql: ${TABLE}."object_count" ;;
   }
