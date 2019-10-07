@@ -25,6 +25,7 @@ view: ram_values {
   }
 
   dimension: value {
+    description: "Amount of ram in GB"
     type: number
     sql: ${TABLE}.value ;;
   }
