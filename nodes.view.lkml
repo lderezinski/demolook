@@ -1,7 +1,6 @@
 view: nodes {
   sql_table_name: capacity.nodes ;;
 
-
   dimension: hostname {
     type: string
     sql: ${TABLE}."Hostname" ;;
