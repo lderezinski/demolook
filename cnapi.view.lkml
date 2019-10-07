@@ -525,13 +525,13 @@ dimension: ram_sold {
   }
 
   dimension:disk_kvm_zvol_used_bytes  {
-    description: ""
+    description: "CNapi.disk_kvm_zvol_used_bytes"
     type:  number
     sql:  ${TABLE}.disk_kvm_zvol_used_bytes ;;
   }
 
   dimension:disk_kvm_zvol_volsize_bytes  {
-    description: "CNapi.disk_kvm_zvol_used_bytes"
+    description: "CNapi.disk_kvm_zvol_volsize_bytes"
     type:  number
     sql:  ${TABLE}.disk_kvm_zvol_volsize_bytes ;;
   }
