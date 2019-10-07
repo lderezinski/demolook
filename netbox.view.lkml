@@ -6,37 +6,37 @@ view: netbox {
     sql: ${TABLE}.name || ${TABLE}.site ||  ${TABLE}.date.date;;
   }
   dimension: device_type {
-    description: ""
+    description: "netbox.device_type.model"
     type: string
     sql: ${TABLE}.device_type ;;
   }
 
   dimension: name {
-    description: ""
+    description: "netbox.comments parsed out value for site.name"
     type: string
     sql: ${TABLE}.name ;;
   }
 
   dimension: platform {
-    description: ""
+    description: "netbox.comments parsed out value for platform"
     type: string
     sql: ${TABLE}.platform ;;
   }
 
   dimension: rack {
-    description: ""
+    description: "netbox.rack.display_name"
     type: string
     sql: ${TABLE}.rack ;;
   }
 
   dimension: role {
-    description: ""
+    description: "netbox.device_role.name"
     type: string
     sql: ${TABLE}.role ;;
   }
 
   dimension: serial {
-    description: ""
+    description: "netbox.display_name"
     type: string
     sql: ${TABLE}.serial ;;
   }
@@ -47,7 +47,7 @@ view: netbox {
     sql: ${TABLE}.site ;;
   }
   dimension_group: date {
-    description: ""
+    description: "timestamp of the data collection"
     type: time
     timeframes: [
       raw,
@@ -72,18 +72,18 @@ view: netbox {
         END;;
   }
   dimension: tags {
-    description: ""
+    description: "JSON to Text netbox.tags"
     type: string
     sql: ${TABLE}.tags::TEXT ;;
   }
 
   dimension: tenant {
-    description: ""
+    description: "netbox.tenant.name"
     type: string
     sql: ${TABLE}.tenant ;;
   }
   dimension: manufacture {
-    description: ""
+    description: "Parsing of the serial number to determine the manufacture DELL or SMCI"
     type: string
     sql: CASE
            WHEN length(${serial}) = 7 THEN 'DELL'

@@ -10,7 +10,7 @@ view: mantastorage {
 
 
   dimension: bytes {
-    description: ""
+    description: "Amount of storage consumed in bytes"
     type: number
     sql: ${TABLE}.bytes ;;
     value_format_name: decimal_0
