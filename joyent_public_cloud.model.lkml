@@ -192,12 +192,7 @@ explore: storagebuild {
   group_label: "Joyent Cloud"
   label: "Storage Build"
 }
-explore: nodes {
-  description: "cnapi summary"
-  group_label: "Joyent Cloud"
-  label: "Nodes"
 
-}
 explore: inventory {
   description: "Node Inventory"
   group_label: "Joyent Cloud"
