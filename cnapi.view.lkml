@@ -156,12 +156,12 @@ parameter: cpu {
   }
 
   dimension: disk_pool {
-    description:"CNapi.disk_pool_size_bytes converted to GB"
+    description:"CNapi.disk_pool_size_bytes converted to GiB"
     type: number
     sql: coalesce(${TABLE}."disk pool size G",0)/1024.0 ;;
   }
   dimension: disk_pool_t {
-    description:"CNapi.disk_pool_size_bytes converted to TB"
+    description:"CNapi.disk_pool_size_bytes converted to TiB"
     type:  number
     sql:  ${disk_pool} / 1024.0 ;;
     value_format_name: decimal_2
@@ -169,14 +169,14 @@ parameter: cpu {
   }
 
   dimension: disk_pool_tier {
-    description:"CNapi.disk_pool_size_bytes converted to TB in tiers of 0,100,150,200,250,300,350+"
+    description:"CNapi.disk_pool_size_bytes converted to TiB in tiers of 0,100,150,200,250,300,350+"
     type:  tier
     tiers: [0,100,150,200,250,300,350]
     sql:  ${disk_pool_t} ;;
     style: integer
   }
   dimension: ram_free {
-    description: "CNapi.memory_available_bytes converted to MB"
+    description: "CNapi.memory_available_bytes converted to MiB"
     type: number
     sql: coalesce(${TABLE}."Free",0) ;;
     value_format_name: decimal_0
@@ -290,7 +290,7 @@ parameter: cpu {
 
   dimension: ram_overhead {
     description: "((CNapi.memory_total_bytes/1024.0) - (CNapi.memory_provisionable_bytes/1024.0)) * 1024 || 0"
-    # this is in MB
+    # this is in MiB
     type: number
     sql: coalesce(${TABLE}."Overhead",0) ;;
     value_format_name:  decimal_0
@@ -365,7 +365,7 @@ parameter: cpu {
   }
 
 dimension: ram_sold {
-  description: "(CNapi.memory_provisionable_bytes) - (CNapi.memory_available_bytes)  || 0; converted to MB"
+  description: "(CNapi.memory_provisionable_bytes) - (CNapi.memory_available_bytes)  || 0; converted to MiB"
     type: number
     sql: ${TABLE}."Sold" ;;
     value_format_name:  decimal_2
@@ -431,7 +431,7 @@ dimension: ram_sold {
     sql: ${TABLE}.traits ->> 'triton' = 'manta' and NOT ${cn_model} LIKE '%Shrimp%' ;;
   }
   dimension: disk_unprovisioned {
-    description: "CNapi.disk_pool_size_bytes - CNapi.disk_kvm_zvol_volsize_bytes - CNapi.disk_zone_quota_bytes - CNapi.disk_cores_quota_used_bytes - CNapi.disk_installed_images_used_bytes - (count of CNapi.vms that are kvm) * 10 * GB;"
+    description: "CNapi.disk_pool_size_bytes - CNapi.disk_kvm_zvol_volsize_bytes - CNapi.disk_zone_quota_bytes - CNapi.disk_cores_quota_used_bytes - CNapi.disk_installed_images_used_bytes - (count of CNapi.vms that are kvm) * 10 * GiB;"
     type: number
     sql: coalesce(${TABLE}."unprovisioned pool G",0) ;;
   }
@@ -493,13 +493,14 @@ dimension: ram_sold {
   }
 
   dimension: unreserved_disk {
+    description: "CNapi.unreserved_disk in MiB"
     type: number
     sql: coalesce( ${TABLE}.unreserved_disk, 0) ;;
   }
 
   dimension: unreserved_ram {
-    # MB
-    description: "CNapi.unreserved_ram in MB"
+    # MiB
+    description: "CNapi.unreserved_ram in MiB"
     type: number
     sql: coalesce(${TABLE}.unreserved_ram,0) ;;
     value_format_name:  decimal_0
@@ -549,7 +550,7 @@ dimension: ram_sold {
   }
 
   dimension:ram_g  {
-  # This is really in MB not GB as the column name suggests, so lets make it be GB
+  # This is really in MiB not GiB as the column name suggests, so lets make it be GiB
   description: "CNapi.ram_g "
     type:  number
     sql:  ${TABLE}.ram_g / 1024.0;;
@@ -636,7 +637,7 @@ dimension: ram_sold {
   }
 
   measure: ram_total_t {
-    description: "CNapi.memory_total_bytes - ram_overhead converted to TB"
+    description: "CNapi.memory_total_bytes - ram_overhead converted to TiB"
     type: sum
     sql:  (${memory_total_bytes}/1024.0/1024.0 - ${ram_overhead})  / 1024.0 / 1024.0 ;;
     value_format_name: decimal_2
@@ -644,7 +645,7 @@ dimension: ram_sold {
   }
 
   measure: ram_free_total_t {
-    description: "CNapi.unreserved_ram converted to TB"
+    description: "CNapi.unreserved_ram converted to TiB"
     type:  sum
     sql: ${unreserved_ram} / 1024.0 /1024.0;;
     value_format_name:  decimal_2
@@ -652,7 +653,7 @@ dimension: ram_sold {
   }
 
   measure: ram_total_g {
-    description: "CNapi.memory_total_bytes - Cnapi.ram_overhead converted to GB"
+    description: "CNapi.memory_total_bytes - Cnapi.ram_overhead converted to GiB"
     type: sum
     sql:  (${memory_total_bytes}/1024.0/1024.0 - ${ram_overhead})  / 1024.0 ;;
     value_format_name: decimal_2
@@ -660,7 +661,7 @@ dimension: ram_sold {
   }
 
   measure: ram_free_total_g {
-    description: "unreserved_ram converted to GB"
+    description: "unreserved_ram converted to GiB"
     type:  sum
     sql:  ${unreserved_ram} / 1024.0 ;;
     value_format_name:  decimal_2
@@ -668,7 +669,7 @@ dimension: ram_sold {
   }
 
   measure: disk_pool_total_t {
-    description: "disk_pool converted to TB"
+    description: "disk_pool converted to TiB"
     type:  sum
     sql:  ${disk_pool} / 1024.0 / 1024.0 ;;
     value_format_name: decimal_2
@@ -676,7 +677,7 @@ dimension: ram_sold {
   }
 
   measure: disk_unprovisioned_total_t {
-    description: "disk_unprovisioned converted to TB"
+    description: "disk_unprovisioned converted to TiB"
     type:  sum
     sql:  ${disk_unprovisioned} / 1024.0 / 1024.0 ;;
     value_format_name: decimal_2
@@ -686,7 +687,7 @@ dimension: ram_sold {
   measure: ram_sold_total_g {
     description: "CNapi.ram - CNapi.unreserved_ram converted to G"
     type: sum
-     # Note table.ram_g is really in MB ${ram_g} is in Gig
+     # Note table.ram_g is really in MiB ${ram_g} is in Gig
     sql: ((${TABLE}.ram_g) - ${unreserved_ram}) / 1024.0 ;;
     value_format_name:  decimal_2
     drill_fields:  [cn_name,serial_number,shortName, dc,rack_name,ram_sellable]
@@ -694,15 +695,15 @@ dimension: ram_sold {
 
   measure: ram_sold_total_t {
     type: sum
-      # Note table.ram_g is really in MB ${ram_g} is in Gig
-      description: "CNapi.ram - CNapi.unreserved_ram converted to TB"
+      # Note table.ram_g is really in MiB ${ram_g} is in Gig
+      description: "CNapi.ram - CNapi.unreserved_ram converted to TiB"
     sql: ((${TABLE}.ram_g) - ${unreserved_ram}) / 1024.0 / 1024.0 ;;
     value_format_name:  decimal_2
     drill_fields:  [cn_name,serial_number,shortName, dc,rack_name,ram_sellable]
   }
 
   measure: ram_overhead_g{
-    description: "ram_overhead converted to GB"
+    description: "ram_overhead converted to GiB"
     type: sum
     sql: ( ${ram_overhead} / 1024.0 ) ;;
     value_format_name:  decimal_2
@@ -710,7 +711,7 @@ dimension: ram_sold {
   }
 
   measure: ram_overhead_t{
-    description: "ram_overhead converted to TB"
+    description: "ram_overhead converted to TiB"
     type: sum
     sql: ( ${ram_overhead} / 1024.0 /1024.0) ;;
     value_format_name:  decimal_2
@@ -739,7 +740,7 @@ dimension: ram_sold {
   }
 
   measure: unreserved_disk_g {
-    description: "CNapi.unreserved_disk converted to GB"
+    description: "CNapi.unreserved_disk converted to GiB"
     type:  sum
     sql: ${unreserved_disk} / 1024.0 ;;
     value_format_name:  decimal_2
@@ -747,7 +748,7 @@ dimension: ram_sold {
   }
 
   measure: unreserved_ram_t {
-    description: "CNapi.unreserved_ram converted to TB"
+    description: "CNapi.unreserved_ram converted to TiB"
     type:  sum
     sql: ${unreserved_ram} / 1024.0 / 1024.0 ;;
     value_format_name:  decimal_2
@@ -755,7 +756,7 @@ dimension: ram_sold {
   }
 
   measure: unreserved_disk_t {
-    description: "CNapi.unreserved_disk converted to TB"
+    description: "CNapi.unreserved_disk converted to TiB"
     type:  sum
     sql: ${unreserved_disk} / 1024.0 / 1024.0 ;;
     value_format_name:  decimal_2
@@ -856,7 +857,7 @@ measure: count_manta_meta {
   }
 
   measure:mem_total_ram_mb  {
-    description: "Summation of the total ram converted to MB"
+    description: "Summation of the total ram converted to MiB"
     type:  sum
     sql:  ${memory_total_bytes}/1024.0/1024.0 ;;
     value_format_name:  decimal_2
@@ -864,7 +865,7 @@ measure: count_manta_meta {
   }
 
   measure: disk_pool_alloc_t {
-    description: "Summation CNapi.disk_pool_alloc_bytes converted to TB"
+    description: "Summation CNapi.disk_pool_alloc_bytes converted to TiB"
     type: sum
     sql: ${disk_pool_alloc_bytes}/ 1024.0 / 1024.0/ 1024.0 / 1024.0;;
     value_format_name: decimal_3
@@ -872,7 +873,7 @@ measure: count_manta_meta {
   }
 
   measure: disk_pool_free_t {
-    description: "CNapi.disk_pool - CNapi.disk_pool_alloc_bytes - CNapi.disk_pool*0.05 converted to TB"
+    description: "CNapi.disk_pool - CNapi.disk_pool_alloc_bytes - CNapi.disk_pool*0.05 converted to TiB"
     type: sum
     sql:  (${disk_pool} - ${disk_pool_alloc_bytes}/ 1024.0 / 1024.0 - ${disk_pool}* 0.05) / 1024.0 / 1024.0 ;;
     value_format_name: decimal_3
