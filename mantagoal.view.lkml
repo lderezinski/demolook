@@ -9,7 +9,7 @@ view: mantagoal {
   }
 
   dimension_group: date {
-    description: ""
+    description: "Timestamp for the goal normalized PiB to be available"
     type: time
     timeframes: [
       raw,
@@ -25,13 +25,13 @@ view: mantagoal {
   }
 
   dimension: goal {
-    description: ""
+    description: "PiB for the region's goal"
     type: number
     sql: ${TABLE}.goal ;;
   }
 
   dimension: region {
-    description: ""
+    description: "The name of the region"
     type: string
     sql: ${TABLE}.region ;;
   }
@@ -42,7 +42,7 @@ view: mantagoal {
     drill_fields: []
   }
   measure: goalsum {
-    description: ""
+    description: "Sum of Normalized PiB"
     type: sum
     sql: ${goal} ;;
   }

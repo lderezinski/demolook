@@ -17,7 +17,7 @@ view: mantastorage {
   }
 
   dimension_group: date {
-    description: ""
+    description: "Timestamp of data collection"
     type: time
     timeframes: [
       raw,
@@ -33,48 +33,48 @@ view: mantastorage {
   }
 
   dimension: directories {
-    description: ""
+    description: "Number of directories"
     type: number
     sql: ${TABLE}.directories ;;
   }
 
   dimension: keys {
-    description: ""
+    description: "The Number of keys"
     type: number
     sql: ${TABLE}.keys ;;
   }
 
   dimension: objects {
-    description: ""
+    description: "The Number of objects"
     type: number
     sql: ${TABLE}.objects ;;
   }
 
   dimension: owner {
-    description: ""
+    description: "The UFDS UUID of the account"
     type: string
     sql: ${TABLE}.owner ;;
   }
 
   dimension: type {
-    description: ""
+    description: "One of: stor,pubilc,reports,jobs"
     type: string
     sql: ${TABLE}.type ;;
   }
   dimension: bytes_g {
-    description: ""
+    description: "Consumed storage in GiB"
     type: number
     sql: ${bytes}/1024.0/1024.0/1024.0 ;;
     value_format_name: decimal_4
   }
   dimension: bytes_t {
-    description: ""
+    description: "Consumed storage in TiB"
     type: number
     sql: ${bytes}/1024.0/1024.0/1024.0/1024.0 ;;
     value_format_name: decimal_4
   }
   dimension: bytes_p {
-    description: ""
+    description: "Consumed storage in PiB"
     type: number
     sql: ${bytes}/1024.0/1024.0/1024.0/1024.0/1024.0 ;;
     value_format_name: decimal_4
@@ -85,43 +85,43 @@ view: mantastorage {
     drill_fields: []
   }
   measure: sumbytes {
-    description: ""
+    description: "Sum Consumed storage in bytes"
     type: sum_distinct
     sql: ${bytes} ;;
     value_format_name: decimal_0
   }
   measure: sumbytes_g {
-    description: ""
+    description: "Sum Consumed storage in GiB"
     type: sum_distinct
     sql: ${bytes_g} ;;
     value_format_name: decimal_4
   }
   measure: sumbytes_t {
-    description: ""
+    description: "Sum Consumed storage in TiB"
     type: sum_distinct
     sql: ${bytes_t} ;;
     value_format_name: decimal_4
   }
   measure: sumbytes_p {
-    description: ""
+    description: "Sum Consumed storage in PiB"
     type: sum_distinct
     sql: ${bytes_p} ;;
     value_format_name: decimal_4
   }
   measure: sumdirs {
-    description: ""
+    description: "Sum Consumed storage in bytes"
     type: sum_distinct
     sql: ${directories} ;;
     value_format_name: decimal_0
   }
   measure: sumobjs {
-    description: ""
+    description: "Sum number of objects in storage"
     type: sum_distinct
     sql: ${objects} ;;
     value_format_name: decimal_0
   }
   measure: public_stor_g {
-    description: ""
+    description: "Sum Consumed storage in GiB in Public and stor"
     type: sum
     filters: {
       field: type
@@ -131,7 +131,7 @@ view: mantastorage {
     value_format_name: decimal_4
   }
   measure: reports_jobs_g {
-    description: ""
+    description: "Sum consumed storage in GiB for reports and jobs"
     type: sum
     filters: {
       field: type
@@ -141,7 +141,7 @@ view: mantastorage {
     value_format_name: decimal_4
   }
   measure: reports_g {
-    description: ""
+    description: "Sum of consumed storage in reports GiB"
     type: sum
     filters: {
       field: type
@@ -151,7 +151,7 @@ view: mantastorage {
     value_format_name: decimal_4
   }
   measure: jobs_g {
-    description: ""
+    description: "Sum of consumed storage in jobs GiB"
     type: sum
     filters: {
       field: type
@@ -161,7 +161,7 @@ view: mantastorage {
     value_format_name: decimal_4
   }
   measure: stor_g {
-    description: ""
+    description: "Sum of consumed storage in stor GiB"
     type: sum
     filters: {
       field: type
@@ -171,7 +171,7 @@ view: mantastorage {
     value_format_name: decimal_4
   }
   measure: public_g {
-    description: ""
+    description: "Sum of consumed storage in public GiB"
     type: sum
     filters: {
       field: type
