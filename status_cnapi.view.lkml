@@ -32,41 +32,49 @@ measure: count {
 }
 
 dimension: cnapi_date_date {
+  description: "CNapi.date for the data"
   type: date
   sql: ${TABLE}."cnapi.date_date" ;;
 }
 
 dimension: cnapi_dc {
+  description: "CNapi.dc"
   type: string
   sql: ${TABLE}."cnapi.dc" ;;
 }
 
 dimension: cnapi_count {
+  description: "CNapi.count number of objects returned"
   type: string
   sql: ${TABLE}."cnapi.count" ;;
 }
 
 dimension: z__pivot_col_rank {
+  description: "The DENSE_RANK of the z__min_rank"
   type: string
   sql: ${TABLE}.z__pivot_col_rank ;;
 }
 
 dimension: z___rank {
+  description: "The RANK of the CNapi.date"
   type: string
   sql: ${TABLE}.z___rank ;;
 }
 
 dimension: z___min_rank {
+  description: "The min RANK of z__rank"
   type: string
   sql: ${TABLE}.z___min_rank ;;
 }
 
 dimension: z___pivot_row_rank {
+  description: "The DENSE_RANK of z___min_rank"
   type: string
   sql: ${TABLE}.z___pivot_row_rank ;;
 }
 
 dimension: z__pivot_col_ordering {
+  description: "RANK of z__pivot_col_rank"
   type: string
   sql: ${TABLE}.z__pivot_col_ordering ;;
 }
