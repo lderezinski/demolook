@@ -21,35 +21,42 @@ view: customer_facts {
   }
 
   measure: count {
+    description: "Count of unique customers"
     type: count
     drill_fields: [detail*]
   }
 
   dimension: id {
+    description: "The row number from zinvoiceitems joined with ufds, and zuora_customers"
     primary_key: yes
   }
 
   dimension: email {
+    description: "ufds.email"
     type: string
     sql: ${TABLE}.email ;;
   }
 
   dimension: charge_month {
+    description: "the month derived from the zinvoicesitems.ChargeDate"
     type: date
     sql: ${TABLE}.charge_month ;;
   }
 
   dimension: total_amount {
+    description: "zinvoiceitems.ChargeAmount or 0"
     type: string
     sql: ${TABLE}.total_amount ;;
   }
 
   dimension: previous_amount {
+    description: "total_amount from the previous row"
     type: string
     sql: ${TABLE}.previous_amount ;;
   }
 
   dimension: is_seemless_sale {
+    description: "boolean if previous_amount is 0 and total_amount is != 0 OR previous_amount is null and total_amount is not null"
     type: yesno
     sql: (${previous_amount} = 0 AND ${total_amount} != 0)
     OR  (${previous_amount} is null AND ${total_amount} is not null) ;;
@@ -65,6 +72,7 @@ view: customer_facts {
   }
 
   measure: avg_change {
+    description: "Average amount of change"
     type: average
     sql: ${change} ;;
     value_format_name: decimal_2

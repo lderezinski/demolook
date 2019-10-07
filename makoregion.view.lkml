@@ -36,6 +36,7 @@ view: makoregion {
   }
 
   dimension: storage_id {
+    description: "The mako ID number"
     primary_key: yes
     type: string
     sql: ${TABLE}.storage_id ;;
