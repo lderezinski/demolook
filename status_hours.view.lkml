@@ -45,6 +45,7 @@ view: status_hours {
     drill_fields: [uptime,region,date_date]
   }
   measure: uptime_sum{
+    description: "Sum of the uptime"
     type: sum
     sql:  ${TABLE}."value" ;;
     value_format_name: percent_1
