@@ -19,28 +19,33 @@ ORDER BY 4 DESC
     ;;
     }
     dimension: vmapi_uuid {
+      description: "UUID of the instance VMapi.uuid"
       type: string
       primary_key: yes
       sql: ${TABLE}.vmapi_uuid ;;
     }
       dimension: ufds_uuid {
+        description: "account owner UFDS.uuid of this instance"
         type: string
 
         sql: ${TABLE}.ufds_uuid ;;
       }
   dimension_group: last_reported_date {
+    description: "The last reported date of this instance"
     type: time
     timeframes: [date, week, month]
     sql: ${TABLE}.last_reported_date ;;
   }
 
     dimension_group: first_reported_date {
+      description: "The first reported date of this instance"
       type: time
       timeframes: [date, week, month]
       sql: ${TABLE}.first_reported_date ;;
     }
 
     dimension: run_duration {
+      description: "the number of days this instance had been running"
       type: number
       sql: ${TABLE}.run_duration ;;
     }
@@ -52,6 +57,7 @@ ORDER BY 4 DESC
 
   }
   measure: durations {
+    description: "The sum if the durations"
     type: sum
     sql: ${run_duration};;
   }

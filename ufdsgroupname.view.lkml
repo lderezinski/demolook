@@ -2,17 +2,20 @@ view: ufdsgroupname {
   sql_table_name: smartdc.ufdsgroupname ;;
 
   dimension: groupname {
+    description: "Groupname for the account"
     type: string
     sql: ${TABLE}.groupname ;;
   }
 
   dimension: uuid {
+    description: "UFDS.uuid"
     type: string
     primary_key: yes
     sql: ${TABLE}.uuid ;;
   }
 
   dimension: paidorfree {
+    description: "Returns either Customer or Internal or Free - 3rd party/test/Fraud"
     type:  string
     sql:  CASE WHEN ${groupname} = 'Invoice' THEN 'Customer'
                WHEN ${groupname} = 'Credit Card' THEN 'Customer'
