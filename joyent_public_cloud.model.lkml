@@ -362,6 +362,12 @@ explore:vmapi {
     type: left_outer
     relationship: one_to_one
   }
+  join: zuora_customers{
+    view_label: "zcustomer"
+    sql_on:  ${vmapi.owner_uuid} = ${zuora_customers.accountnumber};;
+    type: left_outer
+    relationship: one_to_one
+  }
   join: datacenters {
     view_label: "DC"
     sql_on: ${datacenters.name} = ${vmapi.datacenter} ;;
