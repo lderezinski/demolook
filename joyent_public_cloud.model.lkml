@@ -2,8 +2,8 @@ connection: "joyent"
 
 include: "*.view.lkml"         # include all views in this project
 include: "*.dashboard.lookml"  # include all dashboards in this project
-include: "//zendesk/users.view.lkml"
-include: "//zendesk/tickets.view.lkml"
+# include: "//zendesk/users.view.lkml"
+# include: "//zendesk/tickets.view.lkml"
 
 
 # # Select the views that should be a part of this model,
@@ -240,16 +240,16 @@ explore: ufds {
     type: left_outer
     relationship: many_to_one
   }
- join: users {
-   sql_on: ${users.email} = ${ufds.email} ;;
-   type: left_outer
-   relationship: one_to_one
- }
- join: tickets  {
-   sql_on: ${users.id} =  ${tickets.requester_id} ;;
-   type: left_outer
-   relationship: one_to_many
- }
+# join: users {
+#   sql_on: ${users.email} = ${ufds.email} ;;
+#   type: left_outer
+#   relationship: one_to_one
+# }
+ #join: tickets  {
+#   sql_on: ${users.id} =  ${tickets.requester_id} ;;
+##   type: left_outer
+#   relationship: one_to_many
+# }
 }
 
 explore: mantastorage {
@@ -279,48 +279,47 @@ explore: mantastorage {
 
 
 
-explore: zinvoiceitems {
-  description: "Invoice Items"
-  group_label: "Joyent Cloud"
-  label: "Invoice Items"
-#   always_filter: {
-#     filters: {
-#       field: zuora_customers.isFree
-#       value: "No"
-#     }
-#   }
-  join: ufds {
-    view_label: "Customers"
-    sql_on: ${zinvoiceitems.account_number} = ${ufds.uuid} ;;
-    type: left_outer
-    relationship: many_to_one
-  }
-  join: ufdsgroupname{
-    view_label: "Customer group"
-    sql_on: ${ufdsgroupname.uuid} = ${zinvoiceitems.account_number} ;;
-    type: left_outer
-    relationship: one_to_one
-  }
-  join: zuora_customers {
-    view_label: "ZCustomers"
-    sql_on: ${zuora_customers.accountnumber} = ${zinvoiceitems.account_number} ;;
-    type: left_outer
-    relationship: many_to_one
-  }
-  join: users {
-    view_label: "Zendesk Users"
-    sql_on: ${users.email} = ${ufds.email} ;;
-    type: left_outer
-    relationship: one_to_one
-  }
-  join: tickets  {
-    view_label: "Zendesk Tickets"
-    sql_on: ${users.id} =  ${tickets.requester_id} ;;
-    type: left_outer
-    relationship: one_to_many
-  }
-
-}
+#explore: zinvoiceitems {
+#  description: "Invoice Items"
+#  group_label: "Joyent Cloud"
+#  label: "Invoice Items"
+##   always_filter: {
+##     filters: {
+##       field: zuora_customers.isFree
+##       value: "No"
+##     }
+##   }
+#  join: ufds {
+#    view_label: "Customers"
+#    sql_on: ${zinvoiceitems.account_number} = ${ufds.uuid} ;;
+#    type: left_outer
+#    relationship: many_to_one
+#  }
+#  join: ufdsgroupname{
+#    view_label: "Customer group"
+#    sql_on: ${ufdsgroupname.uuid} = ${zinvoiceitems.account_number} ;;
+#    type: left_outer
+#    relationship: one_to_one
+#  }
+#  join: zuora_customers {
+#    view_label: "ZCustomers"
+#    sql_on: ${zuora_customers.accountnumber} = ${zinvoiceitems.account_number} ;;
+#    type: left_outer
+#    relationship: many_to_one
+#  }
+#  join: users {
+#    view_label: "Zendesk Users"
+#    sql_on: ${users.email} = ${ufds.email} ;;
+#    type: left_outer
+#    relationship: one_to_one
+#  }
+#  join: tickets  {
+#    view_label: "Zendesk Tickets"
+#    sql_on: ${users.id} =  ${tickets.requester_id} ;;
+#    type: left_outer
+#    relationship: one_to_many
+#  }
+#}
 
 explore: datacenters {
   description: "DC"
