@@ -1,6 +1,8 @@
 # Announcements
 
 ## Looker upgrades
+- 2019-10-24 upgraded [6.22.10](https://discourse.looker.com/t/looker-6-22-release-notes/14345)
+
 - 2019-09-24 upgraded [6.20.13](https://discourse.looker.com/t/looker-6-20-release-notes/13857)
   - Spaces are now called folders
   - If you don't see the shared folders listed in the left side navigation, then select the "all folders" link at the bottom.  Find the "Shared Folders" link and select it.  Select the upper right gear and select make default folder.  Now "Shared Folders" should be listed in the left side navigation.
