@@ -296,7 +296,7 @@ view: vmapi {
   measure: count {
     description: "Number of distinct objects returned in query"
     type: count
-    drill_fields: [hostname]
+    drill_fields: [datacenter,alias,uuid,state,ram_g,create_timestamp_date]
   }
   measure: ram_g {
     description: "Sum of ram in GiB"
