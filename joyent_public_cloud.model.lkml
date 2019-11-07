@@ -346,7 +346,7 @@ explore: cnapi {
   }
 
 }
-explore:vmapi {
+explore: vmapi {
   description: "VMApi"
   group_label: "Joyent Cloud"
   label: "vmapi"
@@ -394,6 +394,58 @@ explore:vmapi {
     relationship: many_to_one
   }
 }
+
+explore: vmapi_hourly {
+  description: "VMApi"
+  group_label: "Joyent Cloud"
+  label: "vmapi Hourly"
+  join: ufds {
+    view_label: "ufds"
+    sql_on: ${ufds.uuid}=${vmapi_hourly.owner_uuid} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: ufdsgroupname{
+    view_label: "Customer group"
+    sql_on:  ${vmapi_hourly.owner_uuid} = ${ufdsgroupname.uuid};;
+    type: left_outer
+    relationship: one_to_one
+  }
+  join: zuora_customers{
+    view_label: "zcustomer"
+    sql_on:  ${vmapi_hourly.owner_uuid} = ${zuora_customers.accountnumber};;
+    type: left_outer
+    relationship: one_to_one
+  }
+  join: datacenters {
+    view_label: "DC"
+    sql_on: ${datacenters.name} = ${vmapi_hourly.datacenter} ;;
+    type: full_outer
+    relationship: many_to_one
+  }
+  join: papi {
+    view_label: "Packages"
+    sql_on: ${vmapi_hourly.billing_id} = ${papi.uuid} ;;
+    type:  left_outer
+    relationship: many_to_one
+  }
+
+  join: images {
+    view_label: "images"
+    sql_on: ${images.uuid} = ${vmapi_hourly.image_uuid} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: cnapi {
+    view_label: "cnapi"
+    sql_on: ${cnapi.uuid} = ${vmapi_hourly.server_uuid} and ${cnapi.date_date} = ${vmapi_hourly.date_date} ;;
+    type: full_outer
+    relationship: many_to_one
+  }
+}
+
+
+
 explore: cnapimonthly {
   description: "CNApi monthly"
   group_label: "Joyent Cloud"
