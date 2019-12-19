@@ -602,3 +602,8 @@ explore: muskiedelete {
     relationship: many_to_one
   }
 }
+explore: dictionary {
+  group_label: "Meta Data"
+  description: "Data Dictionary"
+  label: "Dictionary"
+}
