@@ -3,7 +3,7 @@ view: dictionary {
 
   dimension: description {
     type: string
-    sql: ${TABLE}."Description" ;;
+    sql: REPLACE(${TABLE}."Description",'\','') ;;
   }
 
   dimension: field_name {
@@ -23,7 +23,7 @@ view: dictionary {
 
   dimension: sql {
     type: string
-    sql: ${TABLE}."SQL" ;;
+    sql:REPLACE( ${TABLE}."SQL",'\','') ;;
   }
 
   dimension: type {
