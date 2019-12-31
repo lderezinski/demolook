@@ -77,6 +77,17 @@ explore: incdata {
   group_label: "Joyent Cloud"
 }
 
+explore: spcmantastorage {
+  description: "SPC Manta metering"
+  view_label: "SPC Manta metering"
+  group_label: "Joyent Cloud"
+  join: ufds {
+    view_label: "Customers"
+    sql_on: ${spcmantastorage.uuid} = ${ufds.uuid} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+}
 explore: bandwidth {
   description: "JPC Instance bandwidth"
   view_label: "Bandwidth"
