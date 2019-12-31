@@ -87,6 +87,12 @@ explore: spcmantastorage {
     type: left_outer
     relationship: many_to_one
   }
+  join: ufdsgroupname{
+    view_label: "Customer group"
+    sql_on: ${ufdsgroupname.uuid} = ${spcmantastorage.uuid} ;;
+    type: left_outer
+    relationship: one_to_one
+  }
 }
 explore: bandwidth {
   description: "JPC Instance bandwidth"
