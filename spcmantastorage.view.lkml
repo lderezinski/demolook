@@ -42,22 +42,27 @@ view: spcmantastorage {
   measure: data_k {
     type: sum
     sql: ${bytes}/1024.0 ;;
+    value_format_name: decimal_4
   }
   measure: data_m {
     type: sum
     sql: ${bytes}/1024/1024.0 ;;
+    value_format_name: decimal_4
   }
   measure: data_g {
     type: sum
     sql: ${bytes}/1024/1024/1024.0 ;;
+    value_format_name: decimal_4
   }
   measure: data_t {
     type: sum
     sql: ${bytes}/1024/1024/1024/1024.0 ;;
+    value_format_name: decimal_4
   }
   measure: data_p {
     type: sum
     sql: ${bytes}/1024/1024/1024/1024/1024.0 ;;
+    value_format_name: decimal_4
   }
   measure: sumobjects {
     type: sum
