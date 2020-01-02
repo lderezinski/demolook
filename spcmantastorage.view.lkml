@@ -16,7 +16,8 @@ view: spcmantastorage {
     sql: ${TABLE}."region" ;;
   }
 
-  dimension_group: timestamp {
+  dimension_group: date {
+    description: "Day of the collection, updated every hour"
     type: time
     timeframes: [
       raw,
@@ -24,10 +25,12 @@ view: spcmantastorage {
       date,
       week,
       month,
+      day_of_month,
+      month_num,
       quarter,
       year
     ]
-    sql: ${TABLE}."timestamp" ;;
+    sql: ${TABLE}.date ;;
   }
 
   dimension: uuid {
