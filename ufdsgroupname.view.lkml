@@ -15,7 +15,7 @@ view: ufdsgroupname {
   }
 
   dimension: paidorfree {
-    description: "Returns either Customer or Internal or Free - 3rd party/test/Fraud"
+    description: "Returns either Customer or Internal or Employee Personal or Free - 3rd party/test/Fraud"
     type:  string
     sql:  CASE WHEN ${groupname} = 'Invoice' THEN 'Customer'
                WHEN ${groupname} = 'Credit Card' THEN 'Customer'
