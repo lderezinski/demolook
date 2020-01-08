@@ -21,7 +21,7 @@ view: ufdsgroupname {
                WHEN ${groupname} = 'Credit Card' THEN 'Customer'
                WHEN ${groupname} = 'Internal - Department' THEN 'Internal'
                WHEN ${groupname} = 'Internal - Employee' THEN 'Internal'
-               WHEN ${groupname} = 'Employee Personal Use' THEN 'Customer'
+               WHEN ${groupname} = 'Employee Personal Use' THEN 'Employee Personal'
                ELSE 'Free - 3rd party/test/Fraud'
           END;;
   }
