@@ -68,7 +68,7 @@ view: storage_zfs {
     type:  tier
     tiers: [0,25,50,75,90,95,96,97,98,99,100]
     sql:  ${percent_used} ;;
-    style: integer
+    style: relational
   }
   measure: count {
     type: count
