@@ -376,8 +376,8 @@ explore: storage_zfs {
   }
   join: cnapi {
     view_label: "cnapi"
-    sql_on: ${cnapi.uuid} = ${vmapi.server_uuid} and ${cnapi.date_date} = ${storage_zfs.date_date} ;;
-    type: full_outer
+    sql_on: ${cnapi.uuid} = ${vmapi.server_uuid} and ${cnapi.date_date} = ${storage_zfs.date_date} and ${cnapi.manta_node} = true;;
+    type: left_outer
     relationship: many_to_one
   }
   join: papi {
