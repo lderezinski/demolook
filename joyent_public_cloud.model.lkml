@@ -370,7 +370,7 @@ explore: storage_zfs {
   label: "Storage zfs"
   join: vmapi {
     view_label: "vmapi"
-    sql_on:  ${storage_zfs.instance} = ${vmapi.alias} ;;
+    sql_on:  ${storage_zfs.instance} = ${vmapi.alias} and ${storage_zfs.date_date} = ${vmapi.date_date};;
     type: left_outer
     relationship: many_to_one
   }
