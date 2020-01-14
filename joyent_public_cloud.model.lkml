@@ -363,6 +363,30 @@ explore: cnapi {
   }
 
 }
+
+explore: storage_zfs {
+  description: "storage instances zfs"
+  group_label: "Joyent Cloud"
+  label: "Storage zfs"
+  join: vmapi {
+    view_label: "vmapi"
+    sql_on:  ${storage_zfs.instance} = ${vmapi.alias} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: cnapi {
+    view_label: "cnapi"
+    sql_on: ${cnapi.uuid} = ${vmapi.server_uuid} and ${cnapi.date_date} = ${storage_zfs.date_date} ;;
+    type: full_outer
+    relationship: many_to_one
+  }
+  join: papi {
+    view_label: "Packages"
+    sql_on: ${vmapi.billing_id} = ${papi.uuid} ;;
+    type:  left_outer
+    relationship: many_to_one
+  }
+}
 explore: vmapi {
   description: "VMApi"
   group_label: "Joyent Cloud"
