@@ -609,6 +609,12 @@ dimension: ram_sold {
   WHEN ${sku_number} = '600-0034-001' THEN 'Jirisan-C (12)'
   WHEN ${sku_number} = '600-0035-001' THEN 'Jirisan-C (24)'
   WHEN ${sku_number} = '600-0036-001' THEN 'Mantis Shrimp Mk.III.5 (12TB)'
+  WHEN ${sku_number} = 'To be filled by O.E.M.' THEN
+    case WHEN ${cn_name} = 'MS701214' THEN 'Mantis Shrimp Mk.III.5 (12TB)'
+         WHEN ${cn_name} = 'MS819227' THEN 'Mantis Shrimp Mk.III.5 (12TB)'
+        ELSE
+          'To be filled by O.E.M.'
+        END
   WHEN ${sku_number} = 'SKU=NotProvided;ModelName=Joyent-Compute-Platform-3302' THEN
     case
       WHEN ${disk_pool} < 10790592 THEN 'Hallasan-C (08)'
