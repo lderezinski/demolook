@@ -43,15 +43,18 @@ view: storage_zfs {
   dimension: zfs_available_t {
     type: number
     sql: ${zfs_available}/1024.0/1024.0/1024.0/1024.0 ;;
+    value_format_name: decimal_2
   }
 
   dimension: zfs_used_t {
     type: number
     sql: ${zfs_used}/1024.0/1024.0/1024.0/1024.0 ;;
+    value_format_name: decimal_2
   }
   dimension: zfs_total_t {
     type: number
     sql: ${zfs_total}/1024.0/1024.0/1024.0/1024.0 ;;
+    value_format_name: decimal_2
   }
   dimension: percent_used {
     type: number
@@ -77,34 +80,43 @@ view: storage_zfs {
   measure: sum_total {
     type: sum
     sql: ${zfs_total} ;;
+    value_format_name: decimal_2
   }
   measure: sum_used {
     type: sum
     sql: ${zfs_used} ;;
+    value_format_name: decimal_2
   }
   measure: sum_available {
     type: sum
     sql: ${zfs_available_t} ;;
+    value_format_name: decimal_2
   }
   measure: sum_total_t {
     type: sum
     sql: ${zfs_total_t} ;;
+    value_format_name: decimal_2
   }
   measure: sum_used_t {
     type: sum
     sql: ${zfs_used_t} ;;
+    value_format_name: decimal_2
   }
   measure: sum_available_t {
     type: sum
     sql: ${zfs_available} ;;
+    value_format_name: decimal_2
+
   }
 
   measure: sum_percent_free {
     type: number
     sql: ${sum_available}/${sum_total};;
+    value_format_name: decimal_2
   }
   measure: sum_percent_used {
     type: number
     sql: ${sum_used}/${sum_total} ;;
+    value_format_name: decimal_2
   }
 }
