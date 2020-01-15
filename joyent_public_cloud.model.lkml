@@ -374,10 +374,16 @@ explore: storage_zfs {
     type: left_outer
     relationship: many_to_one
   }
-  join: shrimp_facts{
+  join: cnapi{
     view_label: "Shrimp Facts"
-    sql_on: ${shrimp_facts.uuid} = ${vmapi.server_uuid};;
+    sql_on: ${cnapi.uuid} = ${vmapi.server_uuid};;
     type: left_outer
+    relationship: many_to_one
+  }
+  join: papi {
+    view_label: "Packages"
+    sql_on: ${vmapi.billing_id} = ${papi.uuid} ;;
+    type:  left_outer
     relationship: many_to_one
   }
 
