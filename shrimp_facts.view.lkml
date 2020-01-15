@@ -14,15 +14,11 @@ ORDER BY 1
 
        ;;
     persist_for: "24 hours"
-    indexes: ["shortname","uuid","cn_name","dc"]
+    indexes: ["cn_model","uuid","cn_name","dc"]
    }
 
    # Define your dimensions and measures here, like this:
-   dimension: shortName {
-     description: "The CN model short name"
-     type: string
-     sql: ${TABLE}."cn_model" ;;
-   }
+
   dimension: cn_model {
     description: "The CN model short name"
     type: string
