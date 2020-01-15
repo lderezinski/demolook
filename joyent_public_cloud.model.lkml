@@ -372,13 +372,13 @@ explore: storage_zfs {
     view_label: "vmapi"
     sql_on:  ${storage_zfs.instance} = ${vmapi.alias} and ${storage_zfs.date_date} = ${vmapi.date_date};;
     type: left_outer
-    relationship: many_to_one
+    relationship: one_to_one
   }
   join: shrimp_facts{
     view_label: "Shrimp Facts"
-    sql_on: ${shrimp_facts.uuid} = ${vmapi.server_uuid} ;;
+    sql_on: ${shrimp_facts.uuid} = ${vmapi.server_uuid} and ${storage_zfs.date_date} = ${shrimp_facts.date_date} ;;
     type: left_outer
-    relationship: many_to_one
+    relationship: one_to_one
   }
 
 }

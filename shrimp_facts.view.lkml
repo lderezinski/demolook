@@ -14,7 +14,7 @@ ORDER BY 1
 
        ;;
     persist_for: "24 hours"
-    indexes: ["cn_model","uuid","cn_name","dc"]
+    indexes: ["cn_model","date","uuid","cn_name","dc"]
    }
 
    # Define your dimensions and measures here, like this:
