@@ -18,7 +18,12 @@ ORDER BY 1
    }
 
    # Define your dimensions and measures here, like this:
-
+  dimension: compound_primary_key {
+    description: "primary key "
+    primary_key: yes
+    hidden: yes
+    sql: ${TABLE}."uuid"  || ${TABLE}."date";;
+  }
   dimension: cn_model {
     description: "The CN model short name"
     type: string
