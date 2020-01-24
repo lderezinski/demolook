@@ -8,7 +8,7 @@ view: shrimp_facts {
   cnapi."DCENTER"  AS "dc",
   DATE(cnapi."DATE" ) AS "date"
 FROM smartdc.cnapi  AS cnapi
-where cnapi."Model" like 'Mantis Shrimp%'
+where cnapi."Model" like 'Mantis Shrimp%' and upper(cnapi."HOSTNAME") like 'MS%'
 GROUP BY 1,2,3,4,5
 ORDER BY 1
 
