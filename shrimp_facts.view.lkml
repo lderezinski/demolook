@@ -22,7 +22,6 @@ ORDER BY 1
     type:  string
     description: "primary key "
     primary_key: yes
-    hidden: yes
     sql: ${TABLE}."uuid"  || ${TABLE}."date";;
   }
   dimension: cn_model {
