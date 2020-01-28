@@ -19,6 +19,7 @@ ORDER BY 1
 
    # Define your dimensions and measures here, like this:
   dimension: compound_primary_key {
+    type:  string
     description: "primary key "
     primary_key: yes
     hidden: yes
