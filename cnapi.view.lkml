@@ -5,10 +5,10 @@ view: cnapi {
   sql_table_name: smartdc.cnapi ;;
 
   dimension: compound_primary_key {
-    description: "primary key date + dcenter + hostname"
+    description: "primary key date + uuid"
     primary_key: yes
     hidden: yes
-    sql: ${TABLE}."DATE"  || ${TABLE}."DCENTER" || ${TABLE}."HOSTNAME";;
+    sql: ${TABLE}."DATE"  || ${TABLE}."uuid" ;;
   }
 
   parameter: input_value {
