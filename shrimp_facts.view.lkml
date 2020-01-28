@@ -6,7 +6,9 @@ view: shrimp_facts {
   cnapi."Model"  AS "cn_model",
   cnapi."uuid" AS "uuid",
   cnapi."DCENTER"  AS "dc",
-  DATE(cnapi."DATE" ) AS "date"
+  DATE(cnapi."DATE" ) AS "date",
+  ("uuid", "date") NOT NULL,
+  PRIMARY_KEY("uuid","date")
 FROM smartdc.cnapi  AS cnapi
 where cnapi."Model" like 'Mantis Shrimp%' and upper(cnapi."HOSTNAME") like 'MS%'
 GROUP BY 1,2,3,4,5
