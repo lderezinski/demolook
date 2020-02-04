@@ -1,7 +1,8 @@
 # Announcements
+[Current release notes](https://docs.looker.com/relnotes)
 
 ## Looker upgrades
-- 2020-02-04 upgraded [7.0.20](https://docs.looker.com/relnotes)
+- 2020-02-04 upgraded [7.0.20](https://docs.looker.com/relnotes/v7-changelog)
 
 - 2019-12-02 upgraded [6.24.21](https://discourse.looker.com/t/looker-6-24-release-notes/14865)
 
