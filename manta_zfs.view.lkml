@@ -98,7 +98,7 @@ view: manta_zfs {
 
   measure: goal640 {
     description: "The PiB values by region which total 640 PiB"
-    type: number
+    type: sum
     sql: CASE when ${region} = 'us-east' THEN 195
               when ${region} = 'eu-central' THEN 227
              when ${region} = 'ap-northeast' THEN 115
