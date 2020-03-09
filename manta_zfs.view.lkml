@@ -96,7 +96,7 @@ view: manta_zfs {
     value_format_name: decimal_2
   }
 
-  dimension: goal640 {
+  measure: goal640 {
     description: "The PiB values by region which total 640 PiB"
     type: number
     sql: CASE when ${region} = 'us-east' THEN 195
@@ -106,4 +106,5 @@ view: manta_zfs {
             END
     ;;
   }
+
 }
