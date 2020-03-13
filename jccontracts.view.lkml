@@ -1,6 +1,11 @@
 view: jccontracts {
   sql_table_name: smartdc.jccontracts ;;
-
+  dimension: compound_primary_key {
+    description: "primary key contractEnd and uuid"
+    primary_key: yes
+    hidden: yes
+    sql: ${TABLE}."contractEnd" || ${TABLE}."uuid";;
+  }
   dimension_group: contract_end {
     type: time
     timeframes: [

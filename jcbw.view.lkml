@@ -1,6 +1,11 @@
 view: jcbw {
   sql_table_name: smartdc.jcbw ;;
-
+  dimension: compound_primary_key {
+    description: "primary key date and uuid"
+    primary_key: yes
+    hidden: yes
+    sql: ${TABLE}."date" || ${TABLE}."reportname";;
+  }
   dimension_group: date {
     type: time
     timeframes: [
