@@ -61,7 +61,23 @@ explore: updataloaded {
   view_label: "datasource status"
   group_label: "SPC Manta"
 }
+explore: jcbw {
+  description: "Joyent Cloud commercial bandwidth"
+  view_label: "Commercial Bandwidth"
+  group_label: "Joyent Cloud"
 
+  join: jccontracts {
+    view_label: "Contract"
+    sql_on: ${jcbw.report_name} = ${jccontracts.report_name} ;;
+    relationship: one_to_many
+  }
+  join: ufds {
+    view_label: "Customers"
+    sql_on: ${jccontracts.uuid} = ${ufds.uuid} ;;
+    type: left_outer
+    relationship: one_to_one
+  }
+}
 explore: ram_values {
   hidden: yes
 }
