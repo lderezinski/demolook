@@ -2,6 +2,8 @@
 [Current release notes](https://docs.looker.com/relnotes)
 
 ## Looker upgrades
+- 2020-04-02 upgrade [7.4.21](https://docs.looker.com/relnotes#looker_7.4)
+
 - 2020-03-27 upgrade [7.4.17](https://docs.looker.com/relnotes#looker_7.4)
 
 - 2020-02-25 upgrade [7.2.13](https://docs.looker.com/relnotes#looker_7.2)
