@@ -5,7 +5,7 @@ view: muskiedelete {
   dimension: compound_primary_key {
     primary_key: yes
     hidden: yes
-    sql: ${TABLE}."timestamp"  || ${TABLE}."datacenter" || ${TABLE}."owner_uuid";;
+    sql: ${TABLE}.timestamp  || ${TABLE}.datacenter || ${TABLE}.owner_uuid;;
   }
 
   dimension: datacenter {

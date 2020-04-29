@@ -3,17 +3,17 @@ view: spcmantastorage {
 
   dimension: bytes {
     type: number
-    sql: ${TABLE}."bytes" ;;
+    sql: ${TABLE}.bytes ;;
   }
 
   dimension: objectcount {
     type: number
-    sql: ${TABLE}."count" ;;
+    sql: ${TABLE}.count ;;
   }
 
   dimension: region {
     type: string
-    sql: ${TABLE}."region" ;;
+    sql: ${TABLE}.region ;;
   }
 
   dimension_group: date {
@@ -35,7 +35,7 @@ view: spcmantastorage {
 
   dimension: uuid {
     type: string
-    sql: ${TABLE}."uuid" ;;
+    sql: ${TABLE}.uuid ;;
   }
 
   measure: count {

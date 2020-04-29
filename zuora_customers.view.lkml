@@ -43,6 +43,7 @@ view: zuora_customers {
       year
     ]
     sql: ${TABLE}.createddate ;;
+    datatype: date
   }
 
   dimension: crmid {

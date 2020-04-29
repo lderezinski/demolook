@@ -65,9 +65,9 @@ view: netbox {
   dimension: region{
     description: "The region name derivied from site, removing the 1a,1b,1c from the site"
     type: string
-    sql: CASE WHEN  right(${site}, 2) = '1a' THEN left(${site}, (char_length(${site})::integer - 1))
-              WHEN  right(${site}, 2) = '1b' THEN left(${site}, (char_length(${site})::integer - 1))
-              WHEN  right(${site}, 2) = '1c' THEN left(${site}, (char_length(${site})::integer - 1))
+    sql: CASE WHEN  right(${site}, 2) = '1a' THEN left(${site}, (length(${site})::integer - 1))
+              WHEN  right(${site}, 2) = '1b' THEN left(${site}, (length(${site})::integer - 1))
+              WHEN  right(${site}, 2) = '1c' THEN left(${site}, (length(${site})::integer - 1))
               ELSE ${site}
         END;;
   }

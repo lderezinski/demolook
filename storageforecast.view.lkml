@@ -4,7 +4,7 @@ view: storageforecast {
   dimension: cumulative_data_pib {
     description: "After build is complete, total PiB will be"
     type: number
-    sql: ${TABLE}."cumulative_data_PiB" ;;
+    sql: ${TABLE}.cumulative_data_PiB ;;
   }
 
   dimension: compound_primary_key {
@@ -26,7 +26,7 @@ view: storageforecast {
     ]
     convert_tz: no
     datatype: date
-    sql: ${TABLE}."Date" ;;
+    sql: ${TABLE}.Date ;;
   }
 
   dimension: half_year {
@@ -55,7 +55,7 @@ view: storageforecast {
   dimension: fcst {
     description: "The forcast version this storage build is in"
     type: string
-    sql: ${TABLE}."FCST" ;;
+    sql: ${TABLE}.FCST ;;
   }
 
   dimension: group {
@@ -67,13 +67,13 @@ view: storageforecast {
   dimension: manta_capacity_pib {
     description: "The manta capacity for this build in PiB"
     type: number
-    sql: ${TABLE}."Manta_capacity_PiB" ;;
+    sql: ${TABLE}.Manta_capacity_PiB ;;
   }
 
   dimension: region {
     description: "The region of this build "
     type: string
-    sql: ${TABLE}."Region" ;;
+    sql: ${TABLE}.Region ;;
   }
 
   measure: count {

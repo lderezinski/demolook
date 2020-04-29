@@ -9,7 +9,7 @@ view: datacenters {
   dimension: compound_primary_key {
     primary_key: yes
     hidden: yes
-    sql: CONCAT(${TABLE}.group, '  ', ${TABLE}.name) ;;
+    sql: CONCAT(${TABLE}."group", '  ', ${TABLE}.name) ;;
   }
   dimension: name {
     description: "The proper name XX-XXXXXXX-#x"

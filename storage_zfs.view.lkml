@@ -13,27 +13,27 @@ view: storage_zfs {
     ]
     convert_tz: no
     datatype: date
-    sql: ${TABLE}."date" ;;
+    sql: ${TABLE}.date ;;
   }
 
   dimension: instance {
     type: string
-    sql: ${TABLE}."instance" ;;
+    sql: ${TABLE}.instance ;;
   }
 
   dimension: region {
     type: string
-    sql: ${TABLE}."region" ;;
+    sql: ${TABLE}.region ;;
   }
 
   dimension: zfs_available {
     type: number
-    sql: ${TABLE}."zfs_available" ;;
+    sql: ${TABLE}.zfs_available ;;
   }
 
   dimension: zfs_used {
     type: number
-    sql: ${TABLE}."zfs_used" ;;
+    sql: ${TABLE}.zfs_used ;;
   }
   dimension: zfs_total {
     type: number

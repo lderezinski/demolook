@@ -13,34 +13,34 @@ view: latency_hours {
       quarter,
       year
     ]
-    sql: ${TABLE}."date" ;;
+    sql: ${TABLE}.date ;;
     drill_fields: [latency,region,date_date,type]
   }
 
   dimension: compound_primary_key {
     primary_key: yes
     hidden: yes
-    sql: ${TABLE}."date"  || ${TABLE}."region" || ${TABLE}."type";;
+    sql: ${TABLE}.date  || ${TABLE}.region || ${TABLE}."TYPE";;
   }
 
   dimension: region {
     description: "Name of the region"
     type: string
-    sql: ${TABLE}."region" ;;
+    sql: ${TABLE}.region ;;
     drill_fields: [latency,region,date_date,type]
   }
 
   dimension: type {
     description: "90% or 95%"
     type: string
-    sql: ${TABLE}."type" ;;
+    sql: ${TABLE}.type ;;
     drill_fields: [latency,region,date_date,type]
   }
 
     dimension: latency {
       description: "the muskie latency in ms"
       type: number
-      sql: ${TABLE}."value" ;;
+      sql: ${TABLE}.value ;;
       value_format_name: percent_1
       drill_fields: [latency,region,date_date,type]
     }
@@ -53,7 +53,7 @@ view: latency_hours {
     measure: latency_sum{
       description: "Sum of muskie latency"
       type: sum
-      sql:  ${TABLE}."value" ;;
+      sql:  ${TABLE}.value ;;
       value_format_name: percent_1
       drill_fields: [latency,region,date_date,type]
     }
@@ -61,7 +61,7 @@ view: latency_hours {
     measure: latency_avg{
       description: "Average of muskie latency"
       type: average
-      sql:  ${TABLE}."value" ;;
+      sql:  ${TABLE}.value ;;
       value_format_name: percent_1
       drill_fields: [latency,region,date_date,type]
     }

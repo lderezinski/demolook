@@ -3,12 +3,12 @@ view: zinvoiceitems {
 
   dimension: account_number {
     type: string
-    sql: ${TABLE}."AccountNumber" ;;
+    sql: ${TABLE}.AccountNumber ;;
   }
 
   dimension: charge_amount {
     type: number
-    sql: ${TABLE}."ChargeAmount" ;;
+    sql: ${TABLE}.ChargeAmount ;;
   }
 
   dimension_group: charge {
@@ -22,22 +22,22 @@ view: zinvoiceitems {
       quarter,
       year
     ]
-    sql: ${TABLE}."ChargeDate" ;;
+    sql: ${TABLE}.ChargeDate ;;
   }
 
   dimension: charge_type {
     type: string
-    sql: ${TABLE}."ChargeType" ;;
+    sql: ${TABLE}.ChargeType ;;
   }
 
   dimension: processing_type {
     type: string
-    sql: ${TABLE}."ProcessingType" ;;
+    sql: ${TABLE}.ProcessingType ;;
   }
 
   dimension: quantity {
     type: number
-    sql: ${TABLE}."Quantity" ;;
+    sql: ${TABLE}.Quantity ;;
   }
 
   dimension_group: service_end {
@@ -52,7 +52,7 @@ view: zinvoiceitems {
     ]
     convert_tz: no
     datatype: date
-    sql: ${TABLE}."ServiceEndDate" ;;
+    sql: ${TABLE}.ServiceEndDate ;;
   }
 
   dimension_group: service_start {
@@ -67,17 +67,17 @@ view: zinvoiceitems {
     ]
     convert_tz: no
     datatype: date
-    sql: ${TABLE}."ServiceStartDate" ;;
+    sql: ${TABLE}.ServiceStartDate ;;
   }
 
   dimension: sub_uuid {
     type: string
-    sql: ${TABLE}."SubUUID" ;;
+    sql: ${TABLE}.SubUUID ;;
   }
 
   dimension: uom {
     type: string
-    sql: ${TABLE}."UOM" ;;
+    sql: ${TABLE}.UOM ;;
   }
 
 dimension: isInstance {

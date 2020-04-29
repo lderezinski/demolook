@@ -1,4 +1,4 @@
-connection: "joyent"
+connection: "snowflakedb"
 
 include: "*.view.lkml"         # include all views in this project
 include: "*.dashboard.lookml"  # include all dashboards in this project
@@ -585,8 +585,8 @@ explore: makoregion {
   label: "Mako Region"
   join: makoregiontomb {
     view_label: "region tombstone"
-    sql_on: ${makoregion.storage_id} = ${makoregiontomb.storage_id}
-    type: full_outer;;
+    sql_on: ${makoregion.storage_id} = ${makoregiontomb.storage_id};;
+    type: full_outer
     relationship: one_to_many
   }
 }

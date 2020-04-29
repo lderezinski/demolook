@@ -4,13 +4,13 @@ view: bpr {
   dimension: account_number {
     description: "ufds uuid account number"
     type: string
-    sql: ${TABLE}."AccountNumber" ;;
+    sql: ${TABLE}.AccountNumber ;;
   }
 
   dimension: charge_amount {
     description: "USD charge amount"
     type: number
-    sql: ${TABLE}."ChargeAmount" ;;
+    sql: ${TABLE}.ChargeAmount ;;
   }
 
   dimension_group: charge {
@@ -25,31 +25,31 @@ view: bpr {
       quarter,
       year
     ]
-    sql: ${TABLE}."ChargeDate" ;;
+    sql: ${TABLE}.ChargeDate ;;
   }
 
   dimension: charge_type {
     description: "Charge type from Zuora"
     type: string
-    sql: ${TABLE}."ChargeType" ;;
+    sql: ${TABLE}.ChargeType ;;
   }
 
   dimension: datacenter {
     description: "JPC data center"
     type: string
-    sql: ${TABLE}."Datacenter" ;;
+    sql: ${TABLE}.Datacenter ;;
   }
 
   dimension: name {
     description: "Zuora subscription name"
     type: string
-    sql: ${TABLE}."Name" ;;
+    sql: ${TABLE}.Name ;;
   }
 
   dimension: quantity {
     description: "Zuora quanity of items"
     type: number
-    sql: ${TABLE}."Quantity" ;;
+    sql: ${TABLE}.Quantity ;;
   }
 
   dimension_group: service_end {
@@ -64,7 +64,7 @@ view: bpr {
       quarter,
       year
     ]
-    sql: ${TABLE}."ServiceEndDate" ;;
+    sql: ${TABLE}.ServiceEndDate ;;
   }
 
   dimension_group: service_start {
@@ -79,13 +79,13 @@ view: bpr {
       quarter,
       year
     ]
-    sql: ${TABLE}."ServiceStartDate" ;;
+    sql: ${TABLE}.ServiceStartDate ;;
   }
 
   dimension: uom {
     description: "Unit of Measure from Zuora"
     type: string
-    sql: ${TABLE}."UOM" ;;
+    sql: ${TABLE}.UOM ;;
   }
 
   measure: count {

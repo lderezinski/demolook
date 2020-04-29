@@ -34,19 +34,19 @@ measure: count {
 dimension: cnapi_date_date {
   description: "CNapi.date for the data"
   type: date
-  sql: ${TABLE}."cnapi.date_date" ;;
+  sql: ${TABLE}.cnapi.date_date ;;
 }
 
 dimension: cnapi_dc {
   description: "CNapi.dc"
   type: string
-  sql: ${TABLE}."cnapi.dc" ;;
+  sql: ${TABLE}.cnapi.dc ;;
 }
 
 dimension: cnapi_count {
   description: "CNapi.count number of objects returned"
   type: string
-  sql: ${TABLE}."cnapi.count" ;;
+  sql: ${TABLE}.cnapi.count ;;
 }
 
 dimension: z__pivot_col_rank {

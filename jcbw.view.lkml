@@ -4,7 +4,7 @@ view: jcbw {
     description: "primary key date and uuid"
     primary_key: yes
     hidden: yes
-    sql: ${TABLE}."date" || ${TABLE}."reportname";;
+    sql: ${TABLE}.date || ${TABLE}.reportname;;
   }
   dimension_group: date {
     type: time
@@ -18,37 +18,37 @@ view: jcbw {
     ]
     convert_tz: no
     datatype: date
-    sql: ${TABLE}."date" ;;
+    sql: ${TABLE}.date ;;
   }
 
   dimension: in_gib {
     type: number
-    sql: ${TABLE}."inGiB" ;;
+    sql: ${TABLE}.inGiB ;;
   }
 
   dimension: inavgbps {
     type: number
-    sql: ${TABLE}."inavgbps" ;;
+    sql: ${TABLE}.inavgbps ;;
   }
 
   dimension: out_gib {
     type: number
-    sql: ${TABLE}."outGiB" ;;
+    sql: ${TABLE}.outGiB ;;
   }
 
   dimension: outavgbps {
     type: number
-    sql: ${TABLE}."outavgbps" ;;
+    sql: ${TABLE}.outavgbps ;;
   }
 
   dimension: report_name {
     type: string
-    sql: ${TABLE}."reportname" ;;
+    sql: ${TABLE}.reportname ;;
   }
 
   dimension: seconds {
     type: number
-    sql: ${TABLE}."seconds" ;;
+    sql: ${TABLE}.seconds ;;
   }
 
   measure: count {

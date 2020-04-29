@@ -4,7 +4,7 @@ view: cnapimonthly {
   dimension: boot_platform {
     description:"CNapi boot_platform"
     type: string
-    sql: ${TABLE}."boot platform" ;;
+    sql: ${TABLE}.boot_platform ;;
   }
   dimension_group: boot_pi_date {
     description:"date parsed out of CNapi boot_platform"
@@ -18,13 +18,17 @@ view: cnapimonthly {
       quarter,
       year
     ]
-    sql: to_date(substring(${boot_platform},1,8),'YYYYMMDD') ;;
+    sql:CASE WHEN ${boot_platform} = 'pmooneydev' THEN NULL
+             WHEN ${boot_platform} = 'imc-rm' THEN NULL
+            ELSE to_date(substring(${boot_platform},1,8),'YYYYMMDD')
+        END ;;
+    datatype: date
   }
 
   dimension: live_image {
     description:"CNapi sysinfo Live Image"
     type: string
-    sql: ${TABLE}."live image" ;;
+    sql: ${TABLE}.live_image ;;
   }
   dimension_group: live_pi_date {
     description:"date parsed out of CNapi sysinfo Live Image"
@@ -43,19 +47,19 @@ view: cnapimonthly {
   dimension: months_since_pi{
     description:"Number of months since the live PI was released"
   type: number
-  sql: DATEDIFF('month',NOW(), ${live_pi_date_month});;
+    sql:datediff(month,  ${live_pi_date_date}, CURRENT_DATE()) ;;
 }
  dimension: months_pi_tier{
   description:"Number of months grouped into 0,1,3,6,12,24,36,48+ since the live PI was released"
   type: tier
   tiers: [0,1,3,6,12,24, 36,48]
-  sql: ${months_since_pi}
+  sql: ${months_since_pi};;
 }
 
   dimension: cores {
   description:"CNapi sysinfo CPU Total Cores"
     type: number
-    sql: ${TABLE}."Cores" ;;
+    sql: ${TABLE}.Cores ;;
   }
 
   dimension_group: date {
@@ -70,216 +74,218 @@ view: cnapimonthly {
       quarter,
       year
     ]
-    sql: ${TABLE}."DATE" ;;
+    sql: ${TABLE}.DATE ;;
   }
 
   dimension: dc {
     description:"CNapi datacenter"
     type: string
-    sql: ${TABLE}."DCENTER" ;;
+    sql: ${TABLE}.DCENTER ;;
   }
 
   dimension: disk_pool {
     description:"CNapi.disk_pool_size_bytes converted to GiB"
     type: number
-    sql: ${TABLE}."disk pool size G" ;;
+    sql: ${TABLE}.disk_pool_size_G ;;
   }
 
   dimension: ram_free {
     description: "CNapi.memory_available_bytes converted to MiB"
     type: number
-    sql: ${TABLE}."Free" ;;
+    sql: ${TABLE}.Free ;;
   }
 
   dimension: cn_name {
     description:"CNapi.hostname"
     type: string
-    sql: ${TABLE}."HOSTNAME" ;;
+    sql: ${TABLE}.HOSTNAME ;;
   }
 
   dimension: joy_num {
     description:"total number of joyent vms listed in CNapi.vms"
     type: number
-    sql: ${TABLE}."joyent" ;;
+    sql: ${TABLE}.joyent ;;
   }
 
   dimension: joyent_percent {
     description:"total percent of joyent vms listed in CNapi.vms"
     type: number
-    sql: ${TABLE}."%joyent" ;;
+    sql: ${TABLE}.joyent_percent ;;
   }
 
   dimension: kvm_num {
     description:"total number of kvm vms listed in CNapi.vms"
     type: number
-    sql: ${TABLE}."kvm" ;;
+    sql: ${TABLE}.kvm ;;
   }
 
   dimension: kvm_percent {
     description:"total percent of kvm vms listed in CNapi.vms"
     type: number
-    sql: ${TABLE}."%kvm" ;;
+    sql: ${TABLE}.kvm_percent ;;
   }
 
   dimension: num_lx {
     description:"total number of lx vms listed in CNapi.vms"
     type: number
-    sql: ${TABLE}."lx" ;;
+    sql: ${TABLE}.lx ;;
   }
 
   dimension: lx_percent {
     description:"total percent of lx vms listed in CNapi.vms"
     type: number
-    sql: ${TABLE}."%lx" ;;
+    sql: ${TABLE}.lx_percent ;;
   }
 
   dimension: cn_minimal {
     description:"total number of minimal vms listed in CNapi.vms"
     type: number
-    sql: ${TABLE}."minimal" ;;
+    sql: ${TABLE}.minimal ;;
   }
 
   dimension: minimal_percent {
     description:"total percent of minimal vms listed in CNapi.vms"
     type: number
-    sql: ${TABLE}."%minimal" ;;
+    sql: ${TABLE}.minimal_percent ;;
   }
+
+  #LSDLSDLSD broken trait_types
   dimension: trait_types {
     description: "JSON CNapi.traits"
     type:  string
-    sql:  json_object_keys(${TABLE}.traits) ;;
+    sql:  ${TABLE}.traits ;;
   }
   dimension: cn_model {
     description:"Derived from CNapi.hostname, CNapi.sysinfo['SKU Number']"
     type: string
-    sql: ${TABLE}."Model" ;;
+    sql: ${TABLE}.Model ;;
   }
 
   dimension: ram_overhead {
     description: "((CNapi.memory_total_bytes/1024.0) - (CNapi.memory_provisionable_bytes/1024.0)) * 1024 || 0"
     type: number
-    sql: ${TABLE}."Overhead" ;;
+    sql: ${TABLE}.Overhead ;;
   }
 
   dimension: product_name {
     description: "CNapi.sysinfo.Product"
     type: string
-    sql: ${TABLE}."Product" ;;
+    sql: ${TABLE}.Product ;;
   }
 
   dimension: num_zones {
     description: "CNapi.vms.length"
     type: number
-    sql: ${TABLE}."Prov" ;;
+    sql: ${TABLE}.Prov ;;
   }
 
   dimension: rack_identifier {
     description: "CNapi.rack_identifier"
     type: string
-    sql: ${TABLE}."rack identifier" ;;
+    sql: ${TABLE}.rack_identifier ;;
   }
 
   dimension: cn_reserved {
     description: "CNapi.reserved"
     type: yesno
-    sql: ${TABLE}."reserved" ;;
+    sql: ${TABLE}.reserved ;;
   }
 
   dimension: ram_sellable {
     description: "CNapi.memory_provisionable_bytes"
     type: number
-    sql: ${TABLE}."Sellable" ;;
+    sql: ${TABLE}.Sellable ;;
   }
 
   dimension: serial_number {
     description: "CNapi.sysinfo['Serial Number']"
     type: string
-    sql: ${TABLE}."Serial Number" ;;
+    sql: ${TABLE}.Serial_Number ;;
   }
 
   dimension: setup {
     description: "CNapi.sysinfo.Setup"
     type: yesno
-    sql: ${TABLE}."Setup" ;;
+    sql: ${TABLE}.Setup ;;
   }
 
   dimension: sku_number {
     description: "CNapi.sysinfo['SKU Number']"
     type: string
-    sql: ${TABLE}."Sku Number" ;;
+    sql: ${TABLE}.Sku_Number ;;
   }
 
   dimension: ram_sold {
     description: "(CNapi.memory_provisionable_bytes) - (CNapi.memory_available_bytes)  || 0; converted to MiB"
     type: number
-    sql: ${TABLE}."Sold" ;;
+    sql: ${TABLE}.Sold ;;
   }
 
   dimension: sold_percent {
     description: "ram_sold / CNapi.memory_provisionable_bytes"
     type: number
-    sql: ${TABLE}."Sold%" ;;
+    sql: ${TABLE}.Sold_percent ;;
   }
 
   dimension: traits {
     description: "CNapi.traits"
     type: string
-    sql: ${TABLE}."traits" ;;
+    sql: ${TABLE}.traits ;;
   }
   dimension: ssd_node {
     description: "Does CNapi.traits contain ssd?"
     type: yesno
-    sql: ${TABLE}.traits ->> 'ssd' is not null ;;
+    sql: ${TABLE}.traits:ssd is not null ;;
 
   }
   dimension: internal_node {
     description: "Does CNapi.traits contain internal?"
     type: yesno
-    sql: ${TABLE}.traits ->> 'internal' is not null ;;
+    sql: ${TABLE}.traits:internal is not null ;;
 
   }
   dimension: manta_node {
     description: "cn_model LIKE '%Shrimp%'"
     type:  yesno
-    sql:  ${TABLE}.traits ->> 'internal' is not null and ${TABLE}.traits ->> 'internal' = 'Manta Node' ;;
+    sql:  ${TABLE}.traits:internal is not null and ${TABLE}.traits:internal = 'Manta Node' ;;
   }
 
   dimension: disk_unprovisioned {
     description: "CNapi.disk_pool_size_bytes - CNapi.disk_kvm_zvol_volsize_bytes - CNapi.disk_zone_quota_bytes - CNapi.disk_cores_quota_used_bytes - CNapi.disk_installed_images_used_bytes - (count of CNapi.vms that are kvm) * 10 * GiB;"
     type: number
-    sql: ${TABLE}."unprovisioned pool G" ;;
+    sql: ${TABLE}.unprovisioned_pool_G ;;
   }
 
   dimension: unprovisioned_ratio {
     description: "unprovisioned_pool / CNapi.disk_pool_size_bytes"
     type: number
-    sql: ${TABLE}."unprovisioned ratio " ;;
+    sql: ${TABLE}.unprovisioned_ratio ;;
   }
 
   dimension: uuid {
     description: "CNapi.uuid the uuid for the CN"
     type: string
-    sql: ${TABLE}."uuid";;
+    sql: ${TABLE}.uuid;;
   }
   dimension: pool {
     description: "Is this a Compute CN, is CNapi.role == Compute"
     type: yesno
-    sql: ${cn_name} != 'headnode' and  ${TABLE}.traits ->> 'triton' is  null  and  ${TABLE}.traits ->> 'internal' is  null  ;;
+    sql: ${cn_name} != 'headnode' and  ${TABLE}.traits:triton is  null  and  ${TABLE}.traits:internal is  null  ;;
   }
   dimension: general_pool {
     description: "All CNs for public use sans ssd"
     type: yesno
-    sql: ${cn_name} != 'headnode' and  ${TABLE}.traits ->> 'internal' is  null and  ${TABLE}.traits ->> 'ssd' is  null and  ${TABLE}.traits ->> 'customer' is  null and  ${TABLE}.traits ->> 'storage' is  null and ${TABLE}.reserved != 'f'  ;;
+    sql: ${cn_name} != 'headnode' and  ${TABLE}.traits:internal is  null and  ${TABLE}.traits:ssd is  null and  ${TABLE}.traits:customer is  null and  ${TABLE}.traits:storage is  null and ${TABLE}.reserved != 'f'  ;;
   }
   dimension: general_ssd_pool {
     description: "All ssd CNs for public use"
     type: yesno
-    sql:  ${TABLE}.traits ->> 'ssd' is  not null and  ${TABLE}.traits ->> 'customer' is  null and  ${TABLE}.traits ->> 'storage' is  null and ${TABLE}.reserved = 'f'  ;;
+    sql:  ${TABLE}.traits:ssd is  not null and  ${TABLE}.traits:customer is  null and  ${TABLE}.traits:storage is  null and ${TABLE}.reserved = 'f'  ;;
   }
   dimension: ssd_pool {
     description: "All ssd CNs"
     type: yesno
-    sql:  ${TABLE}.traits ->> 'ssd' is  not null ;;
+    sql:  ${TABLE}.traits:ssd is  not null ;;
   }
 
   dimension: free_ram_tier {

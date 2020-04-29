@@ -4,7 +4,7 @@ view: updataloaded {
   dimension: totalcount {
     description: "1 or the number of objects loaded"
     type: number
-    sql: ${TABLE}."count" ;;
+    sql: ${TABLE}.count ;;
   }
 
   dimension_group: date {
@@ -20,13 +20,13 @@ view: updataloaded {
       quarter,
       year
     ]
-    sql: ${TABLE}."date" ;;
+    sql: ${TABLE}.date ;;
   }
 
   dimension: tablename {
     description: "The name of the table the data was loaded into"
     type: string
-    sql: ${TABLE}."tablename" ;;
+    sql: ${TABLE}.tablename ;;
   }
 
   measure: count {

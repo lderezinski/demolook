@@ -14,27 +14,27 @@ view: status_hours {
       quarter,
       year
     ]
-    sql: ${TABLE}."date" ;;
+    sql: ${TABLE}.date ;;
     drill_fields: [uptime,region,date_date]
   }
 
   dimension: compound_primary_key {
     primary_key: yes
     hidden: yes
-    sql: ${TABLE}."date"  || ${TABLE}."region" ;;
+    sql: ${TABLE}.date  || ${TABLE}.region ;;
   }
 
   dimension: region {
     description: "Name of the region"
     type: string
-    sql: ${TABLE}."region" ;;
+    sql: ${TABLE}.region ;;
     drill_fields: [uptime,region,date_date]
   }
 
   dimension: uptime {
     description: "Uptime percentage"
     type: number
-    sql: ${TABLE}."value" ;;
+    sql: ${TABLE}.value ;;
     value_format_name: percent_1
     drill_fields: [uptime,region,date_date]
   }
@@ -47,7 +47,7 @@ view: status_hours {
   measure: uptime_sum{
     description: "Sum of the uptime"
     type: sum
-    sql:  ${TABLE}."value" ;;
+    sql:  ${TABLE}.value ;;
     value_format_name: percent_1
     drill_fields: [uptime,region,date_date]
   }

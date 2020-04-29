@@ -4,7 +4,7 @@ view: latency {
   dimension: compound_primary_key {
     primary_key: yes
     hidden: yes
-    sql: ${TABLE}."date"  || ${TABLE}."region" || ${TABLE}."type";;
+    sql: ${TABLE}.date  || ${TABLE}.region || ${TABLE}."TYPE";;
   }
 
   dimension_group: date {
@@ -21,28 +21,28 @@ view: latency {
       year
     ]
 
-    sql: ${TABLE}."date" ;;
+    sql: ${TABLE}.date ;;
     drill_fields: [value,region,date_date,type]
   }
 
   dimension: region {
     description: "Name of the region"
     type: string
-    sql: ${TABLE}."region" ;;
+    sql: ${TABLE}.region ;;
     drill_fields: [value,region,date_date,type]
   }
 
   dimension: type {
     description: "90% or 95% data"
     type: string
-    sql: ${TABLE}."type" ;;
+    sql: ${TABLE}."TYPE" ;;
     drill_fields: [value,region,date_date,type]
   }
 
   dimension: value {
     description: "the muskie latency in ms"
     type: number
-    sql: ${TABLE}."value" ;;
+    sql: ${TABLE}.value ;;
     drill_fields: [value,region,date_date,type]
   }
 
@@ -54,7 +54,7 @@ view: latency {
   measure: five_minute_moving_avg{
     description: "latency five minute moving average"
     type: average
-    sql:  ${TABLE}."value" ;;
+    sql:  ${TABLE}.value ;;
     drill_fields: [value,region,date_date,type]
   }
 }

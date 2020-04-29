@@ -14,19 +14,19 @@ view: storagebuild {
     ]
     convert_tz: no
     datatype: date
-    sql: ${TABLE}."DeliverDate" ;;
+    sql: ${TABLE}.deliverdate ;;
   }
 
   measure: delivery_month_list {
     description: "The list of the delievery months"
     type: string
-    sql: string_agg(${deliver_month},', ') ;;
+    sql: listagg(${deliver_month}, ', ') ;;
   }
 
   dimension: fcst {
     description: "Which forcast verion is this build based"
     type: string
-    sql: ${TABLE}."FCST" ;;
+    sql: ${TABLE}.FCST ;;
   }
 
   dimension: group {
@@ -38,13 +38,13 @@ view: storagebuild {
   dimension: manta_capacity_pib {
     description: "Total PiB being added in this build"
     type: number
-    sql: ${TABLE}."Manta_capacity_PiB" ;;
+    sql: ${TABLE}.Manta_capacity_PiB ;;
   }
 
   dimension: region {
     description: "Region which PiB is being added to the build"
     type: string
-    sql: ${TABLE}."Region" ;;
+    sql: ${TABLE}.Region ;;
   }
 
   dimension_group: start {
@@ -60,7 +60,7 @@ view: storagebuild {
     ]
     convert_tz: no
     datatype: date
-    sql: ${TABLE}."StartDate" ;;
+    sql: ${TABLE}.StartDate ;;
   }
   dimension: status_leg {
     description: "The status of this current build: 1-pre-pumi,2-ordering,3-Building,4-Delivered"
@@ -76,7 +76,7 @@ view: storagebuild {
   dimension: status {
     description: "The status of this current build: pre-pumi,ordering,Building,Delivered"
     type: string
-    sql: ${TABLE}."Status" ;;
+    sql: ${TABLE}.Status ;;
   }
   dimension: status_label {
     description: "The build status normalized to Pre-Pumi, In Progress or Delivered"
@@ -91,7 +91,7 @@ view: storagebuild {
   dimension: sold_out_date {
     description: "expected full date based on current burn rate"
     type: date
-    sql:  DATE ${deliver_raw} + INTERVAL ' 46 days' ;;
+    sql:  DATEADD('days', 46,  ${deliver_raw} ) ;;
 
   }
   dimension: region_status {

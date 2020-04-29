@@ -16,7 +16,7 @@ view: makotomb {
   dimension: average_size_kb {
     description: "accounts average object size of tombstone object in KiB"
     type: number
-    sql: ${TABLE}."average size kb" ;;
+    sql: ${TABLE}.average_size_kb ;;
   }
 
   dimension: bytes {

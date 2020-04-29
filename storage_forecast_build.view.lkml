@@ -40,7 +40,7 @@ view: storage_forecast_build {
   dimension_group: build_start {
     description: "The start time of the Build"
     type: time
-    sql:  ${delivery_raw} - interval '${build_duration} months';;
+    sql: dateadd(month, -${build_duration}, ${delivery_raw} )  ;;
   }
 
   dimension: halfyear_target_raw {

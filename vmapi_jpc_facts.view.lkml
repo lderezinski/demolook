@@ -3,12 +3,12 @@ view: vmapi_jpc_facts {
     derived_table: {
       sql:
 SELECT
-  CONCAT( ufds.company, '(',ufds.login,')')  AS "customer_display_name",
-  ufds.uuid  AS "ufds_uuid",
-  vmapi.uuid  AS "vmapi_uuid",
-  DATE_PART('day',(DATE(MAX(vmapi.date) ))::TIMESTAMP - (DATE(MIN(vmapi.date) ))::TIMESTAMP )  AS "run_duration",
-  DATE(MIN(vmapi.date) ) AS "first_reported_date",
-  DATE(MAX(vmapi.date) ) AS "last_reported_date"
+  ufds.company ||'(' || ufds.login || ')'  AS customer_display_name,
+  ufds.uuid  AS ufds_uuid,
+  vmapi.uuid  AS vmapi_uuid,
+  DATEDIFF(day,DATE(MIN(vmapi.date)) , DATE(MAX(vmapi.date)) ) AS run_duration,
+  DATE(MIN(vmapi.date) ) AS first_reported_date,
+  DATE(MAX(vmapi.date) ) AS last_reported_date
 FROM smartdc.vmapi  AS vmapi
 LEFT JOIN smartdc.ufds  AS ufds ON ufds.uuid=vmapi.owner_uuid
 FULL OUTER JOIN smartdc.datacenters  AS datacenters ON datacenters.name = vmapi.datacenter

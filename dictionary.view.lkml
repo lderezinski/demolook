@@ -3,37 +3,37 @@ view: dictionary {
 
   dimension: description {
     type: string
-    sql: REPLACE(${TABLE}."Description",'\','') ;;
+    sql: REPLACE(${TABLE}.Description,"\","") ;;
   }
 
   dimension: field_name {
     type: string
-    sql: ${TABLE}."FieldName" ;;
+    sql: ${TABLE}.FieldName ;;
   }
 
   dimension: field_type {
     type: string
-    sql: ${TABLE}."FieldType" ;;
+    sql: ${TABLE}.FieldType ;;
   }
 
   dimension: model {
     type: string
-    sql: ${TABLE}."Model" ;;
+    sql: ${TABLE}.Model ;;
   }
 
   dimension: sql {
     type: string
-    sql:REPLACE( ${TABLE}."SQL",'\','') ;;
+    sql:REPLACE( ${TABLE}.SQL,"\","") ;;
   }
 
   dimension: type {
     type: string
-    sql: ${TABLE}."Type" ;;
+    sql: ${TABLE}."TYPE" ;;
   }
 
   dimension: view_name {
     type: string
-    sql: ${TABLE}."ViewName" ;;
+    sql: ${TABLE}.ViewName ;;
   }
 
   measure: count {

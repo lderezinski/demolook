@@ -5,13 +5,13 @@ view: bandwidth {
     description: "primary key datacenter, date and owner uuid"
     primary_key: yes
     hidden: yes
-    sql: ${TABLE}."datacenter"  || ${TABLE}."date" || ${TABLE}."owner_uuid";;
+    sql: ${TABLE}.datacenter || ${TABLE}.date || ${TABLE}.owner_uuid;;
   }
 
   dimension: datacenter {
     type: string
     description: "datacenter from instances.json"
-    sql: ${TABLE}."datacenter" ;;
+    sql: ${TABLE}.datacenter ;;
   }
 
   dimension_group: date {
@@ -27,25 +27,25 @@ view: bandwidth {
     ]
     convert_tz: no
     datatype: date
-    sql: ${TABLE}."date" ;;
+    sql: ${TABLE}.date ;;
   }
 
   dimension: in {
     description: "total number of bytes in on public interface "
     type: number
-    sql: ${TABLE}."in" ;;
+    sql: ${TABLE}.bw_in ;;
   }
 
   dimension: out {
     description: "total number of bytes out on public interface"
     type: number
-    sql: ${TABLE}."out" ;;
+    sql: ${TABLE}.bw_out ;;
   }
 
   dimension: owner_uuid {
     description: "ufds uuid for customer"
     type: string
-    sql: ${TABLE}."owner_uuid" ;;
+    sql: ${TABLE}.owner_uuid ;;
   }
 
   measure: count {

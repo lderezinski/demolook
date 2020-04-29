@@ -4,31 +4,31 @@ view: inventory {
   dimension: az {
     description: "Name of the avalibility zone"
     type: string
-    sql: ${TABLE}."AZ" ;;
+    sql: ${TABLE}.AZ ;;
   }
 
   dimension: build {
     description: "Build number"
     type: string
-    sql: ${TABLE}."Build" ;;
+    sql: ${TABLE}.Build ;;
   }
 
   dimension: region {
     description: "Name of the region"
     type: string
-    sql: ${TABLE}."Region" ;;
+    sql: ${TABLE}.Region ;;
   }
 
   dimension: sku {
     description: "Sku of the computer"
     type: string
-    sql: ${TABLE}."Sku" ;;
+    sql: ${TABLE}.Sku ;;
   }
 
   dimension: total_nodes {
     description: "number of nodes"
     type: number
-    sql: ${TABLE}."TotalNodes" ;;
+    sql: ${TABLE}.TotalNodes ;;
   }
 
   measure: count {

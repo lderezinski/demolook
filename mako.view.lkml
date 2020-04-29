@@ -15,7 +15,7 @@ view: mako {
   dimension: average_size_kb {
     description: "Average size of objects in kb"
     type: number
-    sql: ${TABLE}."average size kb" ;;
+    sql: ${TABLE}.average_size_kb ;;
   }
 
   dimension: bytes {

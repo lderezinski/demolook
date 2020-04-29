@@ -5,7 +5,7 @@ view: mantastorage {
   dimension: compound_primary_key {
     primary_key: yes
     hidden: yes
-    sql: ${TABLE}."date"  || ${TABLE}."owner" || ${TABLE}."type";;
+    sql: ${TABLE}.date  || ${TABLE}.owner || ${TABLE}."TYPE";;
   }
 
 

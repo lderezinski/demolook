@@ -88,7 +88,7 @@ view: vmapi_hourly {
   measure: run_duration {
     description: "Number of days it has been running"
     type: number
-    sql: DATE_PART('day',${last_reported_date}::TIMESTAMP - ${first_reported_date}::TIMESTAMP ) ;;
+    sql: DATEDIFF('day',${first_reported_date}, ${last_reported_date} ) ;;
   }
 
   dimension: dns_domain {
@@ -222,74 +222,74 @@ view: vmapi_hourly {
   dimension: tags {
     description: "VMapi.tags"
     type: string
-    sql: ${TABLE}."tags"::text ;;
+    sql: ${TABLE}.tags::text ;;
   }
 
   dimension: is_manta_compute {
     description: "VMapi.tags contains manta_compute"
     type: yesno
-    sql: ${TABLE}.tags ->> 'manta_compute' is not null;;
+    sql: ${TABLE}.tags:manta_compute is not null;;
   }
 
   dimension: manta_compute {
     description: "VMapi.tags[manta_compute]"
     type: string
-    sql: ${TABLE}.tags ->> 'manta_compute' ;;
+    sql: ${TABLE}.tags:manta_compute ;;
   }
   dimension: is_manta_role {
     description: "boolean VMapi.tags[manta_role] is not null"
     type: yesno
-    sql: ${TABLE}.tags ->> 'manta_role' is not null;;
+    sql: ${TABLE}.tags:manta_role is not null;;
 
   }
   dimension: manta_role {
     description: "VMapi.tags[manta_role]"
     type: string
-    sql: ${TABLE}.tags ->> 'manta_role';;
+    sql: ${TABLE}.tags:manta_role;;
   }
   dimension: is_smartdc_role {
     description: "boolean VMapi.tags[smartdc_role] is not null"
     type: yesno
-    sql: ${TABLE}.tags ->> 'smartdc_role' is not null;;
+    sql: ${TABLE}.tags:smartdc_role is not null;;
 
   }
   dimension: smartdc_role {
     description: " VMapi.tags[smartdc_role]"
     type: string
-    sql: ${TABLE}.tags ->> 'smartdc_role';;
+    sql: ${TABLE}.tags:smartdc_role;;
   }
   dimension: is_smartdc_type {
     description: "boolean VMapi.tags[smartdc_type] is not null"
     type: yesno
-    sql: ${TABLE}.tags ->> 'smartdc_type' is not null;;
+    sql: ${TABLE}.tags:smartdc_type is not null;;
 
   }
   dimension: smartdc_type {
     description: "VMapi.tags[smartdc_type]"
     type: string
-    sql: ${TABLE}.tags ->> 'smartdc_type';;
+    sql: ${TABLE}.tags:smartdc_type;;
   }
   dimension: is_manta_storage {
     description: "boolean VMapi.tags[manta_storage_id] is not null"
     type: yesno
-    sql: ${TABLE}.tags ->> 'manta_storage_id' is not null;;
+    sql: ${TABLE}.tags:manta_storage_id is not null;;
 
   }
   dimension: manta_storage_id {
     description: "VMapi.tags[manta_storage_id]"
     type: string
-    sql: ${TABLE}.tags ->> 'manta_storage_id';;
+    sql: ${TABLE}.tags:manta_storage_id;;
   }
   dimension: is_manta_reshard {
     description: "boolean VMapi.tags[manta_reshard_plan] is not null"
     type: yesno
-    sql: ${TABLE}.tags ->> 'manta_reshard_plan' is not null;;
+    sql: ${TABLE}.tags:manta_reshard_plan is not null;;
 
   }
   dimension: manta_reshard_plan {
     description: "VMapi.tags[manta_reshard_plan]"
     type: string
-    sql: ${TABLE}.tags ->> 'manta_reshard_plan';;
+    sql: ${TABLE}.tags:manta_reshard_plan;;
   }
 
   measure: count {

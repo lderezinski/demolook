@@ -36,39 +36,39 @@ view: jpcdaily_spend {
     dimension: is_yesterday {
       description: "Boolean is day equal to yesterday"
       type: yesno
-      sql: (${day_date}  = CURRENT_DATE - INTERVAL '1 days') ;;
+      sql: ${day_date} =  dateadd(day, -1, CURRENT_DATE() ) ;;
     }
 
     dimension: two_days_ago {
       description: "Boolean is day equal to 2 days ago"
       type: yesno
-      sql: (${day_date}  = CURRENT_DATE - INTERVAL '2 days') ;;
+      sql: ${day_date} =  dateadd(day, -2,CURRENT_DATE() ) ;;
     }
 
   dimension: is_week_ago {
     description: "Boolean is day equal to a week ago"
     type: yesno
-    sql: (${day_date}  = CURRENT_DATE - INTERVAL '1 weeks') ;;
+    sql: ${day_date} =  dateadd(week, -1,CURRENT_DATE() ) ;;
   }
   dimension: four_weeks_ago {
     description: "Boolean is day equal to 4 weeks ago"
     type: yesno
-    sql: (${day_date}  = CURRENT_DATE - INTERVAL '4 weeks') ;;
+    sql: ${day_date} =  dateadd(week, -4,CURRENT_DATE() ) ;;
     }
   dimension: eight_weeks_ago {
     description: "Boolean is day equal to 8 weeks ago"
     type: yesno
-    sql: (${day_date}  = CURRENT_DATE - INTERVAL '8 weeks') ;;
+    sql: ${day_date} =  dateadd(week, -8,CURRENT_DATE() ) ;;
   }
   dimension: twelve_weeks_ago {
     description: "Boolean is day equal to 12 weeks ago"
     type: yesno
-    sql: (${day_date}  = CURRENT_DATE - INTERVAL '12 weeks') ;;
+    sql: ${day_date} =  dateadd(week, -12,CURRENT_DATE() ) ;;
   }
   dimension: sixteen_weeks_ago {
     description: "Boolean is day equal to 16 weeks ago"
     type: yesno
-    sql: (${day_date}  = CURRENT_DATE - INTERVAL '16 weeks') ;;
+    sql: ${day_date} =  dateadd(week, -16,CURRENT_DATE() ) ;;
   }
     dimension: jpcspend {
       description: "The jpc spend for the day in question"
@@ -99,7 +99,7 @@ view: jpcdaily_spend {
 
     dimension: months_since_signup{
       description: "How many months ago was this account created"
-      sql: round(DATE_PART('day', ${day_raw} - ${zuora_customers.createddate_raw})/30);;
+      sql: round(DATEDIFF(day, ${zuora_customers.createddate_raw}, ${day_raw} )/30);;
       value_format: "#"
     }
 
