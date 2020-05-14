@@ -103,6 +103,11 @@ explore: spcmantastorage {
     type: left_outer
     relationship: many_to_one
   }
+  join: mantagoal {
+    type: full_outer
+    sql_on: ${mantagoal.date_date} = ${spcmantastorage.date_date} and ${mantagoal.region} = ${spcmantastorage.region} ;;
+    relationship: many_to_one
+  }
   join: ufdsgroupname{
     view_label: "Customer group"
     sql_on: ${ufdsgroupname.uuid} = ${spcmantastorage.uuid} ;;
