@@ -584,24 +584,6 @@ explore: mako {
   }
 }
 
-explore: makoregion {
-  description: "SmartDC mako regions stats"
-  group_label: "Joyent Cloud"
-  label: "Mako Region"
-  join: makoregiontomb {
-    view_label: "region tombstone"
-    sql_on: ${makoregion.storage_id} = ${makoregiontomb.storage_id};;
-    type: full_outer
-    relationship: one_to_many
-  }
-}
-
-explore: makoregiontomb {
-  description: "SmartDC mako regions stats"
-  group_label: "Joyent Cloud"
-  label: "Mako Region tombstone"
-}
-
 explore: netbox {
   description: "SPC servers"
   group_label: "Joyent Cloud"
