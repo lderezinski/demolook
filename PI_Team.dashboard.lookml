@@ -1,5 +1,5 @@
-- dashboard: pi_team_srem71
-  title: SPC Manta monthly account report
+- dashboard: spc_manta_monthly_samsung_account
+  title: SPC Manta Monthly Samsung Account
   layout: newspaper
   elements:
   - title: Date
@@ -69,21 +69,21 @@
     listen: {}
     row: 0
     col: 0
-    width: 6
-    height: 4
+    width: 8
+    height: 8
   - name: Total Usage at the end of months based on accounts
     type: text
     title_text: Total Usage at the end of months based on accounts
-    row: 4
+    row: 8
     col: 0
-    width: 12
+    width: 24
     height: 2
   - name: Historical data
     type: text
     title_text: Historical data
-    row: 4
-    col: 12
-    width: 12
+    row: 22
+    col: 0
+    width: 24
     height: 2
   - title: SCLOUD Manta Metering
     name: SCLOUD Manta Metering
@@ -151,9 +151,9 @@
     hidden_fields:
     listen:
       SCLOUD: ufds.grouped_name
-    row: 10
-    col: 12
-    width: 12
+    row: 28
+    col: 0
+    width: 24
     height: 4
   - title: SCLOUD Manta Metering
     name: SCLOUD Manta Metering (2)
@@ -228,9 +228,9 @@
     hidden_fields: [spcmantastorage.data_p, mantagoal.goalsum, spcmantastorage.date_date]
     listen:
       SCLOUD: ufds.grouped_name
-    row: 10
+    row: 14
     col: 0
-    width: 12
+    width: 24
     height: 4
   - title: SCLOUD Manta Metering
     name: SCLOUD Manta Metering (3)
@@ -303,8 +303,8 @@
     listen:
       SCLOUD: ufds.grouped_name
     row: 0
-    col: 6
-    width: 9
+    col: 8
+    width: 16
     height: 4
   - title: SCLOUD Manta Metering by account
     name: SCLOUD Manta Metering by account
@@ -372,9 +372,9 @@
     interpolation: linear
     listen:
       SCLOUD: ufds.grouped_name
-    row: 0
-    col: 15
-    width: 9
+    row: 4
+    col: 8
+    width: 16
     height: 4
   - title: SPASS Manta Metering
     name: SPASS Manta Metering
@@ -442,10 +442,10 @@
     hidden_fields:
     listen:
       SPASS: ufds.grouped_name
-    row: 14
-    col: 12
-    width: 12
-    height: 4
+    row: 32
+    col: 0
+    width: 24
+    height: 5
   - title: SPASS Manta Metering
     name: SPASS Manta Metering (2)
     model: joyent_public_cloud
@@ -519,9 +519,9 @@
     hidden_fields: [spcmantastorage.data_p, mantagoal.goalsum, spcmantastorage.date_date]
     listen:
       SPASS: ufds.grouped_name
-    row: 14
+    row: 18
     col: 0
-    width: 12
+    width: 24
     height: 4
   - title: Manta Metering all accounts
     name: Manta Metering all accounts
@@ -589,9 +589,9 @@
     hidden_fields:
     listen:
       All: ufds.grouped_name
-    row: 6
-    col: 12
-    width: 12
+    row: 24
+    col: 0
+    width: 24
     height: 4
   - title: Manta Metering all accounts
     name: Manta Metering all accounts (2)
@@ -666,9 +666,9 @@
     hidden_fields: [spcmantastorage.data_p, mantagoal.goalsum, spcmantastorage.date_date]
     listen:
       All: ufds.grouped_name
-    row: 6
+    row: 10
     col: 0
-    width: 12
+    width: 24
     height: 4
   filters:
   - name: SCLOUD
