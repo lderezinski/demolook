@@ -145,76 +145,6 @@
     col: 8
     width: 16
     height: 4
-  - title: SCLOUD Manta Metering by account
-    name: SCLOUD Manta Metering by account
-    model: joyent_public_cloud
-    explore: spcmantastorage
-    type: looker_grid
-    fields: [spcmantastorage.date_date, spcmantastorage.region, spcmantastorage.data_p,
-      ufds.login]
-    pivots: [spcmantastorage.region]
-    filters:
-      spcmantastorage.date_date: 2 months
-      ufds.login: "%.prd%,%.stg%,%.dev%"
-    sorts: [spcmantastorage.date_date desc, spcmantastorage.region]
-    limit: 500
-    total: true
-    filter_expression: "(extract_days(add_days(1,${spcmantastorage.date_date})) =\
-      \ 1) "
-    show_view_names: false
-    show_row_numbers: false
-    transpose: false
-    truncate_text: true
-    hide_totals: false
-    hide_row_totals: false
-    size_to_fit: true
-    table_theme: white
-    limit_displayed_rows: false
-    enable_conditional_formatting: false
-    header_text_alignment: left
-    header_font_size: '12'
-    rows_font_size: '12'
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    show_sql_query_menu_options: false
-    show_totals: true
-    show_row_totals: true
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    legend_position: center
-    point_style: none
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    defaults_version: 1
-    series_types: {}
-    hidden_fields: [manta_zfs.date_date, spcmantastorage.date_date]
-    show_null_points: true
-    interpolation: linear
-    listen:
-      SCLOUD: ufds.grouped_name
-    row: 4
-    col: 8
-    width: 16
-    height: 4
   - name: Manta Metering Historical Data
     type: text
     title_text: Manta Metering Historical Data
@@ -222,80 +152,6 @@
     col: 0
     width: 24
     height: 2
-  - title: All Accounts (PiB)
-    name: All Accounts (PiB)
-    model: joyent_public_cloud
-    explore: spcmantastorage
-    type: looker_grid
-    fields: [spcmantastorage.date_date, spcmantastorage.region, spcmantastorage.data_p]
-    pivots: [spcmantastorage.region]
-    filters:
-      spcmantastorage.date_date: 7 months
-    sorts: [spcmantastorage.date_date desc, spcmantastorage.region]
-    limit: 500
-    filter_expression: "(extract_days(add_days(1,${spcmantastorage.date_date})) =\
-      \ 1) OR\n(trunc_days(${spcmantastorage.date_date}) = trunc_days(now()) AND \n\
-      (trunc_months(${spcmantastorage.date_date}) = trunc_months(now()) ))"
-    show_view_names: false
-    show_row_numbers: false
-    transpose: false
-    truncate_text: true
-    hide_totals: false
-    hide_row_totals: false
-    size_to_fit: true
-    table_theme: white
-    limit_displayed_rows: false
-    enable_conditional_formatting: false
-    header_text_alignment: left
-    header_font_size: '12'
-    rows_font_size: '12'
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    show_sql_query_menu_options: false
-    show_totals: true
-    show_row_totals: true
-    series_labels:
-      scloud_usage_pib: Total Usage (PiB)
-      scloud_usage: Total Usage (%)
-      spcmantastorage.data_p: Data
-      spcmantastorage.date_date: Date
-    series_cell_visualizations:
-      spcmantastorage.data_p:
-        is_active: true
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    legend_position: center
-    point_style: none
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    defaults_version: 1
-    series_types: {}
-    hidden_fields:
-    listen:
-      All: ufds.grouped_name
-    row: 24
-    col: 0
-    width: 24
-    height: 4
   - name: Manta Metering Last Month
     type: text
     title_text: Manta Metering Last Month
@@ -534,6 +390,85 @@
     col: 0
     width: 24
     height: 4
+  - title: All Accounts (PiB)
+    name: All Accounts (PiB)
+    model: joyent_public_cloud
+    explore: spcmantastorage
+    type: looker_grid
+    fields: [spcmantastorage.date_date, spcmantastorage.region, spcmantastorage.data_p]
+    pivots: [spcmantastorage.region]
+    filters:
+      spcmantastorage.date_date: 7 months
+    sorts: [spcmantastorage.date_date desc, spcmantastorage.region]
+    limit: 500
+    filter_expression: "(extract_days(add_days(1,${spcmantastorage.date_date})) =\
+      \ 1) OR\n(trunc_days(${spcmantastorage.date_date}) = trunc_days(now()) AND \n\
+      (trunc_months(${spcmantastorage.date_date}) = trunc_months(now()) ))"
+    show_view_names: false
+    show_row_numbers: false
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: white
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    header_text_alignment: left
+    header_font_size: '12'
+    rows_font_size: '12'
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    show_sql_query_menu_options: false
+    show_totals: true
+    show_row_totals: true
+    series_labels:
+      scloud_usage_pib: Total Usage (PiB)
+      scloud_usage: Total Usage (%)
+      spcmantastorage.data_p: Data
+      spcmantastorage.date_date: Date
+    series_cell_visualizations:
+      spcmantastorage.data_p:
+        is_active: true
+    series_value_format:
+      spcmantastorage.data_p:
+        name: decimal_2
+        format_string: "#,##0.00"
+        label: Decimals (2)
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    defaults_version: 1
+    series_types: {}
+    hidden_fields:
+    listen:
+      All: ufds.grouped_name
+    row: 24
+    col: 0
+    width: 24
+    height: 4
   - title: SCLOUD
     name: SCLOUD (2)
     model: joyent_public_cloud
@@ -574,6 +509,11 @@
     series_cell_visualizations:
       spcmantastorage.data_p:
         is_active: true
+    series_value_format:
+      spcmantastorage.data_p:
+        name: decimal_2
+        format_string: "#,##0.00"
+        label: Decimals (2)
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_y_axis_labels: true
@@ -648,6 +588,11 @@
     series_cell_visualizations:
       spcmantastorage.data_p:
         is_active: true
+    series_value_format:
+      spcmantastorage.data_p:
+        name: decimal_2
+        format_string: "#,##0.00"
+        label: Decimals (2)
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_y_axis_labels: true
@@ -682,6 +627,86 @@
     col: 0
     width: 24
     height: 5
+  - title: SCLOUD Manta Metering by account (PiB)
+    name: SCLOUD Manta Metering by account (PiB)
+    model: joyent_public_cloud
+    explore: spcmantastorage
+    type: looker_grid
+    fields: [spcmantastorage.date_date, spcmantastorage.region, spcmantastorage.data_p,
+      ufds.login]
+    pivots: [spcmantastorage.region]
+    filters:
+      spcmantastorage.date_date: 2 months
+      ufds.login: "%.prd%,%.stg%,%.dev%"
+    sorts: [spcmantastorage.date_date desc, spcmantastorage.region]
+    limit: 500
+    total: true
+    filter_expression: "(extract_days(add_days(1,${spcmantastorage.date_date})) =\
+      \ 1) "
+    show_view_names: false
+    show_row_numbers: false
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: white
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    header_text_alignment: left
+    header_font_size: '12'
+    rows_font_size: '12'
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    show_sql_query_menu_options: false
+    show_totals: true
+    show_row_totals: true
+    series_labels:
+      spcmantastorage.data_p: Data
+    series_cell_visualizations:
+      spcmantastorage.data_p:
+        is_active: true
+    series_value_format:
+      spcmantastorage.data_p:
+        name: decimal_2
+        format_string: "#,##0.00"
+        label: Decimals (2)
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    defaults_version: 1
+    series_types: {}
+    hidden_fields: [manta_zfs.date_date, spcmantastorage.date_date]
+    show_null_points: true
+    interpolation: linear
+    listen:
+      SCLOUD: ufds.grouped_name
+    row: 4
+    col: 8
+    width: 16
+    height: 4
   filters:
   - name: SCLOUD
     title: SCLOUD
