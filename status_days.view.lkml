@@ -21,14 +21,14 @@ view: status_days {
       quarter,
       year
     ]
-    sql: ${TABLE}."date" ;;
+    sql: ${TABLE}.date ;;
     drill_fields: [httpcode,region,value,date_date]
   }
 
   dimension: httpcode {
     description: "The muskie http code number"
     type: number
-    sql: ${TABLE}."httpcode" ;;
+    sql: ${TABLE}.httpcode ;;
     drill_fields: [httpcode,region,value,date_date]
   }
   dimension: code_buckets {
@@ -37,19 +37,19 @@ view: status_days {
     tiers: [200,300,400,500]
     style: integer
     drill_fields: [httpcode,region,value,date_time]
-    sql: ${TABLE}."httpcode"  ;;
+    sql: ${TABLE}.httpcode  ;;
   }
   dimension: region {
     description: "Name of the region"
     type: string
-    sql: ${TABLE}."region" ;;
+    sql: ${TABLE}.region ;;
     drill_fields: [httpcode,region,value,date_date]
   }
 
   dimension: value {
     description: "Number of http codes found"
     type: number
-    sql: ${TABLE}."value" ;;
+    sql: ${TABLE}.value ;;
     drill_fields: [httpcode,region,value,date_date]
   }
 
@@ -61,13 +61,13 @@ view: status_days {
   measure: five_minute_moving_avg{
     description: "Five minute moving average percentage"
     type: average
-    sql:  ${TABLE}."value" ;;
+    sql:  ${TABLE}.value ;;
     drill_fields: [httpcode,region,value,date_date]
   }
   measure: five_minute_sum{
     description: "Five minute moving average sum"
     type: sum
-    sql:  ${TABLE}."value" ;;
+    sql:  ${TABLE}.value ;;
     drill_fields: [httpcode,region,value,date_date]
   }
 }
