@@ -561,28 +561,6 @@ explore: ufdsgroupname {
   group_label: "Joyent Cloud"
   label: "UFDS groups"
 }
-explore: makotomb {
-  description: "SmartDC mako tombstone"
-  group_label: "Joyent Cloud"
-  label: "mako tombstone"
-}
-explore: mako {
-  description: "SmartDC mako stats"
-  group_label: "Joyent Cloud"
-  label: "Mako"
-  join: ufds {
-    view_label: "Customers"
-    sql_on: ${mako.account} =  ${ufds.uuid}  ;;
-    type: left_outer
-    relationship: one_to_one
-  }
-  join: ufdsgroupname{
-    view_label: "Customer group"
-    sql_on:  ${mako.account} = ${ufdsgroupname.uuid}  ;;
-    type: left_outer
-    relationship: one_to_one
-  }
-}
 
 explore: netbox {
   description: "SPC servers"

@@ -1,53 +1,73 @@
 view: status_days {
   sql_table_name: uptime.status_days ;;
 
+  dimension: compound_primary_key {
+    primary_key: yes
+    hidden: yes
+    sql: ${TABLE}."date"  || ${TABLE}."region" || ${TABLE}."httpcode";;
+  }
+
+
   dimension_group: date {
     description: "timestamp of the data collection"
     type: time
     timeframes: [
       raw,
-      time,
       date,
+      time,
+      hour,
       week,
       month,
       quarter,
       year
     ]
-    sql: ${TABLE}.date ;;
-    drill_fields: [uptime,region,date_date]
+    sql: ${TABLE}."date" ;;
+    drill_fields: [httpcode,region,value,date_date]
   }
 
-  dimension: compound_primary_key {
-    primary_key: yes
-    hidden: yes
-    sql: ${TABLE}.date  || ${TABLE}.region ;;
+  dimension: httpcode {
+    description: "The muskie http code number"
+    type: number
+    sql: ${TABLE}."httpcode" ;;
+    drill_fields: [httpcode,region,value,date_date]
   }
-
+  dimension: code_buckets {
+    description: "Grouping httpcodes by 200,300,400,500 tiers"
+    type: tier
+    tiers: [200,300,400,500]
+    style: integer
+    drill_fields: [httpcode,region,value,date_time]
+    sql: ${TABLE}."httpcode"  ;;
+  }
   dimension: region {
     description: "Name of the region"
     type: string
-    sql: ${TABLE}.region ;;
-    drill_fields: [uptime,region,date_date]
+    sql: ${TABLE}."region" ;;
+    drill_fields: [httpcode,region,value,date_date]
   }
 
-  dimension: uptime {
-    description: "Uptime percentage"
+  dimension: value {
+    description: "Number of http codes found"
     type: number
-    sql: ${TABLE}.value ;;
-    value_format_name: percent_1
-    drill_fields: [uptime,region,date_date]
+    sql: ${TABLE}."value" ;;
+    drill_fields: [httpcode,region,value,date_date]
   }
 
   measure: count {
     description: "Number of distinct objects returned in query"
     type: count
-    drill_fields: [uptime,region,date_date]
+    drill_fields: [httpcode,region,value,date_date]
   }
-  measure: uptime_sum{
-    description: "Sum of the uptime"
+  measure: five_minute_moving_avg{
+    description: "Five minute moving average percentage"
+    type: average
+    sql:  ${TABLE}."value" ;;
+    drill_fields: [httpcode,region,value,date_date]
+  }
+  measure: five_minute_sum{
+    description: "Five minute moving average sum"
     type: sum
-    sql:  ${TABLE}.value ;;
-    value_format_name: percent_1
-    drill_fields: [uptime,region,date_date]
+    sql:  ${TABLE}."value" ;;
+    drill_fields: [httpcode,region,value,date_date]
   }
 }
